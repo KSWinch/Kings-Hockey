@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "puppeteer": "^23.6.0"
   },
-  "type": "module"
+  "type": "module",
+  "proxy": "http://localhost:8080"
 }

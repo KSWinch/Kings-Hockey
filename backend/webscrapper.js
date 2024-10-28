@@ -4,7 +4,13 @@ export default class WebScrapperService {
   constructor(url) {
     this.url = url;
   }
-
+  
+  async initializeWebScrapper() {
+    this.browser = await puppeteer.launch({ headless: true });
+    this.page = await this.browser.newPage();
+    await this.page.goto(this.url, { waitUntil: "networkidle0" });
+  }
+  
   async getElement() {
     const data = await this.page.evaluate(() => {
       const rows = Array.from(document.querySelectorAll(".schedule tr"));
@@ -22,15 +28,11 @@ export default class WebScrapperService {
           date: columns[4].trim(),
           time: columns[5].trim(),
           location: columns[7].trim(),
+          rink: columns[8].trim(),
         };
       });
 
     return parsedData;
   }
 
-  async initializeWebScrapper() {
-    this.browser = await puppeteer.launch({ headless: true });
-    this.page = await this.browser.newPage();
-    await this.page.goto(this.url, { waitUntil: "networkidle0" });
-  }
 }
