@@ -1,27 +1,36 @@
-import puppeteer from'puppeteer';
+import puppeteer from "puppeteer";
 
-// const url = 'https://crhl.hockeyshift.com/stats#/489/schedule?all&team_id=465723';
+export default class WebScrapperService {
+  constructor(url) {
+    this.url = url;
+  }
 
-export default class WebScrapperService { 
-    constructor(url) {
-        this.url = url
-    }
+  async getElement() {
+    const data = await this.page.evaluate(() => {
+      const rows = Array.from(document.querySelectorAll(".schedule tr"));
+      return rows.slice(1).map((row) => row.innerText.trim());
+    });
 
-    async getElement() {
-        const elements = this.page.waitForSelector('::-p-xpath(/html/body/div[1]/main/div/div/div/stats-page/partial/div/partial/div/div[2]/div/div[1]/table/tbody/tr[1]/td[7])');
-        //const scheduleData = await this.page(() => {
-            //const elements = Array.from(document.querySelectorAll('/html/body/div[1]/main/div/div/div/stats-page/partial/div/partial/div/div[2]/div/div[1]/table/tbody')); // Adjust the selector
-            //return elements.map(element => element.textContent.trim());
-        //});
-        return elements
-    }
+    // Parse the data into JSON
+    const parsedData = data
+      .filter((row) => row) // Remove any empty rows
+      .map((row) => {
+        const columns = row.split("\t");
+        return {
+          homeTeam: columns[0].trim(),
+          awayTeam: columns[2].trim(),
+          date: columns[4].trim(),
+          time: columns[5].trim(),
+          location: columns[7].trim(),
+        };
+      });
 
-    async initializeWebScrapper() {
-        this.browser = await puppeteer.launch();
-        this.page = await this.browser.newPage();
-        await this.page.goto(this.url, { waitUntil: 'networkidle0' });
-        console.log(this.page)
-    }
+    return parsedData;
+  }
+
+  async initializeWebScrapper() {
+    this.browser = await puppeteer.launch({ headless: true });
+    this.page = await this.browser.newPage();
+    await this.page.goto(this.url, { waitUntil: "networkidle0" });
+  }
 }
-
-
