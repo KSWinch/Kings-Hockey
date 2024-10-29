@@ -8,22 +8,42 @@ import {
 } from "react-router-dom";
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
+import Navbar from './components/Navbar';
+import App from './App';
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Home/>,
+//   },
+//   {
+//     path: "/schedule",
+//     element: <Schedule/>,
+//   }
+// ]);
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home/>,
-  },
-  {
-    path: "/schedule",
-    element: <Schedule/>,
+      path: '/',
+      element: <App />,
+      children: [
+          {
+              path: '',
+              element: <Home />,
+          },
+          {
+              path: 'schedule',
+              element: <Schedule />,
+          }
+      ]
   }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} >
+      <App />
+    </RouterProvider>
   </React.StrictMode>
 );
 

@@ -1,17 +1,17 @@
-// src/components/landing-page/LandingPage.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './index.css';
 
 const Navbar = () => {
     return (
-        <div className="landing-page">
+        <div>
             <nav className="navbar">
                 <div className="navbar-logo">Kings Hockey</div>
                 <ul className="navbar-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/schedule">Schedule</Link></li>
+                    <li><Link to="/gallery">Gallery</Link></li>
                 </ul>
             </nav>
         </div>
