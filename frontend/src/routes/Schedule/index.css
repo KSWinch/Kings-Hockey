@@ -1,3 +1,8 @@
+
+body {
+    background-color: #23184b; /* Set a solid background color */
+}   
+
 .table-container {
     padding: 20px;
 }
@@ -6,6 +11,9 @@
     width: 100%;
     border-collapse: collapse;
     align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    
 
     th {
         padding: 10px;
@@ -13,17 +21,17 @@
         color: #fff;
         font-weight: bold;
         border-bottom: 1px solid #ddd;
-        text-align: middle;
+        text-align: center;
     }
 
     td {
         padding: 8px;
         border-bottom: 1px solid #ddd;
-        text-align: middle;
+        text-align: center;
     }
 
     .even-row {
-        background-color: #f9f9f9;
+        background-color: #c9c9c9;
     }
 
     .odd-row {

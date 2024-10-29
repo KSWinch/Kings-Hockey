@@ -1,11 +1,11 @@
 import './App.css';
-import ScheduleTable from './components/schedule/Schedule';
+import Navbar from './components/Navbar';
 
 
 function App() {
   return (
     <div className="App">
-        <ScheduleTable/>
+        <Navbar/>
     </div>
   );
 }
