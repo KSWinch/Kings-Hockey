@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './Schedule.css';
+import './index.css';
 
-const ScheduleTable = () => {
+
+const Schedule = () => {
     const [gamesData, setGamesData] = useState([]);
 
     useEffect(() => {
@@ -46,4 +47,4 @@ const ScheduleTable = () => {
     );
 };
 
-export default ScheduleTable;
+export default Schedule;

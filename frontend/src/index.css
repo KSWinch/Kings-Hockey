@@ -5,9 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #23184b; /* Set a solid background color */
+  background-image: url('./../public/images/crown.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+

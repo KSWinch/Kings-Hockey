@@ -1,12 +1,13 @@
-import './App.css';
-import ScheduleTable from './components/schedule/Schedule';
+import { Outlet } from "react-router-dom";
+import Navbar from './components/Navbar';
 
 
 function App() {
   return (
-    <div className="App">
-        <ScheduleTable/>
-    </div>
+    <>
+        <Navbar/>
+        <Outlet />
+    </>
   );
 }
 
