@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #23184b; /* Dark background for the entire page */
+  background-image: none; /* Removes the global background image crown.png */
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../../public/images/rink5.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5); /* Apply brightness filter only to the background image */
+  z-index: -1; /* Ensure it stays behind the text */
+}
+
+.header-section .logo {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.header-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.header-section p {
+  font-size: 18px;
+}
+
+.content-section {
+  background-color: #ffffff; /* White background */
+  color: #333;
+  padding: 40px;
+  height: 50vh; /* Bottom half of the page */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+  margin: 10px;
+}
+
+.info-box h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #23184b; /* Matching dark color for headings */
+}
+
+.info-box p {
+  font-size: 16px;
+  color: #555;
+}
+
+/*Dark mode CSS settings */
+@media (prefers-color-scheme: dark) {
+  .content-section {
+    background-color: #111111; /* White background */
+    color: #fcfbfb;
+    padding: 40px;
+    height: 50vh; /* Bottom half of the page */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .info-box {
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.87);
+    width: 250px;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .info-box h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #ffffff; /* Matching dark color for headings */
+  }
+
+  .info-box p {
+    font-size: 16px;
+    color: #ffffff;
+  }
+}

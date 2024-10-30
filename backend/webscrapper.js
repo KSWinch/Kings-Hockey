@@ -17,6 +17,8 @@ export default class WebScrapperService {
       return rows.slice(1).map((row) => row.innerText.trim());
     });
 
+    
+
     // Parse the data into JSON
     const parsedData = data
       .filter((row) => row) // Remove any empty rows
