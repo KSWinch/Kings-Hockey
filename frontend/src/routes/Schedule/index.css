@@ -1,40 +1,34 @@
-
-body {
-    background-color: #23184b; /* Set a solid background color */
-}   
-
 .table-container {
-    padding: 20px;
+  padding: 20px;
 }
 
 .game-table {
-    width: 100%;
-    border-collapse: collapse;
-    align-items: center;
-    border-radius: 10px;
-    overflow: hidden;
-    
+  width: 100%;
+  border-collapse: collapse;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
 
-    th {
-        padding: 10px;
-        background-color: #333;
-        color: #fff;
-        font-weight: bold;
-        border-bottom: 1px solid #ddd;
-        text-align: center;
-    }
+  th {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
 
-    td {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-        text-align: center;
-    }
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
 
-    .even-row {
-        background-color: #c9c9c9;
-    }
+  .even-row {
+    background-color: #c9c9c9;
+  }
 
-    .odd-row {
-        background-color: #ffffff;
-    }
+  .odd-row {
+    background-color: #ffffff;
+  }
 }

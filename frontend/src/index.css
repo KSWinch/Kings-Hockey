@@ -8,7 +8,9 @@ body {
   background-image: url('./../public/images/crown.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain; /*Prevents the background image from exploding when zooming */
   z-index: -1;
+  background-size: 30%; /*Shrinks the background image to 30% */
   height: 100vh;
 }
 

@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #23184b; /* Dark background for the entire page */
-  background-image: none; /* Removes the global background image crown.png */
-}
-
 .home-page {
   display: flex;
   flex-direction: column;
@@ -58,68 +52,30 @@ body {
 }
 
 .content-section {
-  background-color: #ffffff; /* White background */
-  color: #333;
+  background-color: #f8f8f8;
   padding: 40px;
-  height: 50vh; /* Bottom half of the page */
+  height: 50vh;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.info-box {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  text-align: center;
-  margin: 10px;
-}
-
-.info-box h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #23184b; /* Matching dark color for headings */
-}
-
-.info-box p {
-  font-size: 16px;
-  color: #555;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 50px; /* Space between cards */
+  justify-content: center; /* Centers cards horizontally */
+  align-items: flex-start; /* Ensures all cards align from the top */
+  padding: 60px 20px;
+  overflow-y: auto;
 }
 
 /*Dark mode CSS settings */
 @media (prefers-color-scheme: dark) {
   .content-section {
     background-color: #111111; /* White background */
-    color: #fcfbfb;
+    color: #d1d1d1;
     padding: 40px;
     height: 50vh; /* Bottom half of the page */
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .info-box {
-    background-color: #111111;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.87);
-    width: 250px;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .info-box h2 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #ffffff; /* Matching dark color for headings */
-  }
-
-  .info-box p {
-    font-size: 16px;
-    color: #ffffff;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 50px; /* Space between cards */
+    justify-content: center; /* Centers cards horizontally */
+    align-items: flex-start; /* Ensures all cards align from the top */
+    padding: 60px 20px;
   }
 }
