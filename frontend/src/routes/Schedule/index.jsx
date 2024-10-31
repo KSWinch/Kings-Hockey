@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./index.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './index.css';
 
 const Schedule = () => {
   const [gamesData, setGamesData] = useState([]);
@@ -9,14 +9,15 @@ const Schedule = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/getSchedule");
+        const response = await fetch('http://localhost:8080/getSchedule');
         const data = await response.json();
         setGamesData(data);
       } catch (error) {
-        console.error("Error fetching games data:", error);
+        console.error('Error fetching games data:', error);
       }
     };
 
+    console.log('fetching data');
     fetchGamesData();
   }, []);
 
@@ -39,16 +40,16 @@ const Schedule = () => {
         <tbody>
           {gamesData.map((game, index) => (
             <tr
-              key={index}
-              className={index % 2 === 0 ? "even-row" : "odd-row"}
+              key={game.id} // Use `game.id` for unique key
+              className={index % 2 === 0 ? 'even-row' : 'odd-row'}
               onClick={() => handleRowClick(game)}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
             >
-              <td>{game.homeTeam}</td>
-              <td>{game.awayTeam}</td>
+              <td>{game.home_team}</td>
+              <td>{game.away_team}</td>
               <td>{game.date}</td>
               <td>{game.time}</td>
-              <td>{`${game.location} - ${game.rink}`}</td>
+              <td>{game.location}</td>
             </tr>
           ))}
         </tbody>

@@ -1,39 +1,37 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./routes/Home";
-import Schedule from "./routes/Schedule";
-import App from "./App";
-import Attendance from "./routes/Attendance";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './routes/Home';
+import Schedule from './routes/Schedule';
+import App from './App';
+import Attendance from './routes/Attendance';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "",
+        path: '',
         element: <Home />,
       },
       {
-        path: "schedule",
+        path: 'schedule',
         element: <Schedule />,
       },
       {
-        path: "schedule/attendance/:id",
+        path: 'schedule/attendance/:id',
         element: <Attendance />,
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
-  </React.StrictMode>
+  <RouterProvider router={router}>
+    <App />
+  </RouterProvider>
 );

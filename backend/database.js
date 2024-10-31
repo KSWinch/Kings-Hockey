@@ -1,17 +1,13 @@
-import mysql from "mysql2/promise"; // Import mysql2
-import dbConfig from "./dbConfig.js"; // Import the database configuration
+import mysql from "mysql2/promise";
+import dbConfig from "./dbConfig.js";
 
-// Function to insert game data into the database
 export const insertGameData = async (gameData) => {
-  let connection;
-  try {
-    connection = await mysql.createConnection(dbConfig);
-  } catch (error) {
-    console.error("errror: ", error.message);
-  }
+  const connection = await mysql.createConnection(dbConfig);
+
   const insertQuery = `
-    INSERT INTO Schedule (homeTeam, awayTeam, location, date, time) 
-    VALUES (?, ?, ?, ?, ?)`;
+  INSERT IGNORE INTO Games (home_team, away_team, location, date, time) 
+  VALUES (?, ?, ?, ?, ?)
+`;
 
   const promises = gameData.map(async (game) => {
     const values = [
@@ -26,4 +22,11 @@ export const insertGameData = async (gameData) => {
 
   await Promise.all(promises);
   await connection.end();
+};
+
+export const fetchGameData = async () => {
+  const connection = await mysql.createConnection(dbConfig);
+  const [rows] = await connection.execute("SELECT * FROM Games");
+  await connection.end();
+  return rows;
 };
