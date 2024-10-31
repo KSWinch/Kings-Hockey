@@ -35,6 +35,7 @@ const Schedule = () => {
             <th>Date</th>
             <th>Time</th>
             <th>Location</th>
+            <th>Rink</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@ const Schedule = () => {
               <td>{game.date}</td>
               <td>{game.time}</td>
               <td>{game.location}</td>
+              <td>{game.rink}</td>
             </tr>
           ))}
         </tbody>
