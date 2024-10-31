@@ -5,8 +5,8 @@ export const insertGameData = async (gameData) => {
   const connection = await mysql.createConnection(dbConfig);
 
   const insertQuery = `
-  INSERT IGNORE INTO Games (home_team, away_team, location, date, time) 
-  VALUES (?, ?, ?, ?, ?)
+  INSERT IGNORE INTO Games (home_team, away_team, location, date, time, rink) 
+  VALUES (?, ?, ?, ?, ?, ?)
 `;
 
   const promises = gameData.map(async (game) => {
@@ -16,6 +16,7 @@ export const insertGameData = async (gameData) => {
       game.location,
       game.date,
       game.time,
+      game.rink,
     ];
     await connection.execute(insertQuery, values);
   });
