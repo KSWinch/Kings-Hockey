@@ -1,0 +1,92 @@
+/* src/components/InfoBox.css */
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f1f1; /* Dark background */
+  color: #23184b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(177, 177, 177, 0.87);
+  width: 250px;
+  text-align: center;
+  margin: 10px;
+  min-height: 400px;
+}
+
+.post-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.post-card-image {
+  width: 200px;
+  height: 100px; /* Adjust height to match your desired look */
+  background-size: contain; /* Keeps the image in its original aspect ratio */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px 8px 0 0; /* Rounds the top corners */
+  margin-bottom: 100px;
+}
+
+.post-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  color: #23184b;
+}
+
+.post-card-excerpt {
+  font-size: 16px;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+  overflow-wrap: break-word; /* Prevents long words from overflowing */
+  word-break: break-word;
+  flex-grow: 1;
+}
+
+.post-card-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  color: #3a3a3a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-card {
+    background-color: #111111; /* Dark background */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.87);
+    width: 250px;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .post-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #fff;
+  }
+
+  .post-card-excerpt {
+    font-size: 16px;
+    color: #bbb;
+    margin-bottom: 10px;
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+    color: #aaa;
+  }
+}
