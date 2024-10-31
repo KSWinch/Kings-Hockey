@@ -23,6 +23,7 @@ const Schedule = () => {
   const handleRowClick = (game) => {
     navigate(`/schedule/attendance/${game.id}`, { state: { game } });
   };
+
   return (
     <div className="table-container">
       <table className="game-table">
