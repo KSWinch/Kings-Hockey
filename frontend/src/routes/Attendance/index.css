@@ -1,0 +1,24 @@
+.attendance-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #23184b; /* Optional: set the same background color */
+}
+
+.attendance-card {
+    width: 24rem;
+    background-color: #343a40; /* Dark background for the card */
+    color: white; /* White text for contrast */
+    padding: 20px; /* Padding inside the card */
+}
+
+.no-game-text {
+    color: white;
+    text-align: center; /* Center text for no game data */
+}
+
+.attendance-buttons {
+    display: flex;
+    justify-content: space-around; /* Space buttons evenly */
+    margin-top: 20px; /* Space above buttons */
+}
