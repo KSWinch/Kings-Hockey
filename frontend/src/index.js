@@ -4,6 +4,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
+import Stats from './routes/Stats';
 import App from './App';
 import Attendance from './routes/Attendance';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'schedule/attendance/:id',
         element: <Attendance />,
+      },
+      {
+        path: 'stats',
+        element: <Stats />,
       },
     ],
   },

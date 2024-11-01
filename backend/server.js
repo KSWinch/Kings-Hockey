@@ -1,7 +1,7 @@
 import express from "express";
 import WebScraperService from "./webscraper.js";
 import cors from "cors";
-import { insertGameData, fetchGameData } from "./database.js";
+import { insertGameData, fetchGameData, insertStatsData } from "./database.js";
 
 const app = express();
 const PORT = 8080;
@@ -24,6 +24,22 @@ app.get("/scrapeSchedule", async (req, res) => {
   }
 });
 
+app.get("/scrapeStats", async (req, res) => {
+  try {
+    const webscraper = new WebScraperService(
+      "https://crhl.hockeyshift.com/stats#/489/team/465723"
+    );
+    await webscraper.initializeWebScraper();
+    const scrapedData = await webscraper.getPlayerStats();
+
+    await insertStatsData(scrapedData);
+    res.json(scrapedData);
+  } catch (error) {
+    console.error("Error fetching stats data:", error);
+    res.status(500).json({ error: "Failed to fetch stats data" });
+  }
+});
+
 app.get("/getSchedule", async (req, res) => {
   try {
     const gameData = await fetchGameData();
@@ -32,6 +48,14 @@ app.get("/getSchedule", async (req, res) => {
     console.error("Error fetching schedule data:", error);
     res.status(500).json({ error: "Failed to fetch schedule data" });
   }
+});
+
+app.get("/getStats", async (req, res) => {
+  const webscraper = new WebScraperService(
+    "https://crhl.hockeyshift.com/stats#/489/team/465723"
+  );
+  await webscraper.initializeWebScraper();
+  res.send(await webscraper.getPlayerStats());
 });
 
 app.listen(PORT, () => {

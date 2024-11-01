@@ -32,3 +32,8 @@
     background-color: #ffffff;
   }
 }
+
+.game-table tr:hover {
+  background-color: #7732e6; /* Choose a color that matches your design */
+  cursor: pointer; /* Optional: adds a pointer cursor */
+}

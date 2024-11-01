@@ -31,8 +31,8 @@ function Navigation() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/gallery" className="nav-link">
-              Gallery
+            <Nav.Link as={Link} to="/stats" className="nav-link">
+              Stats
             </Nav.Link>
           </Nav.Item>
         </Nav>

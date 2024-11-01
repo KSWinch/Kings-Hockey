@@ -1,0 +1,43 @@
+/* .table-container styling for consistent padding */
+.table-container {
+  padding: 20px;
+}
+
+/* Styling the table with rounded borders, colors, and text alignment */
+.player-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table header styling */
+.player-stats-table th {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Table row styling */
+.player-stats-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Alternating row colors */
+.even-row {
+  background-color: #c9c9c9;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+/* Hover effect for table rows */
+.player-stats-table tr:hover {
+  background-color: #7732e6;
+}

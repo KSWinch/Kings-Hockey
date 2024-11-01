@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 import InfoBox from './../../components/InfoBox';
 
 const Home = () => {
+  const [playerStats, setPlayerStats] = useState([]);
+  const [gamesData, setGamesData] = useState([]);
+
+  useEffect(() => {
+    const fetchPlayerStats = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/getStats');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPlayerStats(data);
+      } catch (error) {
+        console.error('Error fetching player stats:', error);
+      }
+    };
+
+    const fetchGamesData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/getSchedule');
+        const data = await response.json();
+        setGamesData(data); // Set gamesData with fetched data
+      } catch (error) {
+        console.error('Error fetching games data:', error);
+      }
+    };
+
+    fetchPlayerStats();
+    fetchGamesData();
+  }, []);
+
   return (
     <div className="home-page">
       <div className="header-section">
@@ -13,15 +44,15 @@ const Home = () => {
 
       <div className="content-section">
         <InfoBox
-          title="Last Game Recap"
-          description="Previous game information in here! Spoiler.. We suck!"
-          imageUrl="/images/rink.jpg"
+          title="King's Top Player Stats"
+          description="Top 3 Player Stats"
+          players={playerStats} // Pass the playerStats as a prop
         />
 
         <InfoBox
-          title="Temp"
-          description="Details about services or offerings."
-          imageUrl="/images/rink.jpg"
+          title="Upcoming Games"
+          description="The 2 most upcoming games."
+          games={gamesData.slice(0, 2)} // Display only the top 2 upcoming games
         />
 
         <InfoBox
