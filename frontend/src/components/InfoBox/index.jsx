@@ -3,6 +3,11 @@ import './../InfoBox/index.css';
 
 const InfoBox = ({ title, description, imageUrl, players, games }) => {
   const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
+  const sortedSchedule = games
+    ? [...games].sort((a, b) => new Date(b.date + ' 2024') - new Date(a.date + ' 2024'))
+    : [];
+
+  console.log('Sorted Schedule:', sortedSchedule);
   return (
     <div className="post-card">
       <header className="post-card-header">
@@ -53,7 +58,7 @@ const InfoBox = ({ title, description, imageUrl, players, games }) => {
               </tr>
             </thead>
             <tbody>
-              {games.slice(0, 3).map((game, index) => (
+              {sortedSchedule.slice(0, 1).map((game, index) => (
                 <tr key={index}>
                   <td>{game.home_team}</td>
                   <td>{game.away_team}</td>

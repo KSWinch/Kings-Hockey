@@ -51,8 +51,8 @@ const Home = () => {
 
         <InfoBox
           title="Upcoming Games"
-          description="The 2 most upcoming games."
-          games={gamesData.slice(0, 2)} // Display only the top 2 upcoming games
+          description="The next scheduled game."
+          games={gamesData} // Display only the top 2 upcoming games
         />
 
         <InfoBox
