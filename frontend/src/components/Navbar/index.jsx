@@ -31,7 +31,7 @@ function Navigation() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/gallery" className="nav-link">
+            <Nav.Link as={Link} to="/stats" className="nav-link">
               Stats
             </Nav.Link>
           </Nav.Item>

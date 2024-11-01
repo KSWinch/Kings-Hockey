@@ -1,7 +1,10 @@
 /* src/components/InfoBox.css */
 
 .post-card {
-  display: flex;
+  display: inline-block;
+  width: auto;
+  min-width: 300px; /* Minimum width to prevent it from becoming too narrow */
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
   background-color: #f1f1f1; /* Light background */
@@ -9,7 +12,6 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 3px 15px rgba(177, 177, 177, 0.87);
-  width: 300px;
   text-align: center;
   margin: 10px;
 }
@@ -56,26 +58,84 @@
   color: #3a3a3a;
 }
 
+/* CSS for info box responsible for top 3 player stats */
 .player-stats-mini-table {
   width: 100%;
   border-collapse: collapse;
-  color: #ffffff;
+  color: #000000;
+  box-shadow: 0 3px 15px rgba(219, 219, 219, 0.87);
 }
 
 .player-stats-mini-table th,
 .player-stats-mini-table td {
   padding: 8px;
   text-align: center;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #b9b9b9;
 }
 
 .player-stats-mini-table th {
   font-weight: bold;
-  background-color: #555;
+  background-color: #999999;
 }
 
 .player-stats-mini-table tr:nth-child(even) {
-  background-color: #2a2a2a;
+  background-color: #979797;
+}
+
+/*--- CSS for info box responsible for upcoming games */
+.upcoming-games-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #000000;
+  box-shadow: 0 3px 15px rgba(219, 219, 219, 0.87);
+}
+
+.upcoming-games-mini-table th,
+.upcoming-games-mini-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.upcoming-games-mini-table th {
+  font-weight: bold;
+  background-color: #999999;
+}
+
+.upcoming-games-mini-table tr:nth-child(even) {
+  background-color: #999999;
+}
+
+/* Soft edges for post card */
+.upcoming-games-mini-table,
+.player-stats-mini-table {
+  width: 100%;
+  border-collapse: separate; /* Use separate to allow rounded borders */
+  border-spacing: 0; /* Remove gaps between cells */
+  border-radius: 8px; /* Adjust the radius as needed */
+  overflow: hidden; /* Clips any content overflowing the rounded borders */
+}
+
+/* Style for the header row with rounded top corners */
+.upcoming-games-mini-table th:first-child,
+.player-stats-mini-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.upcoming-games-mini-table th:last-child,
+.player-stats-mini-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Style for the last row with rounded bottom corners */
+.upcoming-games-mini-table tr:last-child td:first-child,
+.player-stats-mini-table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.upcoming-games-mini-table tr:last-child td:last-child,
+.player-stats-mini-table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
 }
 
 /* Dark mode styling */
@@ -83,7 +143,7 @@
   .post-card {
     background-color: #111111;
     color: #ffffff;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.87);
+    box-shadow: 0 3px 15px #000000de;
   }
 
   .post-card-title {
@@ -96,5 +156,63 @@
 
   .post-card-footer {
     color: #aaa;
+  }
+  /* CSS for info box responsible for top 3 player stats */
+  .player-stats-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    box-shadow: 0 3px 15px #000000de;
+  }
+
+  .player-stats-mini-table th,
+  .player-stats-mini-table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1ade;
+  }
+
+  .player-stats-mini-table th {
+    font-weight: bold;
+    background-color: #646464;
+  }
+
+  .player-stats-mini-table tr:nth-child(even) {
+    background-color: #272727;
+  }
+
+  /*--- CSS for info box responsible for upcoming games */
+  .upcoming-games-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    box-shadow: 0 3px 15px #000000de;
+  }
+
+  .upcoming-games-mini-table th,
+  .upcoming-games-mini-table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1ade;
+  }
+
+  .upcoming-games-mini-table th {
+    font-weight: bold;
+    background-color: #646464;
+  }
+
+  .upcoming-games-mini-table tr:nth-child(even) {
+    background-color: #272727;
+  }
+}
+
+@media (max-width: 600px) {
+  .upcoming-games-mini-table {
+    font-size: 14px; /* Smaller font size on small screens */
+  }
+
+  .upcoming-games-mini-table th,
+  .upcoming-games-mini-table td {
+    padding: 6px; /* Reduce padding to fit content better */
   }
 }

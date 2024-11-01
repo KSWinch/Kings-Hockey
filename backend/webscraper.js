@@ -1,11 +1,11 @@
 import puppeteer from "puppeteer";
 
-export default class WebScrapperService {
+export default class WebScraperService {
   constructor(url) {
     this.url = url;
   }
 
-  async initializeWebScrapper() {
+  async initializeWebScraper() {
     this.browser = await puppeteer.launch({ headless: true });
     this.page = await this.browser.newPage();
     await this.page.goto(this.url, { waitUntil: "networkidle0" });

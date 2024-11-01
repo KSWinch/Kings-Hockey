@@ -2,7 +2,7 @@
 import React from 'react';
 import './../InfoBox/index.css';
 
-const InfoBox = ({ title, description, imageUrl, players }) => {
+const InfoBox = ({ title, description, imageUrl, players, games }) => {
   return (
     <div className="post-card">
       <header className="post-card-header">
@@ -35,6 +35,34 @@ const InfoBox = ({ title, description, imageUrl, players }) => {
                   <td>{player.goals}</td>
                   <td>{player.assists}</td>
                   <td>{player.points}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : games ? (
+        /*Sorts schedule data so it can be displayed into the info boxes 
+        Slices it to only display first 3 upcoming games*/
+
+        <div className="upcoming-games-scroll">
+          <table className="upcoming-games-mini-table">
+            <thead>
+              <tr>
+                <th>Home</th>
+                <th>Away</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {games.slice(0, 3).map((game, index) => (
+                <tr key={index}>
+                  <td>{game.home_team}</td>
+                  <td>{game.away_team}</td>
+                  <td>{game.date}</td>
+                  <td>{game.time}</td>
+                  <td>{`${game.location} - ${game.rink}`}</td>
                 </tr>
               ))}
             </tbody>

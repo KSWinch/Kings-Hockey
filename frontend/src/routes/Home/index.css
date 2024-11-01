@@ -9,6 +9,7 @@
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  min-height: 140vh;
 }
 
 .header-section {
@@ -54,7 +55,7 @@
 .content-section {
   background-color: #f8f8f8;
   padding: 40px;
-  height: 50vh;
+  height: 1000px;
   display: flex;
   flex-wrap: wrap; /* Allows wrapping on smaller screens */
   gap: 50px; /* Space between cards */
@@ -70,7 +71,7 @@
     background-color: #111111; /* White background */
     color: #d1d1d1;
     padding: 40px;
-    height: 50vh; /* Bottom half of the page */
+    height: 1000px; /* Bottom half of the page */
     display: flex;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     gap: 50px; /* Space between cards */

@@ -4,6 +4,7 @@ import InfoBox from './../../components/InfoBox';
 
 const Home = () => {
   const [playerStats, setPlayerStats] = useState([]);
+  const [gamesData, setGamesData] = useState([]);
 
   useEffect(() => {
     const fetchPlayerStats = async () => {
@@ -19,7 +20,18 @@ const Home = () => {
       }
     };
 
+    const fetchGamesData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/getSchedule');
+        const data = await response.json();
+        setGamesData(data); // Set gamesData with fetched data
+      } catch (error) {
+        console.error('Error fetching games data:', error);
+      }
+    };
+
     fetchPlayerStats();
+    fetchGamesData();
   }, []);
 
   return (
@@ -32,15 +44,15 @@ const Home = () => {
 
       <div className="content-section">
         <InfoBox
-          title="King's Player Stats"
-          description=""
+          title="King's Top Player Stats"
+          description="Top 3 Player Stats"
           players={playerStats} // Pass the playerStats as a prop
         />
 
         <InfoBox
-          title="Temp"
-          description="Details about services or offerings."
-          imageUrl="/images/rink.jpg"
+          title="Upcoming Games"
+          description="The 2 most upcoming games."
+          games={gamesData.slice(0, 2)} // Display only the top 2 upcoming games
         />
 
         <InfoBox
