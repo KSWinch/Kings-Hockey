@@ -1,8 +1,8 @@
-// src/components/InfoBox.jsx
 import React from 'react';
 import './../InfoBox/index.css';
 
 const InfoBox = ({ title, description, imageUrl, players, games }) => {
+  const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
   return (
     <div className="post-card">
       <header className="post-card-header">
@@ -26,7 +26,7 @@ const InfoBox = ({ title, description, imageUrl, players, games }) => {
               </tr>
             </thead>
             <tbody>
-              {players.slice(0, 3).map((player, index) => (
+              {sortedPlayers.slice(0, 3).map((player, index) => (
                 <tr key={index}>
                   <td>{player.jersey_number}</td>
                   <td>{player.name}</td>
@@ -41,9 +41,6 @@ const InfoBox = ({ title, description, imageUrl, players, games }) => {
           </table>
         </div>
       ) : games ? (
-        /*Sorts schedule data so it can be displayed into the info boxes 
-        Slices it to only display first 3 upcoming games*/
-
         <div className="upcoming-games-scroll">
           <table className="upcoming-games-mini-table">
             <thead>

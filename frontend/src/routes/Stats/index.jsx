@@ -4,6 +4,7 @@ import './index.css';
 const Gallery = () => {
   const [playerStats, setPlayerStats] = useState([]);
   const [error, setError] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: 'points', direction: 'desc' });
 
   useEffect(() => {
     const fetchPlayerStats = async () => {
@@ -23,6 +24,26 @@ const Gallery = () => {
     fetchPlayerStats();
   }, []);
 
+  // Function to handle sorting
+  const requestSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  // Sort playerStats based on sortConfig
+  const sortedPlayerStats = [...playerStats].sort((a, b) => {
+    if (a[sortConfig.key] < b[sortConfig.key]) {
+      return sortConfig.direction === 'asc' ? -1 : 1;
+    }
+    if (a[sortConfig.key] > b[sortConfig.key]) {
+      return sortConfig.direction === 'asc' ? 1 : -1;
+    }
+    return 0;
+  });
+
   return (
     <div className="table-container">
       {error ? (
@@ -31,22 +52,22 @@ const Gallery = () => {
         <table className="player-stats-table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Pos</th>
-              <th>GP</th>
-              <th>G</th>
-              <th>A</th>
-              <th>Pts</th>
-              <th>PPGA</th>
-              <th>PIM</th>
-              <th>PPG</th>
-              <th>SHG</th>
-              <th>GWG</th>
+              <th onClick={() => requestSort('jersey_number')}>#</th>
+              <th onClick={() => requestSort('name')}>Name</th>
+              <th onClick={() => requestSort('position')}>Pos</th>
+              <th onClick={() => requestSort('games_played')}>GP</th>
+              <th onClick={() => requestSort('goals')}>G</th>
+              <th onClick={() => requestSort('assists')}>A</th>
+              <th onClick={() => requestSort('points')}>Pts</th>
+              <th onClick={() => requestSort('points_per_game')}>PPGA</th>
+              <th onClick={() => requestSort('penalty_minutes')}>PIM</th>
+              <th onClick={() => requestSort('power_play_goals')}>PPG</th>
+              <th onClick={() => requestSort('short_handed_goals')}>SHG</th>
+              <th onClick={() => requestSort('game_winning_goals')}>GWG</th>
             </tr>
           </thead>
           <tbody>
-            {playerStats.map((player, index) => (
+            {sortedPlayerStats.map((player, index) => (
               <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
                 <td>{player.jersey_number}</td>
                 <td>{player.name}</td>
