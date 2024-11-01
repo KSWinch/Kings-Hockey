@@ -4,8 +4,7 @@ import cors from "cors";
 const app = express();
 const PORT = 8080;
 
-app.use(cors({ origin: 'http://localhost:3000' }));
-
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get("/getSchedule", async (req, res) => {
   const webscrapper = new WebScrapperService(
@@ -13,6 +12,14 @@ app.get("/getSchedule", async (req, res) => {
   );
   await webscrapper.initializeWebScrapper();
   res.send(await webscrapper.getElement());
+});
+
+app.get("/getStats", async (req, res) => {
+  const webscrapper = new WebScrapperService(
+    "https://crhl.hockeyshift.com/stats#/489/team/465723"
+  );
+  await webscrapper.initializeWebScrapper();
+  res.send(await webscrapper.getPlayerStats());
 });
 
 app.listen(PORT, () => {

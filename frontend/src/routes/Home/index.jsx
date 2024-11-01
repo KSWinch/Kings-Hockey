@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 import InfoBox from './../../components/InfoBox';
 
 const Home = () => {
+  const [playerStats, setPlayerStats] = useState([]);
+
+  useEffect(() => {
+    const fetchPlayerStats = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/getStats');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPlayerStats(data);
+      } catch (error) {
+        console.error('Error fetching player stats:', error);
+      }
+    };
+
+    fetchPlayerStats();
+  }, []);
+
   return (
     <div className="home-page">
       <div className="header-section">
@@ -13,9 +32,9 @@ const Home = () => {
 
       <div className="content-section">
         <InfoBox
-          title="Last Game Recap"
-          description="Previous game information in here! Spoiler.. We suck!"
-          imageUrl="/images/rink.jpg"
+          title="King's Player Stats"
+          description=""
+          players={playerStats} // Pass the playerStats as a prop
         />
 
         <InfoBox

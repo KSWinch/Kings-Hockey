@@ -2,46 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider, 
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
+import Gallery from './routes/Gallery';
 import Navbar from './components/Navbar';
 import App from './App';
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home/>,
-//   },
-//   {
-//     path: "/schedule",
-//     element: <Schedule/>,
-//   }
-// ]);
 
 const router = createBrowserRouter([
   {
-      path: '/',
-      element: <App />,
-      children: [
-          {
-              path: '',
-              element: <Home />,
-          },
-          {
-              path: 'schedule',
-              element: <Schedule />,
-          }
-      ]
-  }
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: 'schedule',
+        element: <Schedule />,
+      },
+      {
+        path: 'gallery',
+        element: <Gallery />,
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} >
+    <RouterProvider router={router}>
       <App />
     </RouterProvider>
   </React.StrictMode>

@@ -4,15 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f1f1f1; /* Dark background */
+  background-color: #f1f1f1; /* Light background */
   color: #23184b;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 3px 15px rgba(177, 177, 177, 0.87);
-  width: 250px;
+  width: 300px;
   text-align: center;
   margin: 10px;
-  min-height: 400px;
 }
 
 .post-card-header {
@@ -25,18 +24,18 @@
 
 .post-card-image {
   width: 200px;
-  height: 100px; /* Adjust height to match your desired look */
-  background-size: contain; /* Keeps the image in its original aspect ratio */
+  height: 100px;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 8px 8px 0 0; /* Rounds the top corners */
-  margin-bottom: 100px;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 10px; /* Reduced margin for tighter alignment */
 }
 
 .post-card-title {
   font-size: 20px;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 10px;
   color: #23184b;
 }
 
@@ -44,9 +43,9 @@
   font-size: 16px;
   color: #3a3a3a;
   margin-bottom: 10px;
-  overflow-wrap: break-word; /* Prevents long words from overflowing */
+  overflow-wrap: break-word;
   word-break: break-word;
-  flex-grow: 1;
+  flex-grow: 1; /* Allow this section to grow and take up space if needed */
 }
 
 .post-card-footer {
@@ -57,36 +56,45 @@
   color: #3a3a3a;
 }
 
+.player-stats-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #ffffff;
+}
+
+.player-stats-mini-table th,
+.player-stats-mini-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.player-stats-mini-table th {
+  font-weight: bold;
+  background-color: #555;
+}
+
+.player-stats-mini-table tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+/* Dark mode styling */
 @media (prefers-color-scheme: dark) {
   .post-card {
-    background-color: #111111; /* Dark background */
+    background-color: #111111;
     color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.87);
-    width: 250px;
-    text-align: center;
-    margin: 10px;
   }
 
   .post-card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
     color: #fff;
   }
 
   .post-card-excerpt {
-    font-size: 16px;
     color: #bbb;
-    margin-bottom: 10px;
   }
 
   .post-card-footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 12px;
     color: #aaa;
   }
 }
