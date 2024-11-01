@@ -17,7 +17,6 @@ const Schedule = () => {
       }
     };
 
-    console.log('fetching data');
     fetchGamesData();
   }, []);
 

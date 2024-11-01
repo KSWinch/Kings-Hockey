@@ -1,7 +1,12 @@
 import express from "express";
 import WebScraperService from "./webscraper.js";
 import cors from "cors";
-import { insertGameData, fetchGameData, insertStatsData } from "./database.js";
+import {
+  insertGameData,
+  fetchGameData,
+  insertStatsData,
+  fetchStatsData,
+} from "./database.js";
 
 const app = express();
 const PORT = 8080;
@@ -51,11 +56,13 @@ app.get("/getSchedule", async (req, res) => {
 });
 
 app.get("/getStats", async (req, res) => {
-  const webscraper = new WebScraperService(
-    "https://crhl.hockeyshift.com/stats#/489/team/465723"
-  );
-  await webscraper.initializeWebScraper();
-  res.send(await webscraper.getPlayerStats());
+  try {
+    const gameData = await fetchStatsData();
+    res.json(gameData);
+  } catch (error) {
+    console.error("Error fetching schedule data:", error);
+    res.status(500).json({ error: "Failed to fetch schedule data" });
+  }
 });
 
 app.listen(PORT, () => {

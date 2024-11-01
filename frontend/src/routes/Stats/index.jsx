@@ -48,18 +48,18 @@ const Gallery = () => {
           <tbody>
             {playerStats.map((player, index) => (
               <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                <td>{player.jerseyNumber}</td>
+                <td>{player.jersey_number}</td>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
-                <td>{player.gamesPlayed}</td>
+                <td>{player.games_played}</td>
                 <td>{player.goals}</td>
                 <td>{player.assists}</td>
                 <td>{player.points}</td>
-                <td>{player.pointsPerGame}</td>
-                <td>{player.penaltyMinutes}</td>
-                <td>{player.powerPlayGoals}</td>
-                <td>{player.shortHandedGoals}</td>
-                <td>{player.gameWinningGoals}</td>
+                <td>{player.points_per_game}</td>
+                <td>{player.penalty_minutes}</td>
+                <td>{player.power_play_goals}</td>
+                <td>{player.short_handed_goals}</td>
+                <td>{player.game_winning_goals}</td>
               </tr>
             ))}
           </tbody>

@@ -32,12 +32,31 @@ export const fetchGameData = async () => {
   return rows;
 };
 
+export const fetchStatsData = async () => {
+  const connection = await mysql.createConnection(dbConfig);
+  const [rows] = await connection.execute("SELECT * FROM Stats");
+  await connection.end();
+  return rows;
+};
+
 export const insertStatsData = async (statsData) => {
   const connection = await mysql.createConnection(dbConfig);
 
   const insertQuery = `
-  INSERT IGNORE INTO Stats (jersey_number, name, position, games_played, goals, assists, points, points_per_game, penalty_minutes, power_play_goals, short_handed_goals, game_winning_goals) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO Stats (jersey_number, name, position, games_played, goals, assists, points, points_per_game, penalty_minutes, power_play_goals, short_handed_goals, game_winning_goals) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON DUPLICATE KEY UPDATE
+      name = VALUES(name),
+      position = VALUES(position),
+      games_played = VALUES(games_played),
+      goals = VALUES(goals),
+      assists = VALUES(assists),
+      points = VALUES(points),
+      points_per_game = VALUES(points_per_game),
+      penalty_minutes = VALUES(penalty_minutes),
+      power_play_goals = VALUES(power_play_goals),
+      short_handed_goals = VALUES(short_handed_goals),
+      game_winning_goals = VALUES(game_winning_goals)
   `;
 
   const promises = statsData.map(async (stats) => {

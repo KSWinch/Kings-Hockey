@@ -28,10 +28,10 @@ const InfoBox = ({ title, description, imageUrl, players, games }) => {
             <tbody>
               {players.slice(0, 3).map((player, index) => (
                 <tr key={index}>
-                  <td>{player.jerseyNumber}</td>
+                  <td>{player.jersey_number}</td>
                   <td>{player.name}</td>
                   <td>{player.position}</td>
-                  <td>{player.gamesPlayed}</td>
+                  <td>{player.games_played}</td>
                   <td>{player.goals}</td>
                   <td>{player.assists}</td>
                   <td>{player.points}</td>

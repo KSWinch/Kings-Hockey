@@ -1,7 +1,7 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Container, Row, Col, Card } from "react-bootstrap";
-import "./index.css";
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Button, Container, Row, Col, Card } from 'react-bootstrap';
+import './index.css';
 
 const Attendance = () => {
   const location = useLocation();
@@ -13,9 +13,6 @@ const Attendance = () => {
   }
 
   const handleAttendance = (status) => {
-    console.log(
-      `Attendance for ${game.homeTeam} vs ${game.awayTeam}: ${status}`
-    );
     navigate(`/schedule`); // Navigate back
   };
 
@@ -26,7 +23,7 @@ const Attendance = () => {
           <Card className="attendance-card">
             <Card.Body>
               <Card.Title>
-                Attendance for {game.homeTeam} vs {game.awayTeam}
+                Attendance for {game.home_team} vs {game.away_team}
               </Card.Title>
               <Card.Text>
                 <p>Date: {game.date}</p>
@@ -34,13 +31,10 @@ const Attendance = () => {
                 <p>Location: {`${game.location} - ${game.rink}`}</p>
               </Card.Text>
               <div className="attendance-buttons">
-                <Button
-                  variant="success"
-                  onClick={() => handleAttendance("Yes")}
-                >
+                <Button variant="success" onClick={() => handleAttendance('Yes')}>
                   Yes
                 </Button>
-                <Button variant="danger" onClick={() => handleAttendance("No")}>
+                <Button variant="danger" onClick={() => handleAttendance('No')}>
                   No
                 </Button>
               </div>
