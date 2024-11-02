@@ -201,3 +201,27 @@
   scrollbar-color: #646464 #333;
   scrollbar-width: thin;
 }
+
+.standings-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.standings-mini-table th,
+.standings-mini-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.standings-mini-table th {
+  font-weight: bold;
+  background-color: #555;
+  color: #fff;
+}
+
+.standings-scroll {
+  max-height: 150px;
+  overflow-y: auto;
+}
