@@ -10,11 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.21.1",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "mysql2": "^3.11.3",
     "puppeteer": "^23.6.0"
   },
   "type": "module",
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "prisma": "^5.21.1"
+  }
 }
