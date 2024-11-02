@@ -11,9 +11,13 @@ export const getStatById = async (id) => {
 };
 
 export const createStat = async (userData) => {
-  return await prisma.stats.create({
-    data: userData,
-  });
+  try {
+    return await prisma.stats.create({
+      data: userData,
+    });
+  } catch (error) {
+    console.error(`Unique constraint failed for player: ${userData.name}`);
+  }
 };
 
 export const updateStat = async (id, userData) => {
