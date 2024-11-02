@@ -43,18 +43,18 @@ export default class WebScraperService {
       const players = rows.map((row) => {
         const columns = row.querySelectorAll("td");
         return {
-          jerseyNumber: columns[0]?.innerText.trim(),
+          jerseyNumber: parseInt(columns[0]?.innerText.trim()),
           name: columns[1]?.innerText.trim(),
           position: columns[2]?.innerText.trim(),
-          gamesPlayed: columns[3]?.innerText.trim(),
-          goals: columns[4]?.innerText.trim(),
-          assists: columns[5]?.innerText.trim(),
-          points: columns[6]?.innerText.trim(),
-          pointsPerGame: columns[7]?.innerText.trim(),
-          penaltyMinutes: columns[8]?.innerText.trim(),
-          powerPlayGoals: columns[9]?.innerText.trim(),
-          shortHandedGoals: columns[10]?.innerText.trim(),
-          gameWinningGoals: columns[11]?.innerText.trim(),
+          gamesPlayed: parseInt(columns[3]?.innerText.trim()),
+          goals: parseInt(columns[4]?.innerText.trim()),
+          assists: parseInt(columns[5]?.innerText.trim()),
+          points: parseInt(columns[6]?.innerText.trim()),
+          pointsPerGame: parseInt(columns[7]?.innerText.trim()),
+          penaltyMinutes: parseInt(columns[8]?.innerText.trim()),
+          powerPlayGoals: parseInt(columns[9]?.innerText.trim()),
+          shortHandedGoals: parseInt(columns[10]?.innerText.trim()),
+          gameWinningGoals: parseInt(columns[11]?.innerText.trim()),
         };
       });
 
