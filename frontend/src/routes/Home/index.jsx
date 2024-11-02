@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     const fetchPlayerStats = async () => {
       try {
-        const response = await fetch('http://localhost:8080/getStats');
+        const response = await fetch('http://localhost:8080/stats');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -22,7 +22,7 @@ const Home = () => {
 
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/getSchedule');
+        const response = await fetch('http://localhost:8080/games');
         const data = await response.json();
         setGamesData(data); // Set gamesData with fetched data
       } catch (error) {

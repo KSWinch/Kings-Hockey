@@ -9,7 +9,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchPlayerStats = async () => {
       try {
-        const response = await fetch('http://localhost:8080/getStats');
+        const response = await fetch('http://localhost:8080/stats');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
