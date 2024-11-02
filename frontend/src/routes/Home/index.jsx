@@ -5,6 +5,7 @@ import InfoBox from './../../components/InfoBox';
 const Home = () => {
   const [playerStats, setPlayerStats] = useState([]);
   const [gamesData, setGamesData] = useState([]);
+  const [standingsData, setStandingsData] = useState([]); // For standings !!
 
   useEffect(() => {
     const fetchPlayerStats = async () => {
@@ -30,8 +31,21 @@ const Home = () => {
       }
     };
 
+    // Standings spot reserved
+    const fetchStandingsData = async () => {
+      // New function to fetch standings data
+      try {
+        const response = await fetch('http://localhost:8080/standings');
+        const data = await response.json();
+        setStandingsData(data); // Set standingsData with fetched data
+      } catch (error) {
+        console.error('Error fetching standings data:', error);
+      }
+    };
+
     fetchPlayerStats();
     fetchGamesData();
+    fetchStandingsData();
   }, []);
 
   return (
@@ -56,9 +70,9 @@ const Home = () => {
         />
 
         <InfoBox
-          title="Temp"
-          description="Temp add data for testing 010232"
-          imageUrl="/images/rink.jpg"
+          title="Standings"
+          description="Current standings for Division 8"
+          standings={standingsData} // Display only the top 2 upcoming games
         />
       </div>
     </div>

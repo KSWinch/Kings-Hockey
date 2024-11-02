@@ -71,4 +71,42 @@ export default class WebScraperService {
 
     return playerData;
   }
+
+  //Reserved for Fotus standings scraper
+  async getStandings() {
+    const standingsData = await this.page.evaluate(() => {
+      // Select all rows in the standings table
+      const rows = Array.from(
+        document.querySelectorAll(".stats-table.standings tbody tr")
+      );
+      // const firstTable = rows[0];
+      // Map each row to an object representing team standings
+      const standings = rows.map((row) => {
+        const columns = row.querySelectorAll("td");
+
+        return {
+          rank: parseInt(columns[0]?.innerText.trim()),
+          team: columns[1]?.innerText.trim(),
+          gamesPlayed: parseInt(columns[2]?.innerText.trim()),
+          wins: parseInt(columns[3]?.innerText.trim()),
+          losses: parseInt(columns[4]?.innerText.trim()),
+          ties: parseInt(columns[5]?.innerText.trim()),
+          overtimeLosses: parseInt(columns[6]?.innerText.trim()),
+          points: parseInt(columns[7]?.innerText.trim()),
+          regulationWins: parseInt(columns[8]?.innerText.trim()),
+          goalsFor: parseInt(columns[9]?.innerText.trim()),
+          regulationOvertimeWins: parseInt(columns[10]?.innerText.trim()),
+          goalsAgainst: parseInt(columns[11]?.innerText.trim()),
+          goalDifferential: columns[12]?.innerText.trim(),
+          penaltyMinutes: parseInt(columns[13]?.innerText.trim()),
+          last10Games: columns[14]?.innerText.trim(),
+          streak: columns[15]?.innerText.trim(),
+        };
+      });
+
+      return standings;
+    });
+
+    return standingsData;
+  }
 }

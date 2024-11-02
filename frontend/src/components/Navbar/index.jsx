@@ -26,8 +26,8 @@ function Navigation() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/about" className="nav-link">
-              About
+            <Nav.Link as={Link} to="/standings" className="nav-link">
+              Standings
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>

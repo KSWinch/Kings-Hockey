@@ -1,0 +1,27 @@
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.standings-table th {
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+}
+
+.standings-table tr.even-row {
+  background-color: #f9f9f9;
+}
+
+.standings-table tr.odd-row {
+  background-color: #ffffff;
+}
