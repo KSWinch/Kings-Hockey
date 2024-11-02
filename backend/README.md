@@ -16,7 +16,7 @@
 - Make dbConfig.js file with follow keys
 - const dbConfig = {\
    host: "", // database host\
-   emspuser: "", // database username\
+   user: "", // database username\
    password: "", // database password\
    database: "", // database name\
    port: , // database port\
