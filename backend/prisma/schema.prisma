@@ -21,7 +21,7 @@ model Users {
 
 model Games {
   away_team String
-  date      String
+  date      String @unique
   home_team String
   id        Int    @id @default(autoincrement())
   location  String
@@ -36,7 +36,7 @@ model Stats {
   goals              Int
   id                 Int    @id @default(autoincrement())
   jersey_number      Int
-  name               String
+  name               String @unique
   penalty_minutes    Int
   points             Int
   points_per_game    Int
