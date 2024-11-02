@@ -41,3 +41,7 @@
 .player-stats-table tr:hover {
   background-color: #7732e6;
 }
+
+.player-stats-table th {
+  cursor: pointer;
+}
