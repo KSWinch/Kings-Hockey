@@ -1,12 +1,12 @@
 import express from "express";
-import WebScraperService from "./webscraper.js";
+import WebScraperService from "../webscraper_deprecated.js";
 import cors from "cors";
 import {
   insertGameData,
   fetchGameData,
   insertStatsData,
   fetchStatsData,
-} from "./database.js";
+} from "../database_deprecated.js";
 
 const app = express();
 const PORT = 8080;

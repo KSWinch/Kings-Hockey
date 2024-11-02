@@ -9,7 +9,7 @@ const Schedule = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/getSchedule');
+        const response = await fetch('http://localhost:8080/games');
         const data = await response.json();
         setGamesData(data);
       } catch (error) {
