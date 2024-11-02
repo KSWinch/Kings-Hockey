@@ -11,6 +11,7 @@ const Schedule = () => {
       try {
         const response = await fetch('http://localhost:8080/games');
         const data = await response.json();
+        data.sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(data);
       } catch (error) {
         console.error('Error fetching games data:', error);
