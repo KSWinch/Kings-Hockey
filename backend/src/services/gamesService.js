@@ -11,9 +11,13 @@ export const getGameById = async (id) => {
 };
 
 export const createGame = async (gameData) => {
-  return await prisma.games.create({
-    data: gameData,
-  });
+  try {
+    return await prisma.games.create({
+      data: gameData,
+    });
+  } catch (error) {
+    console.error(`Unique constraint failed for game on: ${gameData.date}`);
+  }
 };
 
 export const updateGame = async (id, gameData) => {
