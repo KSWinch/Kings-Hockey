@@ -18,6 +18,9 @@
   min-width: 800px; /* Ensures the table does not shrink too much */
   border-collapse: collapse;
   border-radius: 10px;
+  width: 1500px;
+  height: 700px;
+  font-size: 24px;
 }
 
 .game-table th {
@@ -31,12 +34,11 @@
 .game-table td {
   padding: 8px;
   text-align: center;
-  border: 1px solid #ddd; /* Light border for cells */
   color: #333333; /* Dark text for cells */
 }
 
 .even-row {
-  background-color: #f7f7fa; /* Slightly lighter background for even rows */
+  background-color: #dddddf; /* Slightly lighter background for even rows */
 }
 
 .odd-row {
@@ -44,8 +46,11 @@
 }
 
 .game-table tr:hover {
-  background-color: #d1c4f6; /* Light purple on hover */
-  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #6c3fe7; /* Entire row background color on hover */
+}
+
+.game-table tr:hover td {
+  color: #ffd700; /* Change text color of the entire row on hover */
 }
 
 .error-message {

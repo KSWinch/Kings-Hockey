@@ -121,6 +121,25 @@
   border-bottom-right-radius: 8px;
 }
 
+.table-responsive {
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  width: 100%; /* Ensures the wrapper takes full width of the post-card */
+  max-width: 100%;
+}
+
+/* Update the table styles to fit nicely within the wrapper */
+.player-stats-mini-table,
+.standings-mini-table,
+.upcoming-games-mini-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #000000;
+  box-shadow: 0 3px 15px rgba(219, 219, 219, 0.87);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 /* Dark Mode Styling */
 @media (prefers-color-scheme: dark) {
   .post-card {
@@ -144,7 +163,8 @@
   /* Dark mode for mini-tables */
   .player-stats-mini-table,
   .standings-mini-table,
-  .upcoming-games-mini-table {
+  .upcoming-games-mini-table,
+  .standings-scroll {
     color: #ffffff;
     box-shadow: 0 3px 15px #000000de;
   }
