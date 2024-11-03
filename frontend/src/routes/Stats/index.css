@@ -25,6 +25,7 @@
 .player-stats-table td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd; /* Light border for cells */
   text-align: center;
 }
 
@@ -39,7 +40,7 @@
 
 /* Hover effect for table rows */
 .player-stats-table tr:hover {
-  background-color: #7732e6;
+  background-color: #d1c4f6;
 }
 
 .player-stats-table th {

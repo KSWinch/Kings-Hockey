@@ -44,3 +44,22 @@ model Stats {
   power_play_goals   Int
   short_handed_goals Int
 }
+
+model Standings {
+  id                 Int    @id @default(autoincrement())
+  rank               Int
+  team               String @unique
+  games_played       Int
+  wins               Int
+  losses             Int
+  ties               Int
+  overtime_losses    Int
+  points             Int
+  regulation_wins    Int
+  goals_for          Int
+  goals_against      Int
+  goal_differential  String
+  penalty_minutes    Int
+  last_10_games      String
+  streak             String
+}

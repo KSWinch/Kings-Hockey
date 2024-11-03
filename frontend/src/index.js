@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
 import Stats from './routes/Stats';
+import Standings from './routes/Standings';
 import App from './App';
 import Attendance from './routes/Attendance';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: 'stats',
         element: <Stats />,
+      },
+      {
+        path: 'standings',
+        element: <Standings />,
       },
     ],
   },

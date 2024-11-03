@@ -10,17 +10,16 @@
   max-width: 100%;
   border-radius: 10px;
   background-color: #23184b; /* Light background for wrapper */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253); /* Adds subtle shadow */
 }
 
-.game-table {
+.standings-table {
   width: 100%;
   min-width: 800px; /* Ensures the table does not shrink too much */
   border-collapse: collapse;
-  border-radius: 10px;
 }
 
-.game-table th {
+.standings-table th {
   padding: 10px;
   background-color: #333; /* Dark background for header */
   color: #ffffff; /* White text for header */
@@ -28,7 +27,7 @@
   text-align: center;
 }
 
-.game-table td {
+.standings-table td {
   padding: 8px;
   text-align: center;
   border: 1px solid #ddd; /* Light border for cells */
@@ -43,7 +42,7 @@
   background-color: #ffffff; /* White background for odd rows */
 }
 
-.game-table tr:hover {
+.standings-table tr:hover {
   background-color: #d1c4f6; /* Light purple on hover */
   cursor: pointer; /* Pointer cursor on hover */
 }
@@ -55,7 +54,7 @@
 }
 
 @media (max-width: 600px) {
-  .game-table {
+  .standings-table {
     font-size: 14px; /* Adjust font size for readability on small screens */
   }
 }
