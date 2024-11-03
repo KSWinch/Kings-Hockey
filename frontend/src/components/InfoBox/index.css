@@ -58,38 +58,23 @@
   color: #3a3a3a;
 }
 
-/* CSS for info box responsible for top 3 player stats */
-.player-stats-mini-table {
+/* Common Table Styles for Mini-Tables */
+.player-stats-mini-table,
+.standings-mini-table,
+.upcoming-games-mini-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   color: #000000;
   box-shadow: 0 3px 15px rgba(219, 219, 219, 0.87);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .player-stats-mini-table th,
-.player-stats-mini-table td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #b9b9b9;
-}
-
-.player-stats-mini-table th {
-  font-weight: bold;
-  background-color: #999999;
-}
-
-.player-stats-mini-table tr:nth-child(even) {
-  background-color: #979797;
-}
-
-/*--- CSS for info box responsible for upcoming games */
-.upcoming-games-mini-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #000000;
-  box-shadow: 0 3px 15px rgba(219, 219, 219, 0.87);
-}
-
+.player-stats-mini-table td,
+.standings-mini-table th,
+.standings-mini-table td,
 .upcoming-games-mini-table th,
 .upcoming-games-mini-table td {
   padding: 8px;
@@ -97,48 +82,46 @@
   border-bottom: 1px solid #b9b9b9;
 }
 
+.player-stats-mini-table th,
+.standings-mini-table th,
 .upcoming-games-mini-table th {
   font-weight: bold;
-  background-color: #999999;
+  background-color: #999999; /* Matches table header color */
 }
 
+.player-stats-mini-table tr:nth-child(even),
+.standings-mini-table tr:nth-child(even),
 .upcoming-games-mini-table tr:nth-child(even) {
-  background-color: #999999;
+  background-color: #c0bdbd; /* Matches even row color */
 }
 
-/* Soft edges for post card */
-.upcoming-games-mini-table,
-.player-stats-mini-table {
-  width: 100%;
-  border-collapse: separate; /* Use separate to allow rounded borders */
-  border-spacing: 0; /* Remove gaps between cells */
-  border-radius: 8px; /* Adjust the radius as needed */
-  overflow: hidden; /* Clips any content overflowing the rounded borders */
-}
-
-/* Style for the header row with rounded top corners */
+/* Table Header Rounded Corners */
 .upcoming-games-mini-table th:first-child,
-.player-stats-mini-table th:first-child {
+.player-stats-mini-table th:first-child,
+.standings-mini-table th:first-child {
   border-top-left-radius: 8px;
 }
 
 .upcoming-games-mini-table th:last-child,
-.player-stats-mini-table th:last-child {
+.player-stats-mini-table th:last-child,
+.standings-mini-table th:last-child {
   border-top-right-radius: 8px;
 }
 
-/* Style for the last row with rounded bottom corners */
+/* Table Last Row Rounded Corners */
 .upcoming-games-mini-table tr:last-child td:first-child,
-.player-stats-mini-table tr:last-child td:first-child {
+.player-stats-mini-table tr:last-child td:first-child,
+.standings-mini-table tr:last-child td:first-child {
   border-bottom-left-radius: 8px;
 }
 
 .upcoming-games-mini-table tr:last-child td:last-child,
-.player-stats-mini-table tr:last-child td:last-child {
+.player-stats-mini-table tr:last-child td:last-child,
+.standings-mini-table tr:last-child td:last-child {
   border-bottom-right-radius: 8px;
 }
 
-/* Dark mode styling */
+/* Dark Mode Styling */
 @media (prefers-color-scheme: dark) {
   .post-card {
     background-color: #111111;
@@ -157,86 +140,64 @@
   .post-card-footer {
     color: #aaa;
   }
-  /* CSS for info box responsible for top 3 player stats */
-  .player-stats-mini-table {
-    width: 100%;
-    border-collapse: collapse;
+
+  /* Dark mode for mini-tables */
+  .player-stats-mini-table,
+  .standings-mini-table,
+  .upcoming-games-mini-table {
     color: #ffffff;
     box-shadow: 0 3px 15px #000000de;
   }
 
   .player-stats-mini-table th,
-  .player-stats-mini-table td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #1a1a1ade;
-  }
-
-  .player-stats-mini-table th {
-    font-weight: bold;
-    background-color: #646464;
-  }
-
-  .player-stats-mini-table tr:nth-child(even) {
-    background-color: #272727;
-  }
-
-  /*--- CSS for info box responsible for upcoming games */
-  .upcoming-games-mini-table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #ffffff;
-    box-shadow: 0 3px 15px #000000de;
-  }
-
+  .player-stats-mini-table td,
+  .standings-mini-table th,
+  .standings-mini-table td,
   .upcoming-games-mini-table th,
   .upcoming-games-mini-table td {
-    padding: 8px;
-    text-align: center;
     border-bottom: 1px solid #1a1a1ade;
   }
 
+  .player-stats-mini-table th,
+  .standings-mini-table th,
   .upcoming-games-mini-table th {
-    font-weight: bold;
-    background-color: #646464;
+    background-color: #646464; /* Matches dark mode header color */
   }
 
+  .player-stats-mini-table tr:nth-child(even),
+  .standings-mini-table tr:nth-child(even),
   .upcoming-games-mini-table tr:nth-child(even) {
-    background-color: #272727;
+    background-color: #272727; /* Matches dark mode even row color */
   }
 }
 
-@media (max-width: 600px) {
-  .upcoming-games-mini-table {
-    font-size: 14px; /* Smaller font size on small screens */
-  }
-
-  .upcoming-games-mini-table th,
-  .upcoming-games-mini-table td {
-    padding: 6px; /* Reduce padding to fit content better */
-  }
-}
-
-.standings-mini-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.standings-mini-table th,
-.standings-mini-table td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.standings-mini-table th {
-  font-weight: bold;
-  background-color: #555;
-  color: #fff;
-}
-
+/* Custom Scrollbar Styling for .standings-scroll */
 .standings-scroll {
   max-height: 150px;
   overflow-y: auto;
+}
+
+.standings-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.standings-scroll::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 10px;
+}
+
+.standings-scroll::-webkit-scrollbar-thumb {
+  background-color: #646464;
+  border-radius: 10px;
+  border: 2px solid #333;
+}
+
+.standings-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #4b4b5e;
+}
+
+/* Firefox Scrollbar */
+.standings-scroll {
+  scrollbar-color: #646464 #333;
+  scrollbar-width: thin;
 }

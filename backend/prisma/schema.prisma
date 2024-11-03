@@ -58,7 +58,7 @@ model Standings {
   regulation_wins    Int
   goals_for          Int
   goals_against      Int
-  goal_differential  Int
+  goal_differential  String
   penalty_minutes    Int
   last_10_games      String
   streak             String

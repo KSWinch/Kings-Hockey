@@ -1,8 +1,5 @@
 import prisma from "../utils/db.js";
 
-const standings = await prisma.standings.findMany();
-console.log(standings);
-
 export const getAllStandings = async () => {
   return await prisma.standings.findMany();
 };
@@ -19,10 +16,9 @@ export const createStanding = async (standingData) => {
       data: standingData,
     });
   } catch (error) {
-    console.error(error);
-    // console.error(
-    //   `Unique constraint failed for standing on: ${standingData.date}`
-    // );
+    console.error(
+      `Unique constraint failed for standing on: ${standingData.date}`
+    );
   }
 };
 

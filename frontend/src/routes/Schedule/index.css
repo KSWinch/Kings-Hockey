@@ -1,39 +1,61 @@
 .table-container {
   padding: 20px;
+  display: flex;
+  justify-content: center; /* Centers the table container */
+}
+
+.table-responsive-wrapper {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: #23184b; /* Light background for wrapper */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
 }
 
 .game-table {
   width: 100%;
+  min-width: 800px; /* Ensures the table does not shrink too much */
   border-collapse: collapse;
-  align-items: center;
   border-radius: 10px;
-  overflow: hidden;
+}
 
-  th {
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-  }
+.game-table th {
+  padding: 10px;
+  background-color: #333; /* Dark background for header */
+  color: #ffffff; /* White text for header */
+  font-weight: bold;
+  text-align: center;
+}
 
-  td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-  }
+.game-table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd; /* Light border for cells */
+  color: #333333; /* Dark text for cells */
+}
 
-  .even-row {
-    background-color: #c9c9c9;
-  }
+.even-row {
+  background-color: #f7f7fa; /* Slightly lighter background for even rows */
+}
 
-  .odd-row {
-    background-color: #ffffff;
-  }
+.odd-row {
+  background-color: #ffffff; /* White background for odd rows */
 }
 
 .game-table tr:hover {
-  background-color: #7732e6; /* Choose a color that matches your design */
-  cursor: pointer; /* Optional: adds a pointer cursor */
+  background-color: #d1c4f6; /* Light purple on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.error-message {
+  color: #ff4c4c; /* Red color for error message */
+  font-weight: bold;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .game-table {
+    font-size: 14px; /* Adjust font size for readability on small screens */
+  }
 }

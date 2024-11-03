@@ -49,42 +49,44 @@ const Gallery = () => {
       {error ? (
         <p className="error-message">{error}</p>
       ) : (
-        <table className="player-stats-table">
-          <thead>
-            <tr>
-              <th onClick={() => requestSort('jersey_number')}>#</th>
-              <th onClick={() => requestSort('name')}>Name</th>
-              <th onClick={() => requestSort('position')}>Pos</th>
-              <th onClick={() => requestSort('games_played')}>GP</th>
-              <th onClick={() => requestSort('goals')}>G</th>
-              <th onClick={() => requestSort('assists')}>A</th>
-              <th onClick={() => requestSort('points')}>Pts</th>
-              <th onClick={() => requestSort('points_per_game')}>PPGA</th>
-              <th onClick={() => requestSort('penalty_minutes')}>PIM</th>
-              <th onClick={() => requestSort('power_play_goals')}>PPG</th>
-              <th onClick={() => requestSort('short_handed_goals')}>SHG</th>
-              <th onClick={() => requestSort('game_winning_goals')}>GWG</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedPlayerStats.map((player, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                <td>{player.jersey_number}</td>
-                <td>{player.name}</td>
-                <td>{player.position}</td>
-                <td>{player.games_played}</td>
-                <td>{player.goals}</td>
-                <td>{player.assists}</td>
-                <td>{player.points}</td>
-                <td>{player.points_per_game}</td>
-                <td>{player.penalty_minutes}</td>
-                <td>{player.power_play_goals}</td>
-                <td>{player.short_handed_goals}</td>
-                <td>{player.game_winning_goals}</td>
+        <div className="table-responsive-wrapper">
+          <table className="player-stats-table">
+            <thead>
+              <tr>
+                <th onClick={() => requestSort('jersey_number')}>#</th>
+                <th onClick={() => requestSort('name')}>Name</th>
+                <th onClick={() => requestSort('position')}>Pos</th>
+                <th onClick={() => requestSort('games_played')}>GP</th>
+                <th onClick={() => requestSort('goals')}>G</th>
+                <th onClick={() => requestSort('assists')}>A</th>
+                <th onClick={() => requestSort('points')}>Pts</th>
+                <th onClick={() => requestSort('points_per_game')}>PPGA</th>
+                <th onClick={() => requestSort('penalty_minutes')}>PIM</th>
+                <th onClick={() => requestSort('power_play_goals')}>PPG</th>
+                <th onClick={() => requestSort('short_handed_goals')}>SHG</th>
+                <th onClick={() => requestSort('game_winning_goals')}>GWG</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sortedPlayerStats.map((player, index) => (
+                <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td>{player.jersey_number}</td>
+                  <td>{player.name}</td>
+                  <td>{player.position}</td>
+                  <td>{player.games_played}</td>
+                  <td>{player.goals}</td>
+                  <td>{player.assists}</td>
+                  <td>{player.points}</td>
+                  <td>{player.points_per_game}</td>
+                  <td>{player.penalty_minutes}</td>
+                  <td>{player.power_play_goals}</td>
+                  <td>{player.short_handed_goals}</td>
+                  <td>{player.game_winning_goals}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

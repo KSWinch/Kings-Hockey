@@ -87,7 +87,7 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
               </tr>
             </thead>
             <tbody>
-              {sortedStandings.slice(0, 3).map((team, index) => (
+              {sortedStandings.map((team, index) => (
                 <tr key={index}>
                   <td>{team.rank}</td>
                   <td>{team.team}</td>

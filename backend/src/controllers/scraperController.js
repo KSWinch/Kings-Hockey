@@ -75,22 +75,22 @@ export async function scrapeStandings(req, res, next) {
 
     standingsData.forEach(async (standings) => {
       const teamStandings = {
-        rank: standings.rank,
-        team: standings.team,
-        games_played: standings.gamesPlayed,
-        wins: standings.wins,
+        games_played: standings.games_played,
+        goal_differential: standings.goal_differential,
+        goals_against: standings.goals_against,
+        goals_for: standings.goals_for,
+        last_10_games: standings.last_10_games,
         losses: standings.losses,
-        ties: standings.ties,
-        overtime_losses: standings.overtimeLosses,
+        overtime_losses: standings.overtime_losses,
+        penalty_minutes: standings.penalty_minutes,
         points: standings.points,
-        regulation_wins: standings.regulationWins,
-        goals_for: standings.goalsFor,
-        regulation_overtime_wins: standings.regulationOvertimeWins,
-        goals_against: standings.goalsAgainst,
-        goal_differential: standings.goalDifferential,
-        penalty_minutes: standings.penaltyMinutes,
-        last_10_games: standings.last10Games,
+        rank: standings.rank,
+        regulation_overtime_wins: standings.regulation_overtime_wins,
+        regulation_wins: standings.regulation_wins,
         streak: standings.streak,
+        team: standings.team,
+        ties: standings.ties,
+        wins: standings.wins,
       };
       await standingService.createStanding(teamStandings);
     });

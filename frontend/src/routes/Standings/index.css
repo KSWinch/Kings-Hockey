@@ -1,27 +1,60 @@
-.standings-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+.table-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Centers the table container */
 }
 
-.standings-table th,
-.standings-table td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
+.table-responsive-wrapper {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: #23184b; /* Light background for wrapper */
+  box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253); /* Adds subtle shadow */
+}
+
+.standings-table {
+  width: 100%;
+  min-width: 800px; /* Ensures the table does not shrink too much */
+  border-collapse: collapse;
 }
 
 .standings-table th {
+  padding: 10px;
+  background-color: #333; /* Dark background for header */
+  color: #ffffff; /* White text for header */
   font-weight: bold;
-  background-color: #333;
-  color: #fff;
+  text-align: center;
 }
 
-.standings-table tr.even-row {
-  background-color: #f9f9f9;
+.standings-table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd; /* Light border for cells */
+  color: #333333; /* Dark text for cells */
 }
 
-.standings-table tr.odd-row {
-  background-color: #ffffff;
+.even-row {
+  background-color: #f7f7fa; /* Slightly lighter background for even rows */
+}
+
+.odd-row {
+  background-color: #ffffff; /* White background for odd rows */
+}
+
+.standings-table tr:hover {
+  background-color: #d1c4f6; /* Light purple on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.error-message {
+  color: #ff4c4c; /* Red color for error message */
+  font-weight: bold;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .standings-table {
+    font-size: 14px; /* Adjust font size for readability on small screens */
+  }
 }

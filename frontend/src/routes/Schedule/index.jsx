@@ -27,35 +27,37 @@ const Schedule = () => {
 
   return (
     <div className="table-container">
-      <table className="game-table">
-        <thead>
-          <tr>
-            <th>Home Team</th>
-            <th>Away Team</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Rink</th>
-          </tr>
-        </thead>
-        <tbody>
-          {gamesData.map((game, index) => (
-            <tr
-              key={game.id} // Use `game.id` for unique key
-              className={index % 2 === 0 ? 'even-row' : 'odd-row'}
-              onClick={() => handleRowClick(game)}
-              style={{ cursor: 'pointer' }}
-            >
-              <td>{game.home_team}</td>
-              <td>{game.away_team}</td>
-              <td>{game.date}</td>
-              <td>{game.time}</td>
-              <td>{game.location}</td>
-              <td>{game.rink}</td>
+      <div className="table-responsive-wrapper">
+        <table className="game-table">
+          <thead>
+            <tr>
+              <th>Home Team</th>
+              <th>Away Team</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th>Rink</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {gamesData.map((game, index) => (
+              <tr
+                key={game.id} // Use `game.id` for unique key
+                className={index % 2 === 0 ? 'even-row' : 'odd-row'}
+                onClick={() => handleRowClick(game)}
+                style={{ cursor: 'pointer' }}
+              >
+                <td>{game.home_team}</td>
+                <td>{game.away_team}</td>
+                <td>{game.date}</td>
+                <td>{game.time}</td>
+                <td>{game.location}</td>
+                <td>{game.rink}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

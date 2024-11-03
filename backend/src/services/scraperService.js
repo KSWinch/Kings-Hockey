@@ -77,30 +77,30 @@ export default class WebScraperService {
     const standingsData = await this.page.evaluate(() => {
       // Select all rows in the standings table
       const rows = Array.from(
-        document.querySelectorAll(".stats-table.standings tbody tr")
+        document.querySelectorAll(
+          ".table-scroll > .table-scroll > .stats-table.standings tbody tr"
+        )
       );
-      // const firstTable = rows[0];
       // Map each row to an object representing team standings
       const standings = rows.map((row) => {
         const columns = row.querySelectorAll("td");
 
         return {
-          rank: parseInt(columns[0]?.innerText.trim()),
-          team: columns[1]?.innerText.trim(),
-          gamesPlayed: parseInt(columns[2]?.innerText.trim()),
-          wins: parseInt(columns[3]?.innerText.trim()),
+          games_played: parseInt(columns[2]?.innerText.trim()),
+          goal_differential: columns[12]?.innerText.trim(),
+          goals_against: parseInt(columns[11]?.innerText.trim()),
+          goals_for: parseInt(columns[9]?.innerText.trim()),
+          last_10_games: columns[14]?.innerText.trim(),
           losses: parseInt(columns[4]?.innerText.trim()),
-          ties: parseInt(columns[5]?.innerText.trim()),
-          overtimeLosses: parseInt(columns[6]?.innerText.trim()),
+          overtime_losses: parseInt(columns[6]?.innerText.trim()),
+          penalty_minutes: parseInt(columns[13]?.innerText.trim()),
           points: parseInt(columns[7]?.innerText.trim()),
-          regulationWins: parseInt(columns[8]?.innerText.trim()),
-          goalsFor: parseInt(columns[9]?.innerText.trim()),
-          regulationOvertimeWins: parseInt(columns[10]?.innerText.trim()),
-          goalsAgainst: parseInt(columns[11]?.innerText.trim()),
-          goalDifferential: columns[12]?.innerText.trim(),
-          penaltyMinutes: parseInt(columns[13]?.innerText.trim()),
-          last10Games: columns[14]?.innerText.trim(),
+          rank: parseInt(columns[0]?.innerText.trim()),
+          regulation_wins: parseInt(columns[8]?.innerText.trim()),
           streak: columns[15]?.innerText.trim(),
+          team: columns[1]?.innerText.trim(),
+          ties: parseInt(columns[5]?.innerText.trim()),
+          wins: parseInt(columns[3]?.innerText.trim()),
         };
       });
 
