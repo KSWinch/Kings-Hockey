@@ -9,6 +9,9 @@
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
+  width: 1500px;
+  height: 700px;
+  font-size: 24px;
 }
 
 /* Table header styling */
@@ -25,7 +28,6 @@
 .player-stats-table td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
-  border: 1px solid #ddd; /* Light border for cells */
   text-align: center;
 }
 
@@ -40,7 +42,11 @@
 
 /* Hover effect for table rows */
 .player-stats-table tr:hover {
-  background-color: #d1c4f6;
+  background-color: #6c3fe7; /* Entire row background color on hover */
+}
+
+.player-stats-table tr:hover td {
+  color: #ffd700; /* Change text color of the entire row on hover */
 }
 
 .player-stats-table th {

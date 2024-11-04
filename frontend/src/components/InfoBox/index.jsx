@@ -48,28 +48,30 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
         </div>
       ) : games ? (
         <div className="upcoming-games-scroll">
-          <table className="upcoming-games-mini-table">
-            <thead>
-              <tr>
-                <th>Home</th>
-                <th>Away</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedSchedule.slice(0, 1).map((game, index) => (
-                <tr key={index}>
-                  <td>{game.home_team}</td>
-                  <td>{game.away_team}</td>
-                  <td>{game.date}</td>
-                  <td>{game.time}</td>
-                  <td>{`${game.location} - ${game.rink}`}</td>
+          <div className="table-responsive">
+            <table className="upcoming-games-mini-table">
+              <thead>
+                <tr>
+                  <th>Home</th>
+                  <th>Away</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Location</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {sortedSchedule.slice(0, 1).map((game, index) => (
+                  <tr key={index}>
+                    <td>{game.home_team}</td>
+                    <td>{game.away_team}</td>
+                    <td>{game.date}</td>
+                    <td>{game.time}</td>
+                    <td>{`${game.location} - ${game.rink}`}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : standings ? (
         <div className="standings-scroll">
