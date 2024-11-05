@@ -52,3 +52,17 @@
 .player-stats-table th {
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  
+  /* Make the table responsive and auto-fit columns */
+  .table-responsive-wrapper {
+    overflow-x: auto;
+  }
+  
+  .player-stats-table {
+    width: 100%;
+    table-layout: auto;
+    font-size: 14px;
+  }
+}

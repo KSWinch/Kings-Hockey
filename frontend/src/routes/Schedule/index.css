@@ -59,8 +59,22 @@
   padding: 10px;
 }
 
+/* Hide Location and Rink columns on small screens */
 @media (max-width: 600px) {
+  .col-location,
+  .col-rink {
+    display: none;
+  }
+
+  /* Make the table responsive */
+  .table-responsive-wrapper {
+    overflow-x: auto;
+  }
+  
   .game-table {
-    font-size: 14px; /* Adjust font size for readability on small screens */
+    width: 100%;
+    table-layout: auto;
+    font-size: 14px;
+    height: 300px;
   }
 }

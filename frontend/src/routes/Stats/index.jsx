@@ -9,7 +9,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchPlayerStats = async () => {
       try {
-        const response = await fetch('http://localhost:8080/stats');
+        const response = await fetch('http://54.234.144.204:8080/stats');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -53,35 +53,34 @@ const Gallery = () => {
           <table className="player-stats-table">
             <thead>
               <tr>
-                <th onClick={() => requestSort('jersey_number')}>#</th>
-                <th onClick={() => requestSort('name')}>Name</th>
-                <th onClick={() => requestSort('position')}>Pos</th>
-                <th onClick={() => requestSort('games_played')}>GP</th>
-                <th onClick={() => requestSort('goals')}>G</th>
-                <th onClick={() => requestSort('assists')}>A</th>
-                <th onClick={() => requestSort('points')}>Pts</th>
-                <th onClick={() => requestSort('points_per_game')}>PPGA</th>
-                <th onClick={() => requestSort('penalty_minutes')}>PIM</th>
-                <th onClick={() => requestSort('power_play_goals')}>PPG</th>
-                <th onClick={() => requestSort('short_handed_goals')}>SHG</th>
-                <th onClick={() => requestSort('game_winning_goals')}>GWG</th>
+                <th className="col-number">#</th>
+                <th>Name</th>
+                <th className="col-gp">GP</th>
+                <th className="col-goals">G</th>
+                <th className="col-assists">A</th>
+                <th className="col-points">Pts</th>
+                {/* Other columns hidden on mobile */}
+                <th className="col-ppga">PPGA</th>
+                <th className="col-pim">PIM</th>
+                <th className="col-ppg">PPG</th>
+                <th className="col-shg">SHG</th>
+                <th className="col-gwg">GWG</th>
               </tr>
             </thead>
             <tbody>
               {sortedPlayerStats.map((player, index) => (
                 <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                  <td>{player.jersey_number}</td>
+                  <td className="col-number">{player.jersey_number}</td>
                   <td>{player.name}</td>
-                  <td>{player.position}</td>
-                  <td>{player.games_played}</td>
-                  <td>{player.goals}</td>
-                  <td>{player.assists}</td>
-                  <td>{player.points}</td>
-                  <td>{player.points_per_game}</td>
-                  <td>{player.penalty_minutes}</td>
-                  <td>{player.power_play_goals}</td>
-                  <td>{player.short_handed_goals}</td>
-                  <td>{player.game_winning_goals}</td>
+                  <td className="col-gp">{player.games_played}</td>
+                  <td className="col-goals">{player.goals}</td>
+                  <td className="col-assists">{player.assists}</td>
+                  <td className="col-points">{player.points}</td>
+                  <td className="col-ppga">{player.points_per_game}</td>
+                  <td className="col-pim">{player.penalty_minutes}</td>
+                  <td className="col-ppg">{player.power_play_goals}</td>
+                  <td className="col-shg">{player.short_handed_goals}</td>
+                  <td className="col-gwg">{player.game_winning_goals}</td>
                 </tr>
               ))}
             </tbody>

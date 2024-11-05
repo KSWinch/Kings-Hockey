@@ -9,7 +9,7 @@ const Schedule = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/games');
+        const response = await fetch('http://54.234.144.204:8080/games');
         const data = await response.json();
         data.sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(data);

@@ -9,7 +9,7 @@ const Standings = () => {
   useEffect(() => {
     const fetchStandings = async () => {
       try {
-        const response = await fetch('http://localhost:8080/standings');
+        const response = await fetch('http://54.234.144.204:8080/standings');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
