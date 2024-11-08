@@ -6,7 +6,10 @@ export default class WebScraperService {
   }
 
   async initializeWebScraper() {
-    this.browser = await puppeteer.launch({ headless: true });
+    this.browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     this.page = await this.browser.newPage();
     await this.page.goto(this.url, { waitUntil: "networkidle0" });
   }
@@ -44,7 +47,7 @@ export default class WebScraperService {
         const columns = row.querySelectorAll("td");
         return {
           jerseyNumber: parseInt(columns[0]?.innerText.trim()),
-          name: columns[1]?.innerText.trim(),
+          name: columns[1]?.innerText.trim().replace("check", "").trim(),
           position: columns[2]?.innerText.trim(),
           gamesPlayed: parseInt(columns[3]?.innerText.trim()),
           goals: parseInt(columns[4]?.innerText.trim()),
