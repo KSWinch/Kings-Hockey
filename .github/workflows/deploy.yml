@@ -1,6 +1,7 @@
 name: Deploy React App to S3
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main # or whichever branch you want to trigger the deployment
