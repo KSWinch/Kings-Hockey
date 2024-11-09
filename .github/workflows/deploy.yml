@@ -23,8 +23,8 @@ jobs:
       # Step 3: Install dependencies and build the project
       - name: Install dependencies and build
         run: |
-          npm install
-          npm run build
+          npm install ./frontend
+          npm --prefix ./frontend run build
 
       # Step 4: Configure AWS credentials
       - name: Configure AWS credentials
@@ -37,4 +37,4 @@ jobs:
       # Step 5: Sync the build folder to S3 using AWS CLI
       - name: Deploy to S3
         run: |
-          aws s3 sync build s3://${{ secrets.S3_BUCKET_NAME }} --region ${{ secrets.AWS_REGION }}
+          aws s3 sync ./frontend/build s3://${{ secrets.S3_BUCKET_NAME }} --region ${{ secrets.AWS_REGION }}
