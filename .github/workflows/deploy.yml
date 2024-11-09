@@ -28,7 +28,7 @@ jobs:
 
       # Step 4: Sync the build folder to S3
       - name: Deploy to S3
-        uses: aws-actions/s3-sync-action@v0.5.1
+        uses: aws-actions/s3-sync-action@v0.8.0
         with:
           bucket: ${{ secrets.S3_BUCKET_NAME }}
           region: ${{ secrets.AWS_REGION }}
