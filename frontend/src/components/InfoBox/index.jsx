@@ -47,8 +47,8 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
           </table>
         </div>
       ) : games ? (
-        <div className="upcoming-games-scroll">
-          <div className="table-responsive">
+        <div className="standings-scroll">
+          <div className="upcoming-games-scroll">
             <table className="upcoming-games-mini-table">
               <thead>
                 <tr>
