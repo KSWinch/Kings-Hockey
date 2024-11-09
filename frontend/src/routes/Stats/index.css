@@ -4,8 +4,7 @@
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
-  width: 1500px;
-  height: 700px;
+  min-width: 600px; /* Set a minimum width to avoid collapsing */
   font-size: 24px;
 }
 
@@ -45,28 +44,31 @@
   color: #ffd700; /* Change text color of the entire row on hover */
 }
 
+/* Container for the table with padding and overflow settings */
 .table-container {
   padding: 20px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
 }
 
+/* Responsive wrapper around the table */
 .table-responsive-wrapper {
   display: block; /* Ensures the table respects overflow settings */
   overflow-x: auto;
+  white-space: nowrap; /* Prevents content from collapsing */
 }
 
 .player-stats-table td, .player-stats-table th {
   min-width: 50px;
 }
 
+/* Styles for small screens (max-width: 600px) */
 @media (max-width: 600px) {
-  
   /* Make the table responsive and auto-fit columns */
   .table-responsive-wrapper {
     overflow-x: auto;
   }
-  
+
   .player-stats-table {
     width: 100%;
     table-layout: auto;
@@ -74,8 +76,14 @@
   }
 }
 
+/* General mobile adjustments (max-width: 768px) */
 @media screen and (max-width: 768px) {
   .player-stats-table td, .player-stats-table th {
     padding: 8px; /* Adjust padding to prevent overflow on mobile */
+  }
+
+  /* Force table layout to fixed for better control on small screens */
+  .player-stats-table {
+    table-layout: fixed;
   }
 }
