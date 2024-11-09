@@ -8,7 +8,6 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
     : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
 
-  console.log('Sorted Schedule:', sortedSchedule);
   return (
     <div className="post-card">
       <header className="post-card-header">

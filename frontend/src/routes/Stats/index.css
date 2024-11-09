@@ -1,8 +1,3 @@
-/* .table-container styling for consistent padding */
-.table-container {
-  padding: 20px;
-}
-
 /* Styling the table with rounded borders, colors, and text alignment */
 .player-stats-table {
   width: 100%;
@@ -22,6 +17,7 @@
   font-weight: bold;
   border-bottom: 1px solid #ddd;
   text-align: center;
+  cursor: pointer;
 }
 
 /* Table row styling */
@@ -49,8 +45,19 @@
   color: #ffd700; /* Change text color of the entire row on hover */
 }
 
-.player-stats-table th {
-  cursor: pointer;
+.table-container {
+  padding: 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+}
+
+.table-responsive-wrapper {
+  display: block; /* Ensures the table respects overflow settings */
+  overflow-x: auto;
+}
+
+.player-stats-table td, .player-stats-table th {
+  min-width: 50px;
 }
 
 @media (max-width: 600px) {
@@ -64,5 +71,11 @@
     width: 100%;
     table-layout: auto;
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .player-stats-table td, .player-stats-table th {
+    padding: 8px; /* Adjust padding to prevent overflow on mobile */
   }
 }
