@@ -81,9 +81,4 @@
   .player-stats-table td, .player-stats-table th {
     padding: 8px; /* Adjust padding to prevent overflow on mobile */
   }
-
-  /* Force table layout to fixed for better control on small screens */
-  .player-stats-table {
-    table-layout: fixed;
-  }
 }
