@@ -23,8 +23,8 @@ jobs:
       # Step 3: Install dependencies and build the project
       - name: Install dependencies and build
         run: |
-          npm install
-          npm run build
+          npm install ./frontend
+          npm --prefix ./frontend run build
 
       # Step 4: sync S3
       - name: Push build to S3
