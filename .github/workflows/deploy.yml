@@ -33,7 +33,7 @@ jobs:
           access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: ${{ secrets.AWS_REGION }}
-          source: "./frontend/build"
+          source: "frontend/build"
           destination_bucket: ${{ secrets.S3_BUCKET_NAME }}
           destination_prefix: s3://
           exclude: ".git/*"
