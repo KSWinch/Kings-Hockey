@@ -8,8 +8,20 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
-  min-height: 140vh;
+  overflow-y: auto; /* Enables scrolling if content overflows */
+  min-height: 170vh;
+}
+
+.content-section {
+  background-color: #f8f8f8;
+  padding: 40px;
+  height: 1000px;
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 50px; /* Space between cards */
+  justify-content: center; /* Centers cards horizontally */
+  align-items: flex-start; /* Ensures all cards align from the top */
+  padding: 60px 20px;
 }
 
 .header-section {
@@ -19,6 +31,7 @@
   align-items: center;
   justify-content: center;
   height: 50vh;
+  min-height: 300px; /* Sets a minimum height for better mobile display */
   text-align: center;
   color: #ffffff;
   overflow: hidden;
@@ -34,35 +47,57 @@
   background-image: url('./../../../public/images/rink5.jpg');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.5); /* Apply brightness filter only to the background image */
-  z-index: -1; /* Ensure it stays behind the text */
+  filter: brightness(0.5);
+  z-index: -1;
 }
 
-.header-section .logo {
-  font-size: 24px;
-  margin-bottom: 20px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-section {
+    height: 30vh; /* Reduces height on smaller screens */
+    min-height: 200px; /* Minimum height to prevent squishing */
+  }
+
+  .header-section::before {
+    background-position: top; /* Adjusts the focus of the background image */
+  }
+
+  .header-section .logo {
+    font-size: 20px; /* Smaller font for logo */
+    margin-bottom: 10px;
+  }
+
+  .header-section h1 {
+    font-size: 28px; /* Adjusts title size for mobile */
+    margin-bottom: 5px;
+  }
+
+  .header-section p {
+    font-size: 14px; /* Smaller font size for paragraph text */
+  }
 }
 
-.header-section h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
+@media (max-width: 480px) {
+  .header-section {
+    height: 25vh; /* Further reduce height for very small screens */
+    min-height: 180px;
+  }
 
-.header-section p {
-  font-size: 18px;
-}
+  .header-section::before {
+    background-position: top; /* Focus on top part of image */
+  }
 
-.content-section {
-  background-color: #f8f8f8;
-  padding: 40px;
-  height: 1000px;
-  display: flex;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-  gap: 50px; /* Space between cards */
-  justify-content: center; /* Centers cards horizontally */
-  align-items: flex-start; /* Ensures all cards align from the top */
-  padding: 60px 20px;
-  overflow-y: auto;
+  .header-section .logo {
+    font-size: 18px;
+  }
+
+  .header-section h1 {
+    font-size: 24px;
+  }
+
+  .header-section p {
+    font-size: 12px;
+  }
 }
 
 /*Dark mode CSS settings */
@@ -71,7 +106,7 @@
     background-color: #111111; /* White background */
     color: #d1d1d1;
     padding: 40px;
-    height: 1000px; /* Bottom half of the page */
+    min-height: calc(200vh - 50vh);
     display: flex;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     gap: 50px; /* Space between cards */
