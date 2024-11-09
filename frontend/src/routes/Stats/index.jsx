@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
 
-const Gallery = () => {
+const Stats = () => {
   const [playerStats, setPlayerStats] = useState([]);
   const [error, setError] = useState(null);
-  const [sortConfig, setSortConfig] = useState({ key: 'points', direction: 'desc' });
+  const [sortConfig, setSortConfig] = useState({ key: 'points', direction: 'desc' }); // Sorting configuration
 
   useEffect(() => {
     const fetchPlayerStats = async () => {
@@ -35,10 +35,15 @@ const Gallery = () => {
 
   // Sort playerStats based on sortConfig
   const sortedPlayerStats = [...playerStats].sort((a, b) => {
-    if (a[sortConfig.key] < b[sortConfig.key]) {
+    const aValue =
+      typeof a[sortConfig.key] === 'number' ? a[sortConfig.key] : Number(a[sortConfig.key]);
+    const bValue =
+      typeof b[sortConfig.key] === 'number' ? b[sortConfig.key] : Number(b[sortConfig.key]);
+
+    if (aValue < bValue) {
       return sortConfig.direction === 'asc' ? -1 : 1;
     }
-    if (a[sortConfig.key] > b[sortConfig.key]) {
+    if (aValue > bValue) {
       return sortConfig.direction === 'asc' ? 1 : -1;
     }
     return 0;
@@ -54,17 +59,35 @@ const Gallery = () => {
             <thead>
               <tr>
                 <th className="col-number">#</th>
-                <th>Name</th>
-                <th className="col-gp">GP</th>
-                <th className="col-goals">G</th>
-                <th className="col-assists">A</th>
-                <th className="col-points">Pts</th>
+                <th onClick={() => requestSort('name')}>Name</th>
+                <th className="col-gp" onClick={() => requestSort('games_played')}>
+                  GP
+                </th>
+                <th className="col-goals" onClick={() => requestSort('goals')}>
+                  G
+                </th>
+                <th className="col-assists" onClick={() => requestSort('assists')}>
+                  A
+                </th>
+                <th className="col-points" onClick={() => requestSort('points')}>
+                  Pts
+                </th>
                 {/* Other columns hidden on mobile */}
-                <th className="col-ppga">PPGA</th>
-                <th className="col-pim">PIM</th>
-                <th className="col-ppg">PPG</th>
-                <th className="col-shg">SHG</th>
-                <th className="col-gwg">GWG</th>
+                <th className="col-ppga" onClick={() => requestSort('points_per_game')}>
+                  PPGA
+                </th>
+                <th className="col-pim" onClick={() => requestSort('penalty_minutes')}>
+                  PIM
+                </th>
+                <th className="col-ppg" onClick={() => requestSort('power_play_goals')}>
+                  PPG
+                </th>
+                <th className="col-shg" onClick={() => requestSort('short_handed_goals')}>
+                  SHG
+                </th>
+                <th className="col-gwg" onClick={() => requestSort('game_winning_goals')}>
+                  GWG
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -91,4 +114,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Stats;
