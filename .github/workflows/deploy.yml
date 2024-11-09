@@ -1,23 +1,41 @@
-name: Deploy to AWS S3
+name: Deploy React App to S3
+
 on:
   push:
     branches:
-      - main
+      - main # or whichever branch you want to trigger the deployment
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      # Step 2: Set up Node.js (specify your Node version)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          node-version: "16" # Match the version you use locally
 
-      - name: Deploy static site to S3 bucket
-        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete
+      # Step 3: Install dependencies and build the project
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Step 4: sync S3
+      - name: Push build to S3
+        uses: sai-sharan/aws-s3-sync-action@master
+        with:
+          access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.AWS_REGION }}
+          source: "build"
+          destination_bucket: ${{ secrets.S3_BUCKET_NAME }}
+          destination_prefix: s3://
+          exclude: ".git/*"
+          delete: true
+          quiet: false
