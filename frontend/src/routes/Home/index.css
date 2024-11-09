@@ -7,15 +7,13 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow-y: auto; /* Enables scrolling if content overflows */
-  min-height: 170vh;
+  height: auto;
 }
 
 .content-section {
   background-color: #f8f8f8;
   padding: 40px;
-  height: 1000px;
+  min-height: calc(100vh - 50vh);
   display: flex;
   flex-wrap: wrap; /* Allows wrapping on smaller screens */
   gap: 50px; /* Space between cards */
@@ -31,10 +29,9 @@
   align-items: center;
   justify-content: center;
   height: 50vh;
-  min-height: 300px; /* Sets a minimum height for better mobile display */
+  min-height: 600px; /* Sets a minimum height for better mobile display */
   text-align: center;
   color: #ffffff;
-  overflow: hidden;
 }
 
 .header-section::before {
@@ -106,7 +103,7 @@
     background-color: #111111; /* White background */
     color: #d1d1d1;
     padding: 40px;
-    min-height: calc(200vh - 50vh);
+    min-height: calc(100vh - 50vh);
     display: flex;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     gap: 50px; /* Space between cards */
