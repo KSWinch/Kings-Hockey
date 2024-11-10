@@ -14,7 +14,7 @@
   background-color: #333;
   color: #fff;
   font-weight: bold;
-  border-bottom: 1px solid #ddd;
+
   text-align: center;
   cursor: pointer;
 }
@@ -22,7 +22,6 @@
 /* Table row styling */
 .player-stats-table td {
   padding: 8px;
-  border-bottom: 1px solid #ddd;
   text-align: center;
 }
 
@@ -58,7 +57,8 @@
   white-space: nowrap; /* Prevents content from collapsing */
 }
 
-.player-stats-table td, .player-stats-table th {
+.player-stats-table td,
+.player-stats-table th {
   min-width: 50px;
 }
 
@@ -78,7 +78,8 @@
 
 /* General mobile adjustments (max-width: 768px) */
 @media screen and (max-width: 768px) {
-  .player-stats-table td, .player-stats-table th {
+  .player-stats-table td,
+  .player-stats-table th {
     padding: 8px; /* Adjust padding to prevent overflow on mobile */
   }
 }
