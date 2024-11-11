@@ -38,9 +38,9 @@ export const createStat = async (req, res, next) => {
 // Update a stat by ID
 export const updateStat = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { jersey_number } = req.params;
     const userData = req.body;
-    const updatedStat = await statsService.updateStat(id, userData);
+    const updatedStat = await statsService.updateStat(jersey_number, userData);
     if (!updatedStat) {
       return res.status(404).json({ message: "Stat not found" });
     }

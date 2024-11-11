@@ -1,10 +1,15 @@
 .navbar-logo-icon {
-  width: 30px; /* Adjust the width to fit your preference */
-  height: auto; /* Maintain aspect ratio */
+  width: 30px;
+  /* Adjust the width to fit your preference */
+  height: auto;
+  /* Maintain aspect ratio */
   margin-right: 10px;
+  margin-left: 10px;
 }
+
 .custom-navbar {
   background-color: #23184b;
+  margin-right: 10px;
 }
 
 .custom-navbar .nav-link,
@@ -13,5 +18,6 @@
 }
 
 .custom-navbar .nav-link:hover {
-  color: #ffd700 !important; /* Yellow color on hover */
+  color: #ffd700 !important;
+  /* Yellow color on hover */
 }
