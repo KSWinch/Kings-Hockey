@@ -20,9 +20,9 @@ export const createStat = async (userData) => {
   }
 };
 
-export const updateStat = async (id, userData) => {
+export const updateStat = async (jersey_number, userData) => {
   return await prisma.stats.update({
-    where: { id: Number(id) },
+    where: { jersey_number: Number(jersey_number) },
     data: userData,
   });
 };

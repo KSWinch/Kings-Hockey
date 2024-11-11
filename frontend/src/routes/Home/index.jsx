@@ -53,7 +53,7 @@ const Home = () => {
       <div className="header-section">
         <h1>King's Hockey Team</h1>
         <h4>Winter 2024 - 2025</h4>
-        <h4>Division 8</h4>
+        <h4>Division 9</h4>
       </div>
 
       <div className="content-section">
