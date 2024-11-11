@@ -17,3 +17,58 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@media (prefers-color-scheme: dark) {
+  /* Dark mode for general tables */
+  .standings-table,
+  .game-table,
+  .player-stats-table {
+    box-shadow: 0 3px 15px #000000de;
+  }
+
+  .standings-table th,
+  .game-table th,
+  .player-stats-table th,
+  .standings-table td,
+  .game-table td,
+  .player-stats-table td,
+  .standings-table tr,
+  .game-table tr,
+  .player-stats-table tr {
+    border-bottom: 1px solid #1a1a1ade;
+    color: #ffffff !important ;
+  }
+
+  /* Dark mode header background */
+  .standings-table th,
+  .game-table th,
+  .player-stats-table th {
+    background-color: #646464 !important; /* Dark gray for headers */
+  }
+
+  /* Dark mode alternating row colors */
+  .standings-table tr:nth-child(even),
+  .game-table tr:nth-child(even),
+  .player-stats-table tr:nth-child(even) {
+    background-color: #111111; /* Darker gray for even rows */
+  }
+
+  .standings-table tr:nth-child(odd),
+  .game-table tr:nth-child(odd),
+  .player-stats-table tr:nth-child(odd) {
+    background-color: #272727; /* Slightly lighter gray for odd rows */
+  }
+
+  /* Hover effect for dark mode */
+  .standings-table tr:hover,
+  .game-table tr:hover,
+  .player-stats-table tr:hover {
+    background-color: #6c3fe7; /* Highlight color for row on hover */
+  }
+
+  .standings-table tr:hover td,
+  .game-table tr:hover td,
+  .player-stats-table tr:hover td {
+    color: #ffd700; /* Gold text on hover */
+  }
+}
