@@ -34,9 +34,8 @@ model Stats {
   game_winning_goals Int
   games_played       Int
   goals              Int
-  id                 Int    @id @default(autoincrement())
-  jersey_number      Int
-  name               String @unique
+  jersey_number      Int    @id @unique
+  name               String
   penalty_minutes    Int
   points             Int
   points_per_game    Int
@@ -46,20 +45,20 @@ model Stats {
 }
 
 model Standings {
-  id                 Int    @id @default(autoincrement())
-  rank               Int
-  team               String @unique
-  games_played       Int
-  wins               Int
-  losses             Int
-  ties               Int
-  overtime_losses    Int
-  points             Int
-  regulation_wins    Int
-  goals_for          Int
-  goals_against      Int
-  goal_differential  String
-  penalty_minutes    Int
-  last_10_games      String
-  streak             String
+  id                Int    @id @default(autoincrement())
+  rank              Int
+  team              String @unique
+  games_played      Int
+  wins              Int
+  losses            Int
+  ties              Int
+  overtime_losses   Int
+  points            Int
+  regulation_wins   Int
+  goals_for         Int
+  goals_against     Int
+  goal_differential String
+  penalty_minutes   Int
+  last_10_games     String
+  streak            String
 }
