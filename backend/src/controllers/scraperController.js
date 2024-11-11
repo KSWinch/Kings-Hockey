@@ -53,7 +53,7 @@ export async function scrapePlayerStats(req, res, next) {
         short_handed_goals: stats.shortHandedGoals,
         game_winning_goals: stats.gameWinningGoals,
       };
-      await statsService.createStat(playerStat);
+      await statsService.updateStat(stats.jerseyNumber, playerStat);
     });
     res.status(200).json(playerStats);
   } catch (error) {
