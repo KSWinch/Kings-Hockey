@@ -4,7 +4,9 @@ import './../InfoBox/index.css';
 const InfoBox = ({ title, description, imageUrl, players, games, standings }) => {
   const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
   const sortedSchedule = games
-    ? [...games].sort((a, b) => new Date(b.date + ' 2024') - new Date(a.date + ' 2024'))
+    ? [...games]
+        .filter((game) => new Date(game.date + ' 2024') > new Date())
+        .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'))
     : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
 
