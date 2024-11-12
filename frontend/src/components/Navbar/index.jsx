@@ -35,6 +35,11 @@ function Navigation() {
               Stats
             </Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/lineup" className="nav-link">
+              Lineup
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
