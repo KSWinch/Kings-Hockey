@@ -1,60 +1,52 @@
-/* Styling the table with rounded borders, colors, and text alignment */
 .player-stats-table {
   width: 100%;
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
-  min-width: 600px; /* Set a minimum width to avoid collapsing */
-  font-size: 24px;
+  min-width: 600px;
+  font-size: 20px;
+  font-family: 'Inter',Arial,sans-serif
 }
 
-/* Table header styling */
 .player-stats-table th {
   padding: 10px;
   background-color: #333;
   color: #fff;
   font-weight: bold;
-
   text-align: center;
   cursor: pointer;
 }
 
-/* Table row styling */
+.name-column {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .player-stats-table td {
   padding: 8px;
   text-align: center;
 }
 
-/* Alternating row colors */
-.even-row {
-  background-color: #c9c9c9;
+.stats-even-row {
+  background-color: #eeeeee;
 }
 
-.odd-row {
+.stats-odd-row {
   background-color: #ffffff;
 }
 
-/* Hover effect for table rows */
 .player-stats-table tr:hover {
-  background-color: #6c3fe7; /* Entire row background color on hover */
+  background-color: #6c3fe7;
 }
 
 .player-stats-table tr:hover td {
-  color: #ffd700; /* Change text color of the entire row on hover */
+  color: #ffd700; 
 }
 
-/* Container for the table with padding and overflow settings */
-.table-container {
-  padding: 20px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
-}
-
-/* Responsive wrapper around the table */
 .table-responsive-wrapper {
-  display: block; /* Ensures the table respects overflow settings */
+  display: block; 
   overflow-x: auto;
-  white-space: nowrap; /* Prevents content from collapsing */
+  white-space: nowrap;
 }
 
 .player-stats-table td,
@@ -62,9 +54,23 @@
   min-width: 50px;
 }
 
-/* Styles for small screens (max-width: 600px) */
-@media (max-width: 600px) {
-  /* Make the table responsive and auto-fit columns */
+.sorted-column {
+  background-color: #d1b3e9c7;
+}
+
+/* General mobile adjustments (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .player-stats-table td,
+  .player-stats-table th {
+    padding: 8px;
+  }
+
+  .table-container {
+    padding: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .table-responsive-wrapper {
     overflow-x: auto;
   }
@@ -73,13 +79,5 @@
     width: 100%;
     table-layout: auto;
     font-size: 14px;
-  }
-}
-
-/* General mobile adjustments (max-width: 768px) */
-@media screen and (max-width: 768px) {
-  .player-stats-table td,
-  .player-stats-table th {
-    padding: 8px; /* Adjust padding to prevent overflow on mobile */
   }
 }

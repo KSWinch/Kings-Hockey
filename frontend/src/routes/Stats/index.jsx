@@ -24,7 +24,6 @@ const Stats = () => {
     fetchPlayerStats();
   }, []);
 
-  // Function to handle sorting
   const requestSort = (key) => {
     let direction = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -33,12 +32,9 @@ const Stats = () => {
     setSortConfig({ key, direction });
   };
 
-  // Sort playerStats based on sortConfig
   const sortedPlayerStats = [...playerStats].sort((a, b) => {
-    const aValue =
-      typeof a[sortConfig.key] === 'number' ? a[sortConfig.key] : Number(a[sortConfig.key]);
-    const bValue =
-      typeof b[sortConfig.key] === 'number' ? b[sortConfig.key] : Number(b[sortConfig.key]);
+    const aValue = typeof a[sortConfig.key] === 'number' ? a[sortConfig.key] : Number(a[sortConfig.key]);
+    const bValue = typeof b[sortConfig.key] === 'number' ? b[sortConfig.key] : Number(b[sortConfig.key]);
 
     if (aValue < bValue) {
       return sortConfig.direction === 'asc' ? -1 : 1;
@@ -75,18 +71,18 @@ const Stats = () => {
                 </thead>
                 <tbody>
                   {sortedPlayerStats.map((player, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                      <td>{player.jersey_number}</td>
-                      <td>{player.name}</td>
-                      <td>{player.games_played}</td>
-                      <td>{player.goals}</td>
-                      <td>{player.assists}</td>
-                      <td>{player.points}</td>
-                      <td>{player.points_per_game}</td>
-                      <td>{player.penalty_minutes}</td>
-                      <td>{player.power_play_goals}</td>
-                      <td>{player.short_handed_goals}</td>
-                      <td>{player.game_winning_goals}</td>
+                    <tr key={index} className={index % 2 === 0 ? 'stats-even-row' : 'stats-odd-row'}>
+                      <td className={sortConfig.key === 'jersey_number' ? 'sorted-column' : ''}>{player.jersey_number}</td>
+                      <td className="name-column">{player.name}</td>
+                      <td className={sortConfig.key === 'games_played' ? 'sorted-column' : ''}>{player.games_played}</td>
+                      <td className={sortConfig.key === 'goals' ? 'sorted-column' : ''}>{player.goals}</td>
+                      <td className={sortConfig.key === 'assists' ? 'sorted-column' : ''}>{player.assists}</td>
+                      <td className={sortConfig.key === 'points' ? 'sorted-column' : ''}>{player.points}</td>
+                      <td className={sortConfig.key === 'points_per_game' ? 'sorted-column' : ''}>{player.points_per_game}</td>
+                      <td className={sortConfig.key === 'penalty_minutes' ? 'sorted-column' : ''}>{player.penalty_minutes}</td>
+                      <td className={sortConfig.key === 'power_play_goals' ? 'sorted-column' : ''}>{player.power_play_goals}</td>
+                      <td className={sortConfig.key === 'short_handed_goals' ? 'sorted-column' : ''}>{player.short_handed_goals}</td>
+                      <td className={sortConfig.key === 'game_winning_goals' ? 'sorted-column' : ''}>{player.game_winning_goals}</td>
                     </tr>
                   ))}
                 </tbody>
