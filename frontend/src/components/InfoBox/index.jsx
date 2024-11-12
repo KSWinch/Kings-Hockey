@@ -3,7 +3,6 @@ import './../InfoBox/index.css';
 
 const InfoBox = ({ title, description, imageUrl, players, games, standings }) => {
   const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
-  debugger;
   const sortedSchedule = games
     ? [...games]
         .filter((game) => new Date(game.date + ' 2024 23:59:59') >= new Date())
