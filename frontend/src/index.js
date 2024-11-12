@@ -6,6 +6,7 @@ import Home from './routes/Home';
 import Schedule from './routes/Schedule';
 import Stats from './routes/Stats';
 import Standings from './routes/Standings';
+import Lineup from './routes/Lineup';
 import App from './App';
 import Attendance from './routes/Attendance';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'standings',
         element: <Standings />,
+      },
+      {
+        path: 'lineup',
+        element: <Lineup />,
       },
     ],
   },
