@@ -1,80 +1,85 @@
-.table-container {
-  padding: 20px;
+.schedule-page {
   display: flex;
-  justify-content: center; /* Centers the table container */
-}
-
-.table-responsive-wrapper {
-  overflow-x: auto; /* Enables horizontal scrolling */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-  max-width: 100%;
-  border-radius: 10px;
-  background-color: #23184b; /* Light background for wrapper */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
-}
-
-.game-table {
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
   width: 100%;
-  min-width: 800px; /* Ensures the table does not shrink too much */
-  border-collapse: collapse;
-  border-radius: 10px;
-  width: 1500px;
-  height: 700px;
-  font-size: 24px;
 }
 
-.game-table th {
-  padding: 10px;
-  background-color: #333; /* Dark background for header */
-  color: #ffffff; /* White text for header */
-  font-weight: bold;
-  text-align: center;
+.table-container {
+  width: 100%;
+  max-width: 1000px;
 }
 
-.game-table td {
-  padding: 8px;
-  text-align: center;
-  color: #333333; /* Dark text for cells */
+.game-cards-container {
+  display: none;
 }
 
-.even-row {
-  background-color: #dddddf; /* Slightly lighter background for even rows */
-}
+@media (min-width: 768px) {
+  .table-responsive-wrapper {
+    display: block; 
+  }
 
-.odd-row {
-  background-color: #ffffff; /* White background for odd rows */
-}
-
-.game-table tr:hover {
-  background-color: #6c3fe7; /* Entire row background color on hover */
-}
-
-.game-table tr:hover td {
-  color: #ffd700; /* Change text color of the entire row on hover */
-}
-
-.error-message {
-  color: #ff4c4c; /* Red color for error message */
-  font-weight: bold;
-  padding: 10px;
-}
-
-/* Hide Location and Rink columns on small screens */
-@media (max-width: 600px) {
-  .col-location,
-  .col-rink {
+  .game-cards-container {
     display: none;
   }
+}
 
-  /* Make the table responsive */
+@media (max-width: 768px) {
   .table-responsive-wrapper {
-    overflow-x: auto;
+    display: none !important
   }
 
-  .game-table {
+  .game-cards-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 80vh;
     width: 100%;
-    table-layout: auto;
-    font-size: 14px;
-    height: 300px;
+  }
+
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    color: #333333;
+  }
+
+  .game-card.even-row {
+    background-color: #f0f0f0;
+  }
+
+  .game-card.odd-row {
+    background-color: #ffffff;
+  }
+
+  .game-card .game-time {
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+
+  .game-card .teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .game-card .team {
+    text-align: center;
+    flex: 1;
+  }
+
+  .game-card .team-logo {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+  }
+
+  .game-card .additional-info {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666666;
+    margin-top: 10px;
   }
 }
