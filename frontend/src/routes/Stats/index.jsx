@@ -48,11 +48,11 @@ const Stats = () => {
   return (
     <>
       {playerStats ? (
-        <div className="table-container">
+        <div className="stats-table-container">
           {error ? (
             <p className="error-message">{error}</p>
           ) : (
-            <div className="table-responsive-wrapper">
+            <div className="stats-table-responsive-wrapper">
               <table className="player-stats-table">
                 <thead>
                   <tr>

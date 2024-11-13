@@ -5,7 +5,8 @@
   overflow: hidden;
   min-width: 600px;
   font-size: 20px;
-  font-family: 'Inter',Arial,sans-serif
+  font-family: 'Inter',Arial,sans-serif;
+  max-width: 1200px;
 }
 
 .player-stats-table th {
@@ -18,7 +19,7 @@
 }
 
 .name-column {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -43,11 +44,7 @@
   color: #ffd700; 
 }
 
-.table-responsive-wrapper {
-  display: block; 
-  overflow-x: auto;
-  white-space: nowrap;
-}
+
 
 .player-stats-table td,
 .player-stats-table th {
@@ -58,6 +55,15 @@
   background-color: #d1b3e9c7;
 }
 
+@media screen and (min-width: 800px) {
+  .stats-table-responsive-wrapper {
+    display: flex;
+    justify-content: center; 
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
 /* General mobile adjustments (max-width: 768px) */
 @media screen and (max-width: 768px) {
   .player-stats-table td,
@@ -65,7 +71,7 @@
     padding: 8px;
   }
 
-  .table-container {
+  .stats-table-container {
     padding: 20px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -79,5 +85,6 @@
     width: 100%;
     table-layout: auto;
     font-size: 14px;
+    min-width: unset;
   }
 }

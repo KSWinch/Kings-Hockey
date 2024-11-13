@@ -34,12 +34,12 @@ const Schedule = () => {
 
   return (
     <div className="schedule-page">
-      <div className="table-container">
-        <div className="table-responsive-wrapper">
+      <div className="schedule-table-container">
+        <div className="schedule-table-responsive-wrapper">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
+              <TableHead sx={{ backgroundColor: '#696969' }}>
+                <TableRow className="darker-row">
                   <TableCell align="center">Home Team</TableCell>
                   <TableCell align="center">Away Team</TableCell>
                   <TableCell align="center">Date</TableCell>
@@ -52,7 +52,7 @@ const Schedule = () => {
                 {gamesData.map((game, index) => (
                   <TableRow
                     key={game.id}
-                    className={index % 2 === 0 ? 'even-row' : 'odd-row'}
+                    className={index % 2 === 0 ? 'schedule-even-row' : 'schedule-odd-row'}
                     onClick={() => handleRowClick(game)}
                     style={{ cursor: 'pointer' }}
                   >
