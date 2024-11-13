@@ -43,11 +43,11 @@ const Standings = () => {
   });
 
   return (
-    <div className="table-container">
+    <div className="standings-table-container">
       {error ? (
         <p className="error-message">{error}</p>
       ) : (
-        <div className="table-responsive-wrapper">
+        <div className="standings-table-responsive-wrapper">
           <table className="standings-table">
             <thead>
               <tr>
@@ -70,7 +70,7 @@ const Standings = () => {
             </thead>
             <tbody>
               {sortedStandings.map((team, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                <tr key={index} className={index % 2 === 0 ? 'standings-even-row' : 'standings-odd-row'}>
                   <td>{team.rank}</td>
                   <td>{team.team}</td>
                   <td>{team.games_played}</td>
