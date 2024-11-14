@@ -16,8 +16,7 @@ export const createGame = async (gameData) => {
       data: gameData,
     });
   } catch (error) {
-    console.error(error);
-    // console.error(`Unique constraint failed for game on: ${gameData.date}`);
+    console.error(`Unique constraint failed for game on: ${gameData.date}`);
   }
 };
 
