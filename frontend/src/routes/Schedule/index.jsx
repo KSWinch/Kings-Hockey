@@ -11,7 +11,7 @@ const Schedule = () => {
         const data = await response.json();
         const todaysDate = new Date();
         const upcomingGames = data
-          .filter(game => new Date(game.date + ' 2024') > todaysDate)
+          .filter(game => new Date(game.date + ' 2024 23:59:59') >= todaysDate)
           .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(upcomingGames);
       } catch (error) {
