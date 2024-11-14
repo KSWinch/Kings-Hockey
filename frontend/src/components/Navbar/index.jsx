@@ -13,7 +13,7 @@ function Navigation() {
         </div>
       </Nav.Link>
       <Navbar.Toggle color="light" aria-controls="navbarSupportedContent" />
-      <Navbar.Collapse id="navbarSupportedContent" style={{ paddingLeft: '10px' }}>
+      <Navbar.Collapse id="navbarSupportedContent" style={{ paddingLeft: '15px' }}>
         <Nav className="ms-auto" style={{ paddingRight: '40px' }}>
           <Nav.Item>
             <Nav.Link as={Link} to="/" className="nav-link">

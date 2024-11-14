@@ -1,11 +1,11 @@
-.table-container {
+.standings-table-container {
   padding: 20px;
   display: flex;
   max-width: 100%;
   justify-content: center; /* Centers the table container */
 }
 
-.table-responsive-wrapper {
+.standings-table-responsive-wrapper {
   overflow-x: auto; /* Enables horizontal scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
   max-width: 100%;
@@ -37,11 +37,11 @@
   color: #333333; /* Dark text for cells */
 }
 
-.even-row {
+.standings-even-row {
   background-color: #dddddf; /* Slightly lighter background for even rows */
 }
 
-.odd-row {
+.standings-odd-row {
   background-color: #ffffff; /* White background for odd rows */
 }
 
@@ -62,7 +62,7 @@
 @media (max-width: 600px) {
   
   /* Make the table responsive and auto-fit columns */
-  .table-responsive-wrapper {
+  .standings-table-responsive-wrapper {
     overflow-x: auto;
   }
   
