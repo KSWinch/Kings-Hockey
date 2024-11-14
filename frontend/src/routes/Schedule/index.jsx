@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
+import { ec2ip } from '../../utils/constants';
 
 const Schedule = () => {
   const [gamesData, setGamesData] = useState([]);
@@ -7,11 +8,11 @@ const Schedule = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('http://54.234.144.204:8080/games');
+        const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
         const todaysDate = new Date();
         const upcomingGames = data
-          .filter(game => new Date(game.date + ' 2024 23:59:59') >= todaysDate)
+          .filter((game) => new Date(game.date + ' 2024 23:59:59') >= todaysDate)
           .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(upcomingGames);
       } catch (error) {
@@ -34,7 +35,7 @@ const Schedule = () => {
               </div>
               <div className="teams">
                 <div className="team">
-                  {game.home_team === "Kings" ? (
+                  {game.home_team === 'Kings' ? (
                     <img src="images/crown.png" alt={`${game.home_team} logo`} className="team-logo" />
                   ) : (
                     <img src="images/crhl-logo.png" alt={`${game.home_team} logo`} className="team-logo" />
@@ -43,7 +44,7 @@ const Schedule = () => {
                 </div>
                 <div>@</div>
                 <div className="team">
-                  {game.away_team === "Kings" ? (
+                  {game.away_team === 'Kings' ? (
                     <img src="images/crown.png" alt={`${game.away_team} logo`} className="team-logo" />
                   ) : (
                     <img src="images/crhl-logo.png" alt={`${game.away_team} logo`} className="team-logo" />

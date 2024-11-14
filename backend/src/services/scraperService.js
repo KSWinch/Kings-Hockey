@@ -38,6 +38,26 @@ export default class WebScraperService {
     return parsedData;
   }
 
+  async getScore() {
+    const data = await this.page.evaluate(() => {
+      const rows = Array.from(document.querySelectorAll(".scores tr"));
+      return rows.slice(1).map((row) => row.innerText.trim());
+    });
+
+    // Parse the data into JSON
+    const parsedData = data
+      .filter((row) => row) // Remove any empty rows
+      .map((row) => {
+        const columns = row.split("\t");
+        return {
+          score: columns[2].trim(),
+          date: columns[3].trim(),
+        };
+      });
+
+    return parsedData;
+  }
+
   async getPlayerStats() {
     const playerData = await this.page.evaluate(() => {
       const rows = Array.from(

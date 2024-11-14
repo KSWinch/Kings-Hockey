@@ -4,26 +4,53 @@ import * as statsService from "../services/statsService.js";
 import * as standingService from "../services/standingsService.js";
 
 export async function scrapeSchedule(req, res, next) {
-  const scraper = new WebScraperService(
+  const scraper1 = new WebScraperService(
     "https://crhl.hockeyshift.com/stats#/489/schedule?all&team_id=465723"
+  );
+  const scraper2 = new WebScraperService(
+    "https://crhl.hockeyshift.com/stats#/489/scores?team_id=465723"
   );
 
   try {
-    await scraper.initializeWebScraper();
-    const gamesData = await scraper.getSchedule();
-    gamesData.forEach(async (game) => {
-      const gameData = {
-        away_team: game.awayTeam,
-        date: game.date,
-        home_team: game.homeTeam,
-        location: game.location,
-        rink: game.rink,
-        time: game.time,
+    await scraper1.initializeWebScraper();
+    const gamesData1 = await scraper1.getSchedule();
+
+    await scraper2.initializeWebScraper();
+    const gamesData2 = await scraper2.getScore();
+
+    const gamesWithScores = gamesData1.map((game) => {
+      const scoreData = gamesData2.find((score) => score.date === game.date);
+      if (scoreData) {
+        const [homeScore, awayScore] = scoreData.score.split(" - ").map(String);
+        return {
+          ...game,
+          away_score: awayScore,
+          home_score: homeScore,
+        };
+      }
+      return {
+        ...game,
+        away_score: "",
+        home_score: "",
       };
-      await gamesService.createGame(gameData);
     });
 
-    res.status(200).json(gamesData);
+    gamesWithScores.forEach(async (game) => {
+      const gameData = {
+        away_team: game.awayTeam,
+        home_team: game.homeTeam,
+        date: game.date,
+        time: game.time,
+        location: game.location,
+        rink: game.rink,
+        away_score: game.away_score,
+        home_score: game.home_score,
+      };
+      await gamesService.createGame(gameData);
+      console.log(gameData);
+    });
+
+    res.status(200).json(gamesWithScores);
   } catch (error) {
     next(error);
     console.error(error);
