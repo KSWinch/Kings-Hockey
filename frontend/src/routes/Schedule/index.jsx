@@ -11,7 +11,7 @@ const Schedule = () => {
         const data = await response.json();
         const todaysDate = new Date();
         const upcomingGames = data
-          .filter(game => new Date(game.date + ' 2024') > todaysDate)
+          .filter(game => new Date(game.date + ' 2024 23:59:59') >= todaysDate)
           .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(upcomingGames);
       } catch (error) {
@@ -40,7 +40,6 @@ const Schedule = () => {
                     <img src="images/crhl-logo.png" alt={`${game.home_team} logo`} className="team-logo" />
                   )}
                   <div>{game.home_team}</div>
-                  <div>{game.home_odds}</div>
                 </div>
                 <div>@</div>
                 <div className="team">
@@ -50,7 +49,6 @@ const Schedule = () => {
                     <img src="images/crhl-logo.png" alt={`${game.away_team} logo`} className="team-logo" />
                   )}
                   <div>{game.away_team}</div>
-                  <div>{game.away_odds}</div>
                 </div>
               </div>
               <div className="additional-info">

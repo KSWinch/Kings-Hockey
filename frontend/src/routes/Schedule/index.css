@@ -52,6 +52,7 @@
   font-weight: bold;
   text-align: center;
   color: #333;
+  margin-bottom: 15px;
 }
 
 .game-card .teams {
@@ -59,6 +60,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9em;
 }
 
 .game-card .team {
@@ -69,13 +71,11 @@
 .game-card .team-logo {
   width: 40px;
   height: 40px;
-  margin: 5px auto;
 }
 
 .game-card .additional-info {
   font-weight: bold;
   text-align: center;
-  font-size: 0.9em;
-  color: #666666;
-  margin-top: 10px;
+  color: #333;
+  margin-top: 15px;
 }
