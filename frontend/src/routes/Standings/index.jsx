@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
+import { ec2ip } from '../../utils/constants';
 
 const Standings = () => {
   const [standings, setStandings] = useState([]);
@@ -9,7 +10,7 @@ const Standings = () => {
   useEffect(() => {
     const fetchStandings = async () => {
       try {
-        const response = await fetch('http://54.234.144.204:8080/standings');
+        const response = await fetch(`${ec2ip}/standings`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
