@@ -20,13 +20,15 @@ model Users {
 }
 
 model Games {
-  away_team String
-  date      String @unique
-  home_team String
-  id        Int    @id @default(autoincrement())
-  location  String
-  time      String
-  rink      String
+  away_score String
+  away_team  String
+  date       String @unique
+  home_score String
+  home_team  String
+  id         Int    @id @default(autoincrement())
+  location   String
+  time       String
+  rink       String
 }
 
 model Stats {
