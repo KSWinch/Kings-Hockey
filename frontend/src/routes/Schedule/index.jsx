@@ -9,8 +9,11 @@ const Schedule = () => {
       try {
         const response = await fetch('http://54.234.144.204:8080/games');
         const data = await response.json();
-        data.sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
-        setGamesData(data);
+        const todaysDate = new Date();
+        const upcomingGames = data
+          .filter(game => new Date(game.date + ' 2024') > todaysDate)
+          .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
+        setGamesData(upcomingGames);
       } catch (error) {
         console.error('Error fetching games data:', error);
       }
@@ -23,8 +26,9 @@ const Schedule = () => {
     <div className="schedule-page">
       <div className="schedule-table-container">
         <div className="game-cards-container">
+          <div className="schedule-table-header">Schedule</div>
           {gamesData.map((game, index) => (
-            <div className={`game-card ${index % 2 === 0 ? 'even-row' : 'odd-row'}`} key={game.id}>
+            <div className={`game-card ${index % 2 === 0 ? 'odd-row' : 'even-row'}`} key={game.id}>
               <div className="game-time">
                 {game.date} - {game.time}
               </div>
