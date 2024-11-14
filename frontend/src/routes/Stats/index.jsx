@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
+import { ec2ip } from '../../utils/constants';
 
 const Stats = () => {
   const [playerStats, setPlayerStats] = useState([]);
