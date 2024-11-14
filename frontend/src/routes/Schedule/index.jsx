@@ -40,7 +40,6 @@ const Schedule = () => {
                     <img src="images/crhl-logo.png" alt={`${game.home_team} logo`} className="team-logo" />
                   )}
                   <div>{game.home_team}</div>
-                  <div>{game.home_odds}</div>
                 </div>
                 <div>@</div>
                 <div className="team">
@@ -50,7 +49,6 @@ const Schedule = () => {
                     <img src="images/crhl-logo.png" alt={`${game.away_team} logo`} className="team-logo" />
                   )}
                   <div>{game.away_team}</div>
-                  <div>{game.away_odds}</div>
                 </div>
               </div>
               <div className="additional-info">
