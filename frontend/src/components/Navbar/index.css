@@ -1,15 +1,18 @@
 .navbar-logo-icon {
   width: 30px;
   height: auto;
-  margin-right: 10px;
+  margin-right: 15px;
   margin-left: 15px;
 }
 
 .custom-navbar {
   background-color: #23184b;
-  margin-right: 15px;
   border-bottom: 1px solid rgba(169, 169, 169, 0.356);
   font-weight: 500;
+}
+
+.navbar-text {
+  padding-right: 15px;
 }
 
 .custom-navbar .nav-link,
@@ -19,4 +22,16 @@
 
 .custom-navbar .nav-link:hover {
   color: #ffd700 !important;
+}
+
+/* General mobile adjustments (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .navbar-logo-icon {
+    margin-left: 0px;
+  }
+
+  .custom-navbar {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
