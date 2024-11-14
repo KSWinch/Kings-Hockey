@@ -4,6 +4,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
+import Scores from './routes/Scores';
 import Stats from './routes/Stats';
 import Standings from './routes/Standings';
 import Lineup from './routes/Lineup';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'schedule/attendance/:id',
         element: <Attendance />,
+      },
+      {
+        path: 'scores',
+        element: <Scores />,
       },
       {
         path: 'stats',
