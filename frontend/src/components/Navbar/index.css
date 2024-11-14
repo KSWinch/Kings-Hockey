@@ -2,12 +2,12 @@
   width: 30px;
   height: auto;
   margin-right: 10px;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .custom-navbar {
   background-color: #23184b;
-  margin-right: 10px;
+  margin-right: 15px;
   border-bottom: 1px solid rgba(169, 169, 169, 0.356);
   font-weight: 500;
 }
