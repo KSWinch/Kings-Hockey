@@ -1,17 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #23184b !important;
-  background-image: url('./../public/images/crown.png');
+  background-color: #392870 !important;
+  background-image: url('./../src/assets/images/herobg.png');
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; /*Prevents the background image from exploding when zooming */
   z-index: -1;
-  background-size: 30%; /*Shrinks the background image to 30% */
-  height: 100vh;
+  /*Shrinks the background image to 30% */
 }
 
 code {
