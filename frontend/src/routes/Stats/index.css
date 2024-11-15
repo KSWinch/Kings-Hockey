@@ -5,8 +5,14 @@
   overflow: hidden;
   min-width: 600px;
   font-size: 20px;
-  font-family: 'Inter',Arial,sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   max-width: 1200px;
+}
+
+.sort-arrow {
+  font-size: 0.75em;
+  margin-left: 5px;
+  color: rgb(198, 140, 252);
 }
 
 .player-stats-table th {
@@ -41,10 +47,8 @@
 }
 
 .player-stats-table tr:hover td {
-  color: #ffd700; 
+  color: #ffd700;
 }
-
-
 
 .player-stats-table td,
 .player-stats-table th {
@@ -58,13 +62,12 @@
 @media screen and (min-width: 800px) {
   .stats-table-responsive-wrapper {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     overflow-x: auto;
     white-space: nowrap;
   }
 }
 
-/* General mobile adjustments (max-width: 768px) */
 @media screen and (max-width: 768px) {
   .player-stats-table td,
   .player-stats-table th {

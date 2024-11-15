@@ -46,6 +46,13 @@ const Stats = () => {
     return 0;
   });
 
+  const getSortIndicator = (key) => {
+    if (sortConfig.key === key) {
+      return <span className="sort-arrow">{sortConfig.direction === 'asc' ? '↑' : '↓'}</span>;
+    }
+    return '';
+  };
+
   return (
     <>
       {playerStats ? (
@@ -58,16 +65,14 @@ const Stats = () => {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th onClick={() => requestSort('name')}>Name</th>
-                    <th onClick={() => requestSort('games_played')}>GP</th>
-                    <th onClick={() => requestSort('goals')}>G</th>
-                    <th onClick={() => requestSort('assists')}>A</th>
-                    <th onClick={() => requestSort('points')}>Pts</th>
-                    <th onClick={() => requestSort('points_per_game')}>PPGA</th>
-                    <th onClick={() => requestSort('penalty_minutes')}>PIM</th>
-                    <th onClick={() => requestSort('power_play_goals')}>PPG</th>
-                    <th onClick={() => requestSort('short_handed_goals')}>SHG</th>
-                    <th onClick={() => requestSort('game_winning_goals')}>GWG</th>
+                    <th onClick={() => requestSort('name')}>Name {getSortIndicator('name')}</th>
+                    <th onClick={() => requestSort('games_played')}>GP {getSortIndicator('games_played')}</th>
+                    <th onClick={() => requestSort('goals')}>G {getSortIndicator('goals')}</th>
+                    <th onClick={() => requestSort('assists')}>A {getSortIndicator('assists')}</th>
+                    <th onClick={() => requestSort('points')}>Pts {getSortIndicator('points')}</th>
+                    <th onClick={() => requestSort('points_per_game')}>PPGA {getSortIndicator('points_per_game')}</th>
+                    <th onClick={() => requestSort('penalty_minutes')}>PIM {getSortIndicator('penalty_minutes')}</th>
+                    <th onClick={() => requestSort('game_winning_goals')}>GWG {getSortIndicator('game_winning_goals')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,8 +86,6 @@ const Stats = () => {
                       <td className={sortConfig.key === 'points' ? 'sorted-column' : ''}>{player.points}</td>
                       <td className={sortConfig.key === 'points_per_game' ? 'sorted-column' : ''}>{player.points_per_game}</td>
                       <td className={sortConfig.key === 'penalty_minutes' ? 'sorted-column' : ''}>{player.penalty_minutes}</td>
-                      <td className={sortConfig.key === 'power_play_goals' ? 'sorted-column' : ''}>{player.power_play_goals}</td>
-                      <td className={sortConfig.key === 'short_handed_goals' ? 'sorted-column' : ''}>{player.short_handed_goals}</td>
                       <td className={sortConfig.key === 'game_winning_goals' ? 'sorted-column' : ''}>{player.game_winning_goals}</td>
                     </tr>
                   ))}
