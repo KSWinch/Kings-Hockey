@@ -2,31 +2,32 @@
   padding: 20px;
   display: flex;
   max-width: 100%;
-  justify-content: center; /* Centers the table container */
+  justify-content: center;
 }
 
 .standings-table-responsive-wrapper {
-  overflow-x: auto; /* Enables horizontal scrolling */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   max-width: 100%;
   border-radius: 10px;
-  background-color: #23184b; /* Light background for wrapper */
-  box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253); /* Adds subtle shadow */
+  background-color: #23184b;
+  box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253);
 }
 
 .standings-table {
   width: 100%;
-  min-width: 800px; /* Ensures the table does not shrink too much */
+  min-width: 800px;
   border-collapse: collapse;
   width: 1500px;
   height: 700px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .standings-table th {
   padding: 10px;
-  background-color: #333; /* Dark background for header */
-  color: #ffffff; /* White text for header */
+  background-color: #333;
+  color: #ffffff;
   font-weight: bold;
   text-align: center;
 }
@@ -34,38 +35,36 @@
 .standings-table td {
   padding: 8px;
   text-align: center;
-  color: #333333; /* Dark text for cells */
+  color: #333333;
 }
 
 .standings-even-row {
-  background-color: #dddddf; /* Slightly lighter background for even rows */
+  background-color: #dddddf;
 }
 
 .standings-odd-row {
-  background-color: #ffffff; /* White background for odd rows */
+  background-color: #ffffff;
 }
 
 .standings-table tr:hover {
-  background-color: #6c3fe7; /* Entire row background color on hover */
+  background-color: #6c3fe7;
 }
 
 .standings-table tr:hover td {
-  color: #ffd700; /* Change text color of the entire row on hover */
+  color: #ffd700;
 }
 
 .error-message {
-  color: #ff4c4c; /* Red color for error message */
+  color: #ff4c4c;
   font-weight: bold;
   padding: 10px;
 }
 
 @media (max-width: 600px) {
-  
-  /* Make the table responsive and auto-fit columns */
   .standings-table-responsive-wrapper {
     overflow-x: auto;
   }
-  
+
   .standings-table {
     width: 100%;
     table-layout: auto;
