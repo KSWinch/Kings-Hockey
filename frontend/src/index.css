@@ -5,10 +5,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #392870 !important;
+}
+
+/*CSS FOR BACKGROUND */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('./../src/assets/images/herobg.png');
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  filter: brightness(1) sepia(1) hue-rotate(200deg) saturate(5); /* Apply filter here */
   z-index: -1;
-  /*Shrinks the background image to 30% */
+  opacity: 0.8; /* Adjust opacity if needed */
 }
 
 code {
