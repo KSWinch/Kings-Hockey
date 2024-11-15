@@ -46,7 +46,7 @@
 
 .scores-game-card .game-time {
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   color: #333;
   margin-bottom: 15px;
 }
@@ -60,13 +60,25 @@
 }
 
 .scores-game-card .team {
-  text-align: center;
+  text-align: left;
   flex: 1;
+  margin-bottom: 5px;
 }
 
 .scores-game-card .team-logo {
   width: 40px;
   height: 40px;
+}
+
+.scores-game-card .team-name {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.scores-game-card .team-score {
+  float: right;
+  font-weight: bold;
+  font-size: 32px;
 }
 
 .scores-game-card .additional-info {

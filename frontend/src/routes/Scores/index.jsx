@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
+import { ec2ip } from '../../utils/constants';
 
 const Scores = () => {
   const [gamesData, setGamesData] = useState([]);
@@ -7,7 +8,7 @@ const Scores = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('http://54.234.144.204:8080/games');
+        const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
         const todaysDate = new Date();
         const pastGames = data
@@ -30,29 +31,25 @@ const Scores = () => {
           {gamesData.map((game, index) => (
             <div className={`scores-game-card ${index % 2 === 0 ? 'odd-row' : 'even-row'}`} key={game.id}>
               <div className="game-time">
-                {game.date} - {game.time}
+                {game.date}
               </div>
-              <div className="teams">
-                <div className="team">
+              <div className="team">
                   {game.home_team === "Kings" ? (
                     <img src="images/crown.png" alt={`${game.home_team} logo`} className="team-logo" />
                   ) : (
                     <img src="images/crhl-logo.png" alt={`${game.home_team} logo`} className="team-logo" />
                   )}
-                  <div>{game.home_team}</div>
-                </div>
-                <div>@</div>
-                <div className="team">
-                  {game.away_team === "Kings" ? (
-                    <img src="images/crown.png" alt={`${game.away_team} logo`} className="team-logo" />
-                  ) : (
-                    <img src="images/crhl-logo.png" alt={`${game.away_team} logo`} className="team-logo" />
-                  )}
-                  <div>{game.away_team}</div>
-                </div>
+                  <span className="team-name">{game.home_team}</span>
+                  <span className="team-score">{game.home_score}</span>
               </div>
-              <div className="additional-info">
-                {game.location} - {game.rink}
+              <div className="team">
+                {game.away_team === "Kings" ? (
+                  <img src="images/crown.png" alt={`${game.away_team} logo`} className="team-logo" />
+                ) : (
+                  <img src="images/crhl-logo.png" alt={`${game.away_team} logo`} className="team-logo" />
+                )}
+                  <span className="team-name">{game.away_team}</span>
+                  <span className="team-score">{game.away_score}</span>
               </div>
             </div>
           ))}
