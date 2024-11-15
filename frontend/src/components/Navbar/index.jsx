@@ -26,6 +26,11 @@ function Navigation() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
+            <Nav.Link as={Link} to="/scores" className="nav-link">
+              Scores
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Nav.Link as={Link} to="/standings" className="nav-link">
               Standings
             </Nav.Link>

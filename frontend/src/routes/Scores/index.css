@@ -1,0 +1,89 @@
+.scores-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  width: 100%;
+}
+
+.scores-table-container {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.scores-table-header {
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  max-width: 1000px;
+  padding: 5px;
+  font-size: 24px;
+}
+
+.scores-game-cards-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 15px;
+  width: 100%;
+}
+
+.scores-game-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  color: #333333;
+}
+
+.scores-game-card.even-row {
+  background-color: #f0f0f0;
+}
+
+.scores-game-card.odd-row {
+  background-color: #ffffff;
+}
+
+.scores-game-card .game-time {
+  font-weight: bold;
+  text-align: left;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.scores-game-card .teams {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.scores-game-card .team {
+  text-align: left;
+  flex: 1;
+  margin-bottom: 5px;
+}
+
+.scores-game-card .team-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.scores-game-card .team-name {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.scores-game-card .team-score {
+  float: right;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.scores-game-card .additional-info {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-top: 15px;
+}
