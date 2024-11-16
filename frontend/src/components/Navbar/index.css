@@ -9,6 +9,9 @@
   background-color: #23184b;
   border-bottom: 1px solid rgba(169, 169, 169, 0.356);
   font-weight: 500;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1020 !important;
 }
 
 .navbar-text {
