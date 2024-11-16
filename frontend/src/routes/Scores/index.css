@@ -60,7 +60,8 @@
 }
 
 .scores-game-card .team {
-  text-align: left;
+  display: flex;
+  align-items: center;
   flex: 1;
   margin-bottom: 5px;
 }
@@ -76,7 +77,7 @@
 }
 
 .scores-game-card .team-score {
-  float: right;
+  margin-left: auto;
   font-weight: bold;
   font-size: 32px;
 }
@@ -86,4 +87,10 @@
   text-align: center;
   color: #333;
   margin-top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .scores-game-cards-container {
+    padding: unset;
+  }
 }
