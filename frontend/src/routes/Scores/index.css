@@ -87,3 +87,9 @@
   color: #333;
   margin-top: 15px;
 }
+
+@media screen and (max-width: 768px) {
+  .scores-game-cards-container {
+    padding: unset;
+  }
+}
