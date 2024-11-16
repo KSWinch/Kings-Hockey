@@ -78,9 +78,17 @@
 }
 
 .score-header-game-card .team-name {
+  flex-grow: 1; /* Allow the team name to take up available space */
+  text-align: left; /* Align text to the left */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add '...' for long names */
+  max-width: 140px;
+
   margin-left: 15px;
   font-weight: bold;
   font-size: 18px;
+  overflow: hidden; /* Hide overflowed text */
 }
 
 .score-header-game-card .team-score {
