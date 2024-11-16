@@ -55,6 +55,11 @@
   min-width: 50px;
 }
 
+.stats-table-container {
+  padding: 100px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .sorted-column {
   background-color: #d1b3e9c7;
 }
