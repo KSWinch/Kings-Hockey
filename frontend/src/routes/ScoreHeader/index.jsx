@@ -10,7 +10,6 @@ const ScoreHeader = () => {
       try {
         const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
-        const todaysDate = new Date();
         const pastGames = data.sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'));
         setGamesData(pastGames);
       } catch (error) {
