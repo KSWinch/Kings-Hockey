@@ -1,0 +1,198 @@
+.score-header-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.score-header-table-container {
+  width: 100%;
+}
+
+.score-header-table-header {
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.score-header-game-cards-container {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  /* padding: 15px; */
+  width: 100%;
+}
+
+.score-header-game-card {
+  justify-content: center;
+  width: 300px; /* Set a fixed width for uniformity */
+  min-height: 100px; /* Set a minimum height to fit content */
+  max-height: auto; /* Allow height to adjust if more content is added */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  color: #333333;
+  min-width: 200px;
+  /* Borders inbetween */
+  box-sizing: border-box;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #e0e0e0;
+}
+
+.score-header-game-card.odd-row,
+.score-header-game-card.even-row {
+  background-color: #ffffff;
+}
+
+.score-header-game-card .game-time {
+  font-weight: bold;
+  text-align: left;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.score-header-game-card .teams {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.score-header-game-card .team {
+  display: flex;
+  align-items: center; /* Align logo and text */
+  justify-content: space-between;
+  width: 100%; /* Ensure teams span the full card width */
+  margin-bottom: 10px;
+}
+
+.score-header-game-card .team-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.score-header-game-card .team-name {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.score-header-game-card .team-score {
+  float: right;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.score-header-game-card .additional-info {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .score-header-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .score-header-table-container {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .score-header-table-header {
+    background-color: #f0f0f0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .score-header-game-cards-container {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .score-header-game-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    color: #333333;
+    min-width: 200px;
+    box-sizing: border-box;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #e0e0e0;
+    justify-content: center;
+    width: 300px; /* Set a fixed width for uniformity */
+    min-height: 100px; /* Set a minimum height to fit content */
+    max-height: auto; /* Allow height to adjust if more content is added */
+    box-sizing: border-box;
+  }
+
+  .score-header-game-card.odd-row,
+  .score-header-game-card.even-row {
+    background-color: #ffffff;
+  }
+
+  .score-header-game-card .game-time {
+    font-weight: bold;
+    text-align: left;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  .score-header-game-card .teams {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.2em;
+  }
+
+  .score-header-game-card .team {
+    text-align: left;
+    flex: 1;
+    margin-bottom: 5px;
+  }
+
+  .score-header-game-card .team-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .score-header-game-card .team-name {
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Show "..." */
+    max-width: 90px; /* Limit the width for truncation */
+    display: inline-block; /* Ensure proper behavior */
+  }
+
+  .score-header-game-card .team-score {
+    float: right;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .score-header-game-card .additional-info {
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-top: 15px;
+  }
+}

@@ -50,6 +50,22 @@
   z-index: -1;
 }
 
+.schedule-table-container {
+  width: 100%;
+  /* max-width: 1000px; */
+  /* padding: 8px; */
+}
+
+.schedule-table-header {
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  max-width: 1000px;
+  padding: 5px;
+  font-size: 24px;
+}
+
 @media (max-width: 768px) {
   .header-section {
     height: 30vh;
