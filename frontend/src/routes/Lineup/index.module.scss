@@ -11,9 +11,20 @@
 .card-line {
   background-color: grey;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   height: 500px;
   padding: 20px;
   padding-top: 0;
   width: 90%;
+}
+
+@media screen and (max-width: 768px) {
+
+  .card-line {
+    flex-direction: column;
+    gap: 10px;
+    height: unset
+  }
+
 }
