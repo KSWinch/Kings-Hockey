@@ -18,6 +18,7 @@
 .custom-navbar .nav-link,
 .custom-navbar .navbar-brand-text {
   color: white !important;
+  padding-left: 10px;
 }
 
 .custom-navbar .nav-link:hover {
