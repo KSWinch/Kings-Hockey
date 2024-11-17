@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './index.css';
+import './index.scss';
 import { ec2ip } from '../../utils/constants';
 
 const Schedule = () => {
