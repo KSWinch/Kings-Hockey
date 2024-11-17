@@ -27,6 +27,10 @@
   overflow-y: auto;
   padding: 15px;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 }
 
 .scores-game-card {
@@ -86,10 +90,4 @@
   text-align: center;
   color: #333;
   margin-top: 15px;
-}
-
-@media screen and (max-width: 768px) {
-  .scores-game-cards-container {
-    padding: unset;
-  }
 }
