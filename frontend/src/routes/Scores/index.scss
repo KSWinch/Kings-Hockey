@@ -1,4 +1,4 @@
-.schedule-page {
+.scores-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,16 +6,12 @@
   width: 100%;
 }
 
-.darker-row {
-  color: white !important;
-}
-
-.schedule-table-container {
+.scores-table-container {
   width: 100%;
   max-width: 1000px;
 }
 
-.schedule-table-header {
+.scores-table-header {
   background-color: #f0f0f0;
   text-align: center;
   font-weight: bold;
@@ -25,40 +21,41 @@
   font-size: 24px;
 }
 
-.game-cards-container {
+.scores-game-cards-container {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   padding: 15px;
   width: 100%;
+
   @media screen and (max-width: 768px) {
-    padding: unset;
+    padding: 0;
   }
 }
 
-.game-card {
+.scores-game-card {
   display: flex;
   flex-direction: column;
   padding: 15px;
   color: #333333;
 }
 
-.game-card.even-row {
+.scores-game-card.even-row {
   background-color: #f0f0f0;
 }
 
-.game-card.odd-row {
+.scores-game-card.odd-row {
   background-color: #ffffff;
 }
 
-.game-card .game-time {
+.scores-game-card .game-time {
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   color: #333;
   margin-bottom: 15px;
 }
 
-.game-card .teams {
+.scores-game-card .teams {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -66,17 +63,29 @@
   font-size: 0.9em;
 }
 
-.game-card .team {
-  text-align: center;
+.scores-game-card .team {
+  text-align: left;
   flex: 1;
+  margin-bottom: 5px;
 }
 
-.game-card .team-logo {
+.scores-game-card .team-logo {
   width: 40px;
   height: 40px;
 }
 
-.game-card .additional-info {
+.scores-game-card .team-name {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.scores-game-card .team-score {
+  float: right;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.scores-game-card .additional-info {
   font-weight: bold;
   text-align: center;
   color: #333;
