@@ -32,7 +32,7 @@
   padding: 15px;
   width: 100%;
   @media screen and (max-width: 768px) {
-    padding: unset;
+    padding: 0;
   }
 }
 
