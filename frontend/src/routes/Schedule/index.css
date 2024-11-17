@@ -31,6 +31,9 @@
   overflow-y: auto;
   padding: 15px;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    padding: unset;
+  }
 }
 
 .game-card {
@@ -78,10 +81,4 @@
   text-align: center;
   color: #333;
   margin-top: 15px;
-}
-
-@media screen and (max-width: 768px) {
-  .game-cards-container {
-    padding: unset;
-  }
 }
