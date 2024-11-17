@@ -13,7 +13,6 @@
 .schedule-table-container {
   width: 100%;
   max-width: 1000px;
-  padding: 8px;
 }
 
 .schedule-table-header {
@@ -32,6 +31,9 @@
   overflow-y: auto;
   padding: 15px;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    padding: unset;
+  }
 }
 
 .game-card {
