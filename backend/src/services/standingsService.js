@@ -22,10 +22,11 @@ export const createStanding = async (standingData) => {
   }
 };
 
-export const updateStanding = async (id, standingData) => {
-  return await prisma.standings.update({
-    where: { id: Number(id) },
-    data: standingData,
+export const updateStanding = async (teamname, standingData) => {
+  return await prisma.standings.upsert({
+    where: { team: String(teamname) },
+    update: standingData,
+    create: standingData,
   });
 };
 

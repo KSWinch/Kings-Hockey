@@ -119,7 +119,7 @@ export async function scrapeStandings(req, res, next) {
         ties: standings.ties,
         wins: standings.wins,
       };
-      await standingService.createStanding(teamStandings);
+      await standingService.updateStanding(standings.team, teamStandings);
     });
 
     res.status(200).json(standingsData);
