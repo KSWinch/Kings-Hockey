@@ -60,7 +60,7 @@ const Home = () => {
       <div className="content-section">
         <InfoBox
           title="King's Top Player Stats"
-          description="Top 5 Player Stats"
+          description="Top 7 Player Stats"
           players={playerStats} // Pass the playerStats as a prop
         />
 
