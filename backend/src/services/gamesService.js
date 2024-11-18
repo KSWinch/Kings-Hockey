@@ -20,10 +20,11 @@ export const createGame = async (gameData) => {
   }
 };
 
-export const updateGame = async (id, gameData) => {
-  return await prisma.games.update({
-    where: { id: Number(id) },
-    data: gameData,
+export const updateGame = async (date, gameData) => {
+  return await prisma.games.upsert({
+    where: { date: String(date) },
+    update: gameData,
+    create: gameData,
   });
 };
 
