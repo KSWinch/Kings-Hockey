@@ -46,8 +46,7 @@ export async function scrapeSchedule(req, res, next) {
         away_score: game.away_score,
         home_score: game.home_score,
       };
-      await gamesService.updateGame(gameData);
-      console.log(gameData);
+      await gamesService.updateGame(game.date, gameData);
     });
 
     res.status(200).json(gamesWithScores);
