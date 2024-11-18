@@ -1,30 +1,75 @@
+@import '../../styles/variables.scss';
+
 .lineup-page {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: auto;
-  gap: 50px;
+  gap: 15px;
   padding-top: 50px;
-  width: 100%;
+  width: 100vw;
+}
+
+.position-title {
+  align-items: center;
+  background-color: #23184b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 1050px;
+
+  @media only screen and (max-width: $phone) {
+    width: 100%;
+  }
+}
+
+.position-subtitle {
+  align-items: center;
+  background-color: #23184b;
+  color: white;
+  display: flex;
+  gap: 50px;
+  justify-content: space-around;
+  width: 1050px;
+
+  @media only screen and (max-width: $phone) {
+    width: 100%;
+  }
 }
 
 .card-line {
-  background-color: grey;
+  // background-color: grey;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 500px;
+  height: auto;
   padding: 20px;
   padding-top: 0;
-  width: 90%;
+  width: 1000px;
+
+  @media only screen and (max-width: $phone) {
+    padding: 5px;
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: 768px) {
-
-  .card-line {
-    flex-direction: column;
-    gap: 10px;
-    height: unset
+.defensive-pairings {
+  padding-left: 160px;
+  padding-right: 160px;
+  @media only screen and (max-width: $phone) {
+    padding-left: 40px;
+    padding-right: 40px;
   }
+}
+.goalie {
+  justify-content: center;
+}
 
+.line-divider {
+  all: unset;
+  border: 1px solid white;
+  width: 1050px;
+  @media only screen and (max-width: $phone) {
+    width: 98%;
+  }
 }
