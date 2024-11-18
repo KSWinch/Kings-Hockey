@@ -22,7 +22,6 @@ const PlayerCard = ({ name, position, photo, teamLogo }) => {
   // }, []);
 
   const handleCardClick = () => {
-    console.log(playerStats);
     setIsFlipped(!isFlipped);
   };
 
