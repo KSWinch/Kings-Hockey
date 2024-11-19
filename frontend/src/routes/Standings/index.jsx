@@ -52,8 +52,12 @@ const Standings = () => {
           <table className="standings-table">
             <thead>
               <tr>
-                <th onClick={() => requestSort('rank')}>Rk</th>
-                <th onClick={() => requestSort('team')}>Team</th>
+                <th className="sticky-column sticky-column-1" onClick={() => requestSort('rank')}>
+                  Rk
+                </th>
+                <th className="sticky-column sticky-column-2" onClick={() => requestSort('team')}>
+                  Team
+                </th>
                 <th onClick={() => requestSort('games_played')}>GP</th>
                 <th onClick={() => requestSort('wins')}>W</th>
                 <th onClick={() => requestSort('losses')}>L</th>
@@ -72,8 +76,8 @@ const Standings = () => {
             <tbody>
               {sortedStandings.map((team, index) => (
                 <tr key={index} className={index % 2 === 0 ? 'standings-even-row' : 'standings-odd-row'}>
-                  <td>{team.rank}</td>
-                  <td>{team.team}</td>
+                  <td className="sticky-column sticky-column-1">{team.rank}</td>
+                  <td className="sticky-column sticky-column-2">{team.team}</td>
                   <td>{team.games_played}</td>
                   <td>{team.wins}</td>
                   <td>{team.losses}</td>
