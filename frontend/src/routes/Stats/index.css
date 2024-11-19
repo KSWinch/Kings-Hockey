@@ -1,8 +1,7 @@
 .player-stats-table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 10px;
-  overflow: hidden;
+  overflow-x: auto;
   min-width: 600px;
   font-size: 20px;
   font-family: 'Inter', Arial, sans-serif;
@@ -13,6 +12,13 @@
   font-size: 0.75em;
   margin-left: 5px;
   color: rgb(198, 140, 252);
+  display: inline-block;
+  position: absolute;
+}
+
+.th-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
 .player-stats-table th {
@@ -22,11 +28,6 @@
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-}
-
-.name-column {
-  font-size: 14px;
-  font-weight: bold;
 }
 
 .player-stats-table td {
@@ -56,12 +57,28 @@
 }
 
 .stats-table-container {
-  padding: 100px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 .sorted-column {
   background-color: #d1b3e9c7;
+}
+
+.stats-sticky-column {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  left: 0;
+  background-color: unset;
+  z-index: 1;
+}
+
+.stats-sticky-name-column {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  left: 50px;
+  background-color: unset;
+  z-index: 1;
 }
 
 @media screen and (min-width: 800px) {
@@ -80,13 +97,21 @@
   }
 
   .stats-table-container {
-    padding: 20px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .table-responsive-wrapper {
     overflow-x: auto;
+  }
+
+  .stats-sticky-name-column {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky !important;
+    left: 50px;
+    background-color: inherit;
+    z-index: 1;
+    min-width: 150px !important;
   }
 
   .player-stats-table {

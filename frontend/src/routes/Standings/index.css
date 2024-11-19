@@ -1,27 +1,50 @@
 .standings-table-container {
-  padding: 100px;
   display: flex;
   max-width: 100%;
   justify-content: center;
+  overflow-x: auto;
 }
 
 .standings-table-responsive-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  max-width: 100%;
-  border-radius: 10px;
   background-color: #23184b;
   box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253);
+  width: 50%;
+  min-width: 1000px;
 }
 
 .standings-table {
   width: 100%;
   min-width: 800px;
   border-collapse: collapse;
-  width: 1500px;
   height: 700px;
   font-size: 24px;
   cursor: pointer;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  z-index: 0;
+}
+
+.sticky-column {
+  position: sticky;
+  background-color: inherit;
+  z-index: 1;
+}
+
+.sticky-column-1 {
+  left: 0;
+  min-width: 50px;
+}
+
+.sticky-column-2 {
+  left: 50px;
+  min-width: 150px;
 }
 
 .standings-table th {
@@ -30,12 +53,14 @@
   color: #ffffff;
   font-weight: bold;
   text-align: center;
+  z-index: 2;
 }
 
 .standings-table td {
   padding: 8px;
   text-align: center;
   color: #333333;
+  background-color: inherit;
 }
 
 .standings-even-row {
@@ -63,6 +88,8 @@
 @media (max-width: 600px) {
   .standings-table-responsive-wrapper {
     overflow-x: auto;
+    width: 100%;
+    min-width: unset;
   }
 
   .standings-table {

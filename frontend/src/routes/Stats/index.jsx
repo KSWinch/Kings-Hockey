@@ -64,22 +64,40 @@ const Stats = () => {
               <table className="player-stats-table">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th onClick={() => requestSort('name')}>Name {getSortIndicator('name')}</th>
-                    <th onClick={() => requestSort('games_played')}>GP {getSortIndicator('games_played')}</th>
-                    <th onClick={() => requestSort('goals')}>G {getSortIndicator('goals')}</th>
-                    <th onClick={() => requestSort('assists')}>A {getSortIndicator('assists')}</th>
-                    <th onClick={() => requestSort('points')}>Pts {getSortIndicator('points')}</th>
-                    <th onClick={() => requestSort('points_per_game')}>PPGA {getSortIndicator('points_per_game')}</th>
-                    <th onClick={() => requestSort('penalty_minutes')}>PIM {getSortIndicator('penalty_minutes')}</th>
-                    <th onClick={() => requestSort('game_winning_goals')}>GWG {getSortIndicator('game_winning_goals')}</th>
+                    <th className="stats-sticky-column">#</th>
+                    <th className="stats-sticky-name-column" onClick={() => requestSort('name')}>
+                      <span className="th-wrapper">Name {getSortIndicator('name')}</span>
+                    </th>
+                    <th onClick={() => requestSort('games_played')}>
+                      <span className="th-wrapper">GP {getSortIndicator('games_played')}</span>
+                    </th>
+                    <th onClick={() => requestSort('goals')}>
+                      <span className="th-wrapper">G {getSortIndicator('goals')}</span>
+                    </th>
+                    <th onClick={() => requestSort('assists')}>
+                      <span className="th-wrapper">A {getSortIndicator('assists')}</span>
+                    </th>
+                    <th onClick={() => requestSort('points')}>
+                      <span className="th-wrapper">Pts {getSortIndicator('points')}</span>
+                    </th>
+                    <th onClick={() => requestSort('points_per_game')}>
+                      <span className="th-wrapper">PPGA {getSortIndicator('points_per_game')}</span>
+                    </th>
+                    <th onClick={() => requestSort('penalty_minutes')}>
+                      <span className="th-wrapper">PIM {getSortIndicator('penalty_minutes')}</span>
+                    </th>
+                    <th onClick={() => requestSort('game_winning_goals')}>
+                      <span className="th-wrapper">GWG {getSortIndicator('game_winning_goals')}</span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedPlayerStats.map((player, index) => (
                     <tr key={index} className={index % 2 === 0 ? 'stats-even-row' : 'stats-odd-row'}>
-                      <td className={sortConfig.key === 'jersey_number' ? 'sorted-column' : ''}>{player.jersey_number}</td>
-                      <td className="name-column">{player.name}</td>
+                      <td className={`stats-sticky-column ${sortConfig.key === 'jersey_number' ? 'sorted-column' : ''}`}>
+                        {player.jersey_number}
+                      </td>
+                      <td className={`stats-sticky-name-column stats-name-column`}>{player.name}</td>
                       <td className={sortConfig.key === 'games_played' ? 'sorted-column' : ''}>{player.games_played}</td>
                       <td className={sortConfig.key === 'goals' ? 'sorted-column' : ''}>{player.goals}</td>
                       <td className={sortConfig.key === 'assists' ? 'sorted-column' : ''}>{player.assists}</td>
