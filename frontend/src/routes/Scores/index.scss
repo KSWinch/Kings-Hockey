@@ -50,11 +50,12 @@
 
 .scores-game-card .game-time {
   font-weight: bold;
+  text-align: left;
   display: flex;            
   justify-content: space-between;  
   align-items: center;      
   color: #333;
-  margin-bottom: 15px;     
+  margin-bottom: 15px;
 }
 
 .scores-game-card .teams {
@@ -69,6 +70,7 @@
   text-align: left;
   flex: 1;
   margin-bottom: 5px;
+  opacity: 0.5;
 }
 
 .scores-game-card .team-logo {
@@ -92,20 +94,4 @@
   text-align: center;
   color: #333;
   margin-top: 15px;
-}
-
-.game-result {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 5px 0;
-  line-height: 1.2rem;
-}
-
-.result-text.win {
-  color: #4CAF50 !important; 
-}
-
-.result-text.loss {
-  color: #F44336 !important; 
 }
