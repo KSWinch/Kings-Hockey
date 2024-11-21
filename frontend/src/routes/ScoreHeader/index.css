@@ -134,7 +134,7 @@
   .score-header-game-card {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding-top: 8px;
     color: #333333;
     min-width: 200px;
     box-sizing: border-box;
