@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 
+// Custom debounce function
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+};
+
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
+    const toggleVisibility = debounce(() => {
       if (window.scrollY > 150) {
-        //300 is more realistic but 150 so its usable on our site
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
-    };
+    }, 200); // Adjust the debounce delay as needed
 
     window.addEventListener('scroll', toggleVisibility);
 
