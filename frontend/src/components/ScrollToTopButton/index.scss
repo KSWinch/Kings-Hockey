@@ -1,0 +1,39 @@
+.scroll-to-top {
+  background-color: #6c3fe7;
+  border: none;
+  border-radius: 50%; /* this makes circle */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #ffd700;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  height: 45px;
+  padding: 0;
+  position: fixed;
+  right: 50px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 45px;
+  bottom: 50px;
+
+  &:hover {
+    background-color: #6c3fe7;
+    transform: scale(1.2);
+  }
+
+  &:active {
+    background-color: #6c3fe7;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 35px;
+  }
+}
