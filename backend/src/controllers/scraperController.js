@@ -2,6 +2,7 @@ import WebScraperService from "../services/scraperService.js";
 import * as gamesService from "../services/gamesService.js";
 import * as statsService from "../services/statsService.js";
 import * as standingService from "../services/standingsService.js";
+import * as goalService from "../services/goalService.js";
 
 export async function scrapeSchedule(req, res, next) {
   const scraper1 = new WebScraperService(
@@ -14,7 +15,6 @@ export async function scrapeSchedule(req, res, next) {
   try {
     await scraper1.initializeWebScraper();
     const gamesData1 = await scraper1.getSchedule();
-
     await scraper2.initializeWebScraper();
     const gamesData2 = await scraper2.getScore();
 
@@ -37,14 +37,15 @@ export async function scrapeSchedule(req, res, next) {
 
     gamesWithScores.forEach(async (game) => {
       const gameData = {
+        away_score: game.away_score,
         away_team: game.awayTeam,
-        home_team: game.homeTeam,
         date: game.date,
-        time: game.time,
+        home_score: game.home_score,
+        home_team: game.homeTeam,
+        id: game.id,
         location: game.location,
         rink: game.rink,
-        away_score: game.away_score,
-        home_score: game.home_score,
+        time: game.time,
       };
       await gamesService.updateGame(game.date, gameData);
     });
@@ -122,6 +123,39 @@ export async function scrapeStandings(req, res, next) {
     });
 
     res.status(200).json(standingsData);
+  } catch (error) {
+    next(error);
+    console.error(error);
+  }
+}
+
+export async function scrapeGameDetails(req, res, next) {
+  const { gameId } = req.params;
+  const scraper = new WebScraperService(
+    `https://crhl.hockeyshift.com/stats#/489/game/${gameId}`
+  );
+
+  try {
+    await scraper.initializeWebScraper();
+    const gameDetailsData = await scraper.getGameDetails();
+    console.log(gameDetailsData);
+    gameDetailsData.goals.forEach(async (goal, index) => {
+      const goalId = gameId + "_goal_" + index;
+      const goal_instance = {
+        assister_1: goal.assister_1,
+        assister_2: goal.assister_2,
+        game_id: parseInt(gameId),
+        id: goalId,
+        period: goal.period,
+        scorer: goal.scorer,
+        team: goal.team,
+        time: goal.time,
+        total: goal.total,
+      };
+      await goalService.update_goal(goalId, goal_instance);
+    });
+
+    res.status(200).json(gameDetailsData);
   } catch (error) {
     next(error);
     console.error(error);

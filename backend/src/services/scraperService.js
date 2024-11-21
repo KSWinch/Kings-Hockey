@@ -17,7 +17,32 @@ export default class WebScraperService {
   async getSchedule() {
     const data = await this.page.evaluate(() => {
       const rows = Array.from(document.querySelectorAll(".schedule tr"));
-      return rows.slice(1).map((row) => row.innerText.trim());
+      const gameIds = rows.slice(1).map((row) => {
+        // Select all <a> tags within the row
+        const anchorTags = row.querySelectorAll("tr.ng-scope a");
+
+        // Filter for links with text "Final" or "Preview"
+        const filteredLinks = Array.from(anchorTags).filter((a) =>
+          ["Final", "Preview"].includes(a.textContent.trim())
+        );
+
+        // Extract the href of the first matching link
+        const href = filteredLinks[0]?.href || "";
+
+        // Extract the numeric ID from the href using a regular expression
+        const match = href.match(/\/game\/(\d+)(?:\/.*)?$/);
+
+        // Return the numeric ID or an empty string if not found
+        return match?.[1] || "";
+      });
+
+      const returnRows = rows.slice(1).map((row, index) => {
+        const rowText = row.innerText.trim();
+
+        // If the row text is empty, return it as-is; otherwise, append the game ID
+        return rowText ? `${rowText}\t${gameIds[index]}` : rowText;
+      });
+      return returnRows;
     });
 
     // Parse the data into JSON
@@ -26,16 +51,100 @@ export default class WebScraperService {
       .map((row) => {
         const columns = row.split("\t");
         return {
-          homeTeam: columns[0].trim(),
           awayTeam: columns[2].trim(),
           date: columns[4].trim(),
-          time: columns[5].trim(),
+          homeTeam: columns[0].trim(),
+          id: parseInt(columns[10].trim()),
           location: columns[7].trim(),
           rink: columns[8].trim(),
+          time: columns[5].trim(),
         };
       });
 
     return parsedData;
+  }
+
+  async getGameDetails() {
+    let data = await this.page.evaluate(() => {
+      const rawRows = Array.from(
+        document.querySelectorAll(".table-fixed table tbody tr")
+      );
+      const tdRegex = /<td[^>]*>(.*?)<\/td>/g;
+
+      const tableRows = rawRows.map((row) => {
+        const rowHtmlString = row.innerHTML; // Cache the inner HTML to avoid multiple DOM reads
+        const values = [];
+
+        // Extract all <td> contents using the regex
+        let match;
+        while ((match = tdRegex.exec(rowHtmlString)) !== null) {
+          const tdContent = match[1]; // The captured group from the tdRegex
+
+          // Check if the <td> content contains an <a> tag
+          if (tdContent.includes("<a")) {
+            // Match all anchor tags and the associated text
+            const allAnchors = [
+              ...tdContent.matchAll(/(#\d+\s)?<a[^>]*>(.*?)<\/a>/g),
+            ];
+
+            if (allAnchors.length > 0) {
+              // Extract and format each match
+              const formattedValues = allAnchors.map((anchorMatch) => {
+                const prefix = anchorMatch[1] ? anchorMatch[1].trim() : ""; // E.g., #13 or #10
+                const name = anchorMatch[2].trim(); // Extract the name inside the <a> tag
+                return `${prefix}${name}`;
+              });
+
+              // Add the combined formatted values to the array
+              values.push(formattedValues.join(", "));
+            } else {
+              // No anchors found, push plain content
+              values.push(tdContent.trim());
+            }
+          } else {
+            // If no <a> tag, just push the plain text content
+            values.push(tdContent.trim());
+          }
+        }
+        return values;
+      });
+      const sortedRows = {
+        penalties: [],
+        goals: [],
+      };
+      // Identify if row is for goal or penalty based on array length (present empty div at end of goals)
+      tableRows.forEach((row) => {
+        if (row.length === 6) {
+          sortedRows.penalties.push(row);
+        } else if (row.length === 7) {
+          sortedRows.goals.push(row);
+        }
+      });
+      return sortedRows;
+    });
+    const parsedGoals = data.goals
+      .filter((row) => row)
+      .map((row) => {
+        return {
+          assister_1: row[4].split(", ")[1]
+            ? row[4].replace(/#(\d+)([A-Za-z])/g, "#$1 $2").split(", ")[1]
+            : "",
+          assister_2: row[4].split(", ")[2]
+            ? row[4].replace(/#(\d+)([A-Za-z])/g, "#$1 $2").split(", ")[2]
+            : "",
+          period: row[0],
+          scorer: row[4].replace(/#(\d+)([A-Za-z])/g, "#$1 $2").split(", ")[0],
+          team: row[3],
+          time: row[1],
+          total: row[5],
+        };
+      });
+
+    const parsedGameDetailsData = {
+      goals: parsedGoals,
+      penalties: [],
+    };
+    return parsedGameDetailsData;
   }
 
   async getScore() {
