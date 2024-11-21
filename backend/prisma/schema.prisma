@@ -23,12 +23,39 @@ model Games {
   away_score String
   away_team  String
   date       String @unique
+  goals      Goal[]   
   home_score String
   home_team  String
-  id         Int    @id @default(autoincrement())
+  id         Int    @id @default(autoincrement()) @unique
   location   String
+  penalties  Penalty[] 
   time       String
   rink       String
+}
+
+model Goal {
+  assister_1   String @default("")
+  assister_2   String @default("")
+  game         Games  @relation(fields: [game_id], references: [id])
+  game_id      Int  
+  id           String    @id 
+  period       String    
+  scorer       String 
+  team         String 
+  time         String 
+  total        String
+}
+
+model Penalty {
+  game         Games  @relation(fields: [game_id], references: [id])
+  game_id      Int
+  id           String    @id 
+  infraction   String 
+  length       String    
+  period       String    
+  player       String 
+  team         String
+  time         String 
 }
 
 model Stats {
