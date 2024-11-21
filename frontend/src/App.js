@@ -9,11 +9,8 @@ function App() {
   return (
     <>
       {location.pathname === '/' && <ScoreHeader />}
-
       <Navigation />
-
       <Outlet />
-
       <ScrollToTopButton />
     </>
   );

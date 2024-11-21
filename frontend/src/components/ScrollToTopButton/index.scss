@@ -1,18 +1,19 @@
 .scroll-to-top {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; /* this makes circle*/
-  padding: 0;
   background-color: #6c3fe7;
-  color: #ffd700;
   border: none;
-  cursor: pointer;
+  border-radius: 50%; /* this makes circle */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: #ffd700;
+  cursor: pointer;
+  display: flex;
   font-size: 20px;
+  height: 45px;
+  padding: 0;
+  position: fixed;
+  right: 50px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 45px;
+  bottom: 50px;
 
   &:hover {
     background-color: #6c3fe7;
