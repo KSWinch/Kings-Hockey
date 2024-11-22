@@ -1,3 +1,4 @@
+import { isAfter } from "date-fns";
 import WebScraperService from "../services/scraperService.js";
 import * as gamesService from "../services/gamesService.js";
 import * as statsService from "../services/statsService.js";
@@ -131,45 +132,63 @@ export async function scrapeStandings(req, res, next) {
 }
 
 export async function scrapeGameDetails(req, res, next) {
-  const { gameId } = req.params;
-  const scraper = new WebScraperService(
-    `https://crhl.hockeyshift.com/stats#/489/game/${gameId}`
-  );
+  let goalsByGameID = await goalService.getAllGoals();
+  let allGames = await gamesService.getAllGames();
+
+  // Extract unique game IDs from goals
+  const uniqueGameIDs = [...new Set(goalsByGameID.map((goal) => goal.game_id))];
+
+  // Filter games to scrape
+  let GamesToScrape = allGames.filter((game) => {
+    const hasScore =
+      game.home_score !== null &&
+      game.home_score !== undefined &&
+      game.home_score !== "";
+
+    return hasScore && !uniqueGameIDs.includes(game.id);
+  });
 
   try {
-    await scraper.initializeWebScraper();
-    const gameDetailsData = await scraper.getGameDetails();
-    gameDetailsData.goals.forEach(async (goal, index) => {
-      const goalId = `goal-${index}_${gameId}`;
-      const goal_instance = {
-        assister_1: goal.assister_1,
-        assister_2: goal.assister_2,
-        game_id: parseInt(gameId),
-        id: goalId,
-        period: goal.period,
-        scorer: goal.scorer,
-        team: goal.team,
-        time: goal.time,
-        total: goal.total,
-      };
-      await goalService.update_goal(goalId, goal_instance);
-    });
-    gameDetailsData.penalties.forEach(async (penalty, index) => {
-      const penaltyId = `penalty-${index}_${gameId}`;
-      const penalty_instance = {
-        game_id: parseInt(gameId),
-        id: penaltyId,
-        infraction: penalty.infraction,
-        length: penalty.length,
-        period: penalty.period,
-        player: penalty.player,
-        team: penalty.team,
-        time: penalty.time,
-      };
-      await penaltyService.update_penalty(penaltyId, penalty_instance);
-    });
+    for (const game of GamesToScrape) {
+      const scraper = new WebScraperService(
+        `https://crhl.hockeyshift.com/stats#/489/game/${game.id}`
+      );
 
-    res.status(200).json(gameDetailsData);
+      await scraper.initializeWebScraper();
+      const gameDetailsData = await scraper.getGameDetails();
+      gameDetailsData.goals.forEach(async (goal, index) => {
+        const goalId = `goal-${index}_${game.id}`;
+        const goal_instance = {
+          assister_1: goal.assister_1,
+          assister_2: goal.assister_2,
+          game_id: parseInt(game.id),
+          id: goalId,
+          period: goal.period,
+          scorer: goal.scorer,
+          team: goal.team,
+          time: goal.time,
+          total: goal.total,
+        };
+        await goalService.update_goal(goalId, goal_instance);
+      });
+
+      gameDetailsData.penalties.forEach(async (penalty, index) => {
+        const penaltyId = `penalty-${index}_${game.id}`;
+        const penalty_instance = {
+          game_id: parseInt(game.id),
+          id: penaltyId,
+          infraction: penalty.infraction,
+          length: penalty.length,
+          period: penalty.period,
+          player: penalty.player,
+          team: penalty.team,
+          time: penalty.time,
+        };
+        await penaltyService.update_penalty(penaltyId, penalty_instance);
+      });
+    }
+
+    res.status(200).json({ message: "Scraping completed for all games." });
   } catch (error) {
     next(error);
     console.error(error);
