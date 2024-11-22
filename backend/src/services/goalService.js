@@ -6,6 +6,10 @@ export const getGoalsByGameId = async (gameId) => {
   });
 };
 
+export const getAllGoals = async () => {
+  return await prisma.goal.findMany();
+};
+
 export const createGoal = async (goalData) => {
   try {
     return await prisma.goal.create({

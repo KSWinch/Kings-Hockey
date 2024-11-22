@@ -11,6 +11,6 @@ const router = express.Router();
 router.get("/schedule", scrapeSchedule);
 router.get("/player-stats", scrapePlayerStats);
 router.get("/standings", scrapeStandings);
-router.get("/game-details/:gameId", scrapeGameDetails);
+router.get("/game-details", scrapeGameDetails);
 
 export default router;
