@@ -3,6 +3,7 @@ import * as gamesService from "../services/gamesService.js";
 import * as statsService from "../services/statsService.js";
 import * as standingService from "../services/standingsService.js";
 import * as goalService from "../services/goalService.js";
+import * as penaltyService from "../services/penaltyService.js";
 
 export async function scrapeSchedule(req, res, next) {
   const scraper1 = new WebScraperService(
@@ -138,9 +139,8 @@ export async function scrapeGameDetails(req, res, next) {
   try {
     await scraper.initializeWebScraper();
     const gameDetailsData = await scraper.getGameDetails();
-    console.log(gameDetailsData);
     gameDetailsData.goals.forEach(async (goal, index) => {
-      const goalId = gameId + "_goal_" + index;
+      const goalId = `goal-${index}_${gameId}`;
       const goal_instance = {
         assister_1: goal.assister_1,
         assister_2: goal.assister_2,
@@ -153,6 +153,20 @@ export async function scrapeGameDetails(req, res, next) {
         total: goal.total,
       };
       await goalService.update_goal(goalId, goal_instance);
+    });
+    gameDetailsData.penalties.forEach(async (penalty, index) => {
+      const penaltyId = `penalty-${index}_${gameId}`;
+      const penalty_instance = {
+        game_id: parseInt(gameId),
+        id: penaltyId,
+        infraction: penalty.infraction,
+        length: penalty.length,
+        period: penalty.period,
+        player: penalty.player,
+        team: penalty.team,
+        time: penalty.time,
+      };
+      await penaltyService.update_penalty(penaltyId, penalty_instance);
     });
 
     res.status(200).json(gameDetailsData);

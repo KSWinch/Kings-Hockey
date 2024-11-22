@@ -139,10 +139,22 @@ export default class WebScraperService {
           total: row[5],
         };
       });
+    const parsedPenalties = data.penalties
+      .filter((row) => row)
+      .map((row) => {
+        return {
+          infraction: row[4],
+          length: row[5],
+          period: row[0],
+          player: row[2].replace(/#(\d+)([A-Za-z])/g, "#$1 $2"),
+          team: row[3],
+          time: row[1],
+        };
+      });
 
     const parsedGameDetailsData = {
       goals: parsedGoals,
-      penalties: [],
+      penalties: parsedPenalties,
     };
     return parsedGameDetailsData;
   }
