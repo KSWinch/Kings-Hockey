@@ -69,6 +69,14 @@
   justify-content: space-between;
   width: 100%; /* Ensure teams span the full card width */
   margin-bottom: 10px;
+
+  &.lost {
+    .team-logo,
+    .team-name,
+    .team-score {
+      opacity: 0.5;
+    }
+  }
 }
 
 .score-header-game-card .team-logo {
@@ -84,7 +92,6 @@
   overflow: hidden; /* Hide overflow */
   text-overflow: ellipsis; /* Add '...' for long names */
   max-width: 140px;
-
   margin-left: 15px;
   font-weight: bold;
   font-size: 18px;
