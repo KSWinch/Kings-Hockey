@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ec2ip } from '../../utils/constants';
 import './index.scss';
 
 const ScoreHeader = () => {
@@ -7,7 +8,7 @@ const ScoreHeader = () => {
   useEffect(() => {
     const fetchGamesData = async () => {
       try {
-        const response = await fetch('/api/games');
+        const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
         const pastGames = data.filter((game) => new Date(game.date) < new Date());
         setGamesData(pastGames);
