@@ -8,6 +8,11 @@
   max-width: 1200px;
 }
 
+.country-flag {
+  width: 20px;
+  height: 20px;
+}
+
 .sort-arrow {
   font-size: 0.75em;
   margin-left: 5px;
