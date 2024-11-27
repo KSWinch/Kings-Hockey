@@ -1,30 +1,13 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-// import { ec2ip } from '../../utils/constants';
-const PlayerCard = ({ name, position, photo, teamLogo }) => {
+const PlayerCard = ({ name, position, photo, teamLogo, stats }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  // const [playerStats, setPlayerStats] = useState({});
-  // useEffect(() => {
-  //   const fetchPlayerStats = async () => {
-  //     try {
-  //       const response = await fetch(`${ec2ip}/stats`);
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       const data = await response.json();
-  //       setPlayerStats(data);
-  //     } catch (error) {
-  //       console.error('Error fetching player stats:', error);
-  //     }
-  //   };
-
-  //   fetchPlayerStats();
-  // }, []);
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
   };
 
+  console.log(stats);
   return (
     <div className={`${styles['player-card']} ${isFlipped ? styles['flipped'] : ''}`} onClick={handleCardClick}>
       <div className={styles['card-front']}>

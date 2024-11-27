@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './index.module.scss';
 import PlayerCard from '../../components/PlayerCard';
 import AngusPhoto from '../../assets/images/angus_card_photo.JPEG';
-// import GavinPhoto from '../../assets/images/gav-sens-photo.jpg';
-
+import GavinPhoto from '../../assets/images/gav-sens-photo.jpg';
+import { ec2ip } from '../../utils/constants';
 const stockImageUrl = 'https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png';
 const teamLogo = 'https://i.pinimg.com/originals/e1/b4/cb/e1b4cb36a5f699416d31c67e5210077d.png';
+
 const Lineup = () => {
+  const [playerStats, setPlayerStats] = useState([]);
+
+  useEffect(() => {
+    const fetchPlayerStats = async () => {
+      try {
+        const response = await fetch(`${ec2ip}/stats`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPlayerStats(data);
+      } catch (error) {
+        console.error('Error fetching player stats:', error);
+      }
+    };
+    fetchPlayerStats();
+  }, []);
+
+  const getPlayerStats = useMemo(() => {
+    return (playerName) => {
+      return playerStats.find((player) => player.name === playerName);
+    };
+  }, [playerStats]);
+
   return (
     <div className={styles['lineup-page']}>
       {/* ------------- FORWARDS ----------------- */}
@@ -19,15 +44,15 @@ const Lineup = () => {
         <h2>RW</h2>
       </div>
       <div className={styles['card-line']}>
-        <PlayerCard name="Andrew Feniak" photo={stockImageUrl} position="LW" teamLogo={teamLogo} />
-        <PlayerCard name="Cody Hermann" photo={stockImageUrl} position="C" teamLogo={teamLogo} />
-        <PlayerCard name="Morille Njau" photo={stockImageUrl} position="RW" teamLogo={teamLogo} />
+        <PlayerCard name="Andrew Feniak" photo={stockImageUrl} position="LW" teamLogo={teamLogo} stats={getPlayerStats('Andrew Feniak')} />
+        <PlayerCard name="Cody Hermann" photo={stockImageUrl} position="C" teamLogo={teamLogo} stats={getPlayerStats('Cody Hermann')} />
+        <PlayerCard name="Morille Njau" photo={stockImageUrl} position="RW" teamLogo={teamLogo} stats={getPlayerStats('Morille Njau')} />
       </div>
       <hr className={styles['line-divider']} />
       <div className={styles['card-line']}>
         <PlayerCard name="Dom Heallis" photo={stockImageUrl} position="LW" teamLogo={teamLogo} />
         <PlayerCard name="James Feniak" photo={stockImageUrl} position="C" teamLogo={teamLogo} />
-        <PlayerCard name="Gavin Tai" photo={stockImageUrl} position="RW" teamLogo={teamLogo} />
+        <PlayerCard name="Gavin Tai" photo={GavinPhoto} position="RW" teamLogo={teamLogo} />
       </div>
       <hr className={styles['line-divider']} />
       <div className={styles['card-line']}>
