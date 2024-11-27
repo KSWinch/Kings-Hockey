@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
-import { ec2ip } from '../../utils/constants';
+import { ec2ip, countryMapping } from '../../utils/constants';
+import Canada from '../../assets/emoji/ca.png';
+import China from '../../assets/emoji/cn.png';
+import Nigeria from '../../assets/emoji/ng.png';
+import Tanzania from '../../assets/emoji/tz.png';
+import HongKong from '../../assets/emoji/hk.png';
+
+const countryFlags = {
+  Canada,
+  China,
+  Nigeria,
+  Tanzania,
+  HongKong,
+};
 
 const Stats = () => {
   const [playerStats, setPlayerStats] = useState([]);
@@ -68,6 +81,7 @@ const Stats = () => {
                     <th className="stats-sticky-name-column" onClick={() => requestSort('name')}>
                       <span className="th-wrapper">Name {getSortIndicator('name')}</span>
                     </th>
+                    <th>Country</th>
                     <th onClick={() => requestSort('games_played')}>
                       <span className="th-wrapper">GP {getSortIndicator('games_played')}</span>
                     </th>
@@ -98,6 +112,10 @@ const Stats = () => {
                         {player.jersey_number}
                       </td>
                       <td className={`stats-sticky-name-column stats-name-column`}>{player.name}</td>
+                      <td>
+                        {' '}
+                        <img src={countryFlags[countryMapping[player.name]]} alt={countryMapping[player.name]} className="country-flag" />
+                      </td>
                       <td className={sortConfig.key === 'games_played' ? 'sorted-column' : ''}>{player.games_played}</td>
                       <td className={sortConfig.key === 'goals' ? 'sorted-column' : ''}>{player.goals}</td>
                       <td className={sortConfig.key === 'assists' ? 'sorted-column' : ''}>{player.assists}</td>
