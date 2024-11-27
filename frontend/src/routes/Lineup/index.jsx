@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styles from './index.module.scss';
 import PlayerCard from '../../components/PlayerCard';
-import AngusPhoto from '../../assets/images/angus_card_photo.JPEG';
-import GavinPhoto from '../../assets/images/gav-sens-photo.jpg';
 import { ec2ip } from '../../utils/constants';
+import { line_combination } from './helpers';
 const stockImageUrl = 'https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png';
 const teamLogo = 'https://i.pinimg.com/originals/e1/b4/cb/e1b4cb36a5f699416d31c67e5210077d.png';
 
 const Lineup = () => {
   const [playerStats, setPlayerStats] = useState([]);
-
   useEffect(() => {
     const fetchPlayerStats = async () => {
       try {
@@ -26,7 +24,7 @@ const Lineup = () => {
     fetchPlayerStats();
   }, []);
 
-  const getPlayerStats = useMemo(() => {
+  const getStatsForPlayer = useMemo(() => {
     return (playerName) => {
       return playerStats.find((player) => player.name === playerName);
     };
@@ -43,42 +41,99 @@ const Lineup = () => {
         <h2>C</h2>
         <h2>RW</h2>
       </div>
+      {/* ------------- L1 ----------------- */}
       <div className={styles['card-line']}>
-        <PlayerCard name="Andrew Feniak" photo={stockImageUrl} position="LW" teamLogo={teamLogo} stats={getPlayerStats('Andrew Feniak')} />
-        <PlayerCard name="Cody Hermann" photo={stockImageUrl} position="C" teamLogo={teamLogo} stats={getPlayerStats('Cody Hermann')} />
-        <PlayerCard name="Morille Njau" photo={stockImageUrl} position="RW" teamLogo={teamLogo} stats={getPlayerStats('Morille Njau')} />
+        {line_combination.line_1.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
       <hr className={styles['line-divider']} />
+      {/* ------------- L2 ----------------- */}
       <div className={styles['card-line']}>
-        <PlayerCard name="Dom Heallis" photo={stockImageUrl} position="LW" teamLogo={teamLogo} />
-        <PlayerCard name="James Feniak" photo={stockImageUrl} position="C" teamLogo={teamLogo} />
-        <PlayerCard name="Gavin Tai" photo={GavinPhoto} position="RW" teamLogo={teamLogo} />
+        {line_combination.line_2.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
       <hr className={styles['line-divider']} />
+      {/* ------------- L3 ----------------- */}
       <div className={styles['card-line']}>
-        <PlayerCard name="Xiaoyu Du" photo={stockImageUrl} position="LW" teamLogo={teamLogo} />
-        <PlayerCard name="Donald Sincennes" photo={stockImageUrl} position="C" teamLogo={teamLogo} />
-        <PlayerCard name="Angus Leung" photo={AngusPhoto} position="RW" teamLogo={teamLogo} />
+        {line_combination.line_3.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
       {/* ------------- DEFENSE ----------------- */}
       <div className={styles['position-title']}>
         <h1>Defensive Pairings</h1>
       </div>
+      {/* ------------- D1 ----------------- */}
       <div className={`${styles['card-line']} ${styles['defensive-pairings']}`}>
-        <PlayerCard name="Mike Divs" photo={stockImageUrl} position="D" teamLogo={teamLogo} />
-        <PlayerCard name="Keith Zhang" photo={stockImageUrl} position="D" teamLogo={teamLogo} />
+        {line_combination.d1.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
       <hr className={styles['line-divider']} />
+      {/* ------------- D2 ----------------- */}
       <div className={`${styles['card-line']} ${styles['defensive-pairings']}`}>
-        <PlayerCard name="David Feniak" photo={stockImageUrl} position="D" teamLogo={teamLogo} />
-        <PlayerCard name="Brandon Crosby" photo={stockImageUrl} position="D" teamLogo={teamLogo} />
+        {line_combination.d2.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
       {/* ------------- Goalie ----------------- */}
       <div className={styles['position-title']}>
         <h1>Goalie</h1>
       </div>
       <div className={`${styles['card-line']} ${styles['goalie']}`}>
-        <PlayerCard name="Freedo Layy" photo={stockImageUrl} position="G" teamLogo={teamLogo} />
+        {line_combination.g.map((player) => {
+          return (
+            <PlayerCard
+              name={player.name}
+              photo={player.photo || stockImageUrl}
+              position={player.position}
+              teamLogo={teamLogo}
+              stats={getStatsForPlayer(player.name)}
+            />
+          );
+        })}
       </div>
     </div>
   );
