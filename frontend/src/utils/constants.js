@@ -1,4 +1,4 @@
-export const ec2ip = 'http://54.167.67.32:8080'; // ec2
+export const ec2ip = 'http://54.234.244.89:8080'; // ec2
 // export const ec2ip = 'http://localhost:8080'; // local
 
 export const countryMapping = {
