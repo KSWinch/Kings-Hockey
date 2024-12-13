@@ -3,6 +3,14 @@ import prisma from "../utils/db.js";
 export const getGoalsByGameId = async (gameId) => {
   return await prisma.goal.findMany({
     where: { game_id: Number(gameId) },
+    orderBy: [
+      {
+        period: "asc",
+      },
+      {
+        time: "desc",
+      },
+    ],
   });
 };
 

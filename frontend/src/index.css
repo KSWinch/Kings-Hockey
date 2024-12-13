@@ -4,7 +4,7 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(18, 18, 18) !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 code {
@@ -12,6 +12,10 @@ code {
 }
 
 @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+  }
   /* Dark mode for general tables */
   .standings-table,
   .game-table,
