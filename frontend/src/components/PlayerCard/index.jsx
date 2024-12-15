@@ -7,7 +7,6 @@ const PlayerCard = ({ height, hometown, name, position, photo, teamLogo, stats }
     setIsFlipped(!isFlipped);
   };
 
-  console.log(stats);
   return (
     <div className={`${styles['player-card']} ${isFlipped ? styles['flipped'] : ''}`} onClick={handleCardClick}>
       <div className={styles['card-front']}>
