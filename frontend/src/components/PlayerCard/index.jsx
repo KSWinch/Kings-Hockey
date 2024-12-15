@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-const PlayerCard = ({ name, position, photo, teamLogo, stats }) => {
+const PlayerCard = ({ height, hometown, name, position, photo, teamLogo, stats }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleCardClick = () => {
@@ -29,7 +29,17 @@ const PlayerCard = ({ name, position, photo, teamLogo, stats }) => {
           <img src={photo} alt={`${name}_card`} />
         </div>
       </div>
-      <div className={styles['card-back']}></div>
+      <div className={styles['card-back']}>
+        <p className={styles['name-title']}>{`${name} #${stats?.jersey_number}`}</p>
+        <span>{`Height: ${height}`}</span>
+        <span>{`Hometown: ${hometown}`}</span>
+        <hr style={{ backgroundColor: 'white', border: 'none', height: '1px', width: '100%' }} />
+        <span>{`Goals: ${stats?.goals}`}</span>
+        <span>{`Assists: ${stats?.assists}`}</span>
+        <span>{`Points: ${stats?.points}`}</span>
+        <span>{`PIM: ${stats?.penalty_minutes}`}</span>
+        <span>{`GP: ${stats?.games_played}`}</span>
+      </div>
     </div>
   );
 };

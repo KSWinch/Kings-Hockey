@@ -13,7 +13,7 @@ const Lineup = () => {
       try {
         const response = await fetch(`${ec2ip}/stats`);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Network response was not ok to fetch player stats');
         }
         const data = await response.json();
         setPlayerStats(data);
@@ -46,6 +46,8 @@ const Lineup = () => {
         {line_combination.line_1.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
@@ -61,6 +63,8 @@ const Lineup = () => {
         {line_combination.line_2.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
@@ -76,6 +80,8 @@ const Lineup = () => {
         {line_combination.line_3.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
@@ -94,6 +100,8 @@ const Lineup = () => {
         {line_combination.d1.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
@@ -109,6 +117,8 @@ const Lineup = () => {
         {line_combination.d2.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
@@ -126,6 +136,8 @@ const Lineup = () => {
         {line_combination.g.map((player) => {
           return (
             <PlayerCard
+              height={player.height}
+              hometown={player.hometown}
               name={player.name}
               photo={player.photo || stockImageUrl}
               position={player.position}
