@@ -23,7 +23,7 @@ export default class WebScraperService {
 
         // Filter for links with text "Final" or "Preview"
         const filteredLinks = Array.from(anchorTags).filter((a) =>
-          ["Final", "Preview"].includes(a.textContent.trim())
+          ["Final", "Preview", "Final SO"].includes(a.textContent.trim())
         );
 
         // Extract the href of the first matching link
