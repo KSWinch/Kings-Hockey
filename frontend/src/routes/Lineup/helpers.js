@@ -1,5 +1,4 @@
 import AngusPhoto from '../../assets/images/angus_card_photo.JPEG';
-import GavinPhoto from '../../assets/images/gav-sens-photo.jpg';
 
 export const line_combination = {
   line_1: [
@@ -14,14 +13,14 @@ export const line_combination = {
       height: `5'10"`,
       hometown: 'Ottawa',
       name: 'Cody Hermann',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Cody.jpg',
       position: 'C',
     },
     {
       height: `6'0"`,
       hometown: 'Dar es Salaam',
       name: 'Mo Njau',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Mo.jpg',
       position: 'RW',
     },
   ],
@@ -30,44 +29,44 @@ export const line_combination = {
       height: `5'11"`,
       hometown: 'Ottawa',
       name: 'Dom Heallis',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Dom.jpg',
       position: 'LW',
     },
     {
       height: `6'3"`,
       hometown: 'Ottawa',
       name: 'James Feniak',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/James2.jpg',
       position: 'C',
     },
     {
       height: `5'9"`,
       hometown: 'Ottawa',
       name: 'Gavin Tai',
-      photo: GavinPhoto,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Gavin2.jpg',
       position: 'RW',
     },
   ],
   line_3: [
     {
       height: `5'11"`,
-      hometown: 'jiayuguan',
+      hometown: 'Jiayuguan, China',
       name: 'Shawn Du',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Shawn.jpg',
       position: 'LW',
     },
     {
       height: `5'9"`,
       hometown: 'Ottawa',
       name: 'Donald Sincennes',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Donald.jpg',
       position: 'C',
     },
     {
       height: `6'0"`,
       hometown: 'Ottawa',
       name: 'Angus Leung',
-      photo: AngusPhoto,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Angus2.jpg',
       position: 'RW',
     },
   ],
@@ -76,7 +75,7 @@ export const line_combination = {
       height: `6'1"`,
       hometown: 'Ottawa',
       name: 'Mike Divins',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Mike.jpg',
       position: 'D',
     },
     {
@@ -99,7 +98,7 @@ export const line_combination = {
       height: `5'10"`,
       hometown: 'Ottawa',
       name: 'Brandon Crosby',
-      photo: null,
+      photo: 'https://kings-hockey-pictures.s3.us-east-1.amazonaws.com/Brandon.jpg',
       position: 'D',
     },
   ],

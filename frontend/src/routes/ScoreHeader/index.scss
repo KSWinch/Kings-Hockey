@@ -40,6 +40,11 @@
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: #e0e0e0;
+
+  &:hover {
+    cursor: pointer;
+  }
+  
 }
 
 .score-header-game-card.odd-row,

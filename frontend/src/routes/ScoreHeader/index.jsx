@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ec2ip } from '../../utils/constants';
 import './index.scss';
+import { useNavigate } from 'react-router-dom';
 
 const ScoreHeader = () => {
   const [gamesData, setGamesData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGamesData = async () => {
@@ -20,6 +22,10 @@ const ScoreHeader = () => {
     fetchGamesData();
   }, []);
 
+  const handleRowClick = (game) => {
+    navigate(`/game/${game.id}`, { state: { game } });
+  };
+
   return (
     <div className="score-header-page">
       <div className="score-header-table-container">
@@ -29,7 +35,11 @@ const ScoreHeader = () => {
             const awayTeamLost = game.away_score < game.home_score;
 
             return (
-              <div className={`score-header-game-card ${index % 2 === 0 ? 'odd-row' : 'even-row'}`} key={game.id}>
+              <div
+                className={`score-header-game-card ${index % 2 === 0 ? 'odd-row' : 'even-row'}`}
+                key={game.id}
+                onClick={() => handleRowClick(game)}
+              >
                 <div className="game-time">{game.date}</div>
                 <div className={`team ${homeTeamLost ? 'lost' : ''}`}>
                   {game.home_team === 'Kings' ? (

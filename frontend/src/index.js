@@ -8,6 +8,7 @@ import Scores from './routes/Scores';
 import Stats from './routes/Stats';
 import Standings from './routes/Standings';
 import Lineup from './routes/Lineup';
+import Games from './routes/Games';
 import App from './App';
 import Attendance from './routes/Attendance';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'schedule/attendance/:id',
         element: <Attendance />,
+      },
+      {
+        path: 'game/:id',
+        element: <Games />,
       },
       {
         path: 'scores',
