@@ -7,7 +7,7 @@ export default class WebScraperService {
 
   async initializeWebScraper() {
     this.browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     this.page = await this.browser.newPage();
@@ -16,6 +16,7 @@ export default class WebScraperService {
 
   async getSchedule() {
     const data = await this.page.evaluate(() => {
+      debugger;
       const rows = Array.from(document.querySelectorAll(".schedule tr"));
       const gameIds = rows.slice(1).map((row) => {
         // Select all <a> tags within the row
@@ -42,6 +43,7 @@ export default class WebScraperService {
         // If the row text is empty, return it as-is; otherwise, append the game ID
         return rowText ? `${rowText}\t${gameIds[index]}` : rowText;
       });
+      debugger;
       return returnRows;
     });
 
@@ -53,7 +55,7 @@ export default class WebScraperService {
         return {
           awayTeam: columns[2].trim(),
           date: columns[4].trim(),
-          homeTeam: columns[0].trim(),
+          homeTeam: columns[0].trim().split("vs")[0].trim(),
           id: parseInt(columns[10].trim()),
           location: columns[7].trim(),
           rink: columns[8].trim(),
