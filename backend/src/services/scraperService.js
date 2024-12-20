@@ -23,7 +23,7 @@ export default class WebScraperService {
 
         // Filter for links with text "Final" or "Preview"
         const filteredLinks = Array.from(anchorTags).filter((a) =>
-          ["Final", "Preview"].includes(a.textContent.trim())
+          ["Final", "Preview", "Final SO"].includes(a.textContent.trim())
         );
 
         // Extract the href of the first matching link
@@ -42,6 +42,7 @@ export default class WebScraperService {
         // If the row text is empty, return it as-is; otherwise, append the game ID
         return rowText ? `${rowText}\t${gameIds[index]}` : rowText;
       });
+      debugger;
       return returnRows;
     });
 
@@ -53,7 +54,7 @@ export default class WebScraperService {
         return {
           awayTeam: columns[2].trim(),
           date: columns[4].trim(),
-          homeTeam: columns[0].trim(),
+          homeTeam: columns[0].trim().split("vs")[0].trim(),
           id: parseInt(columns[10].trim()),
           location: columns[7].trim(),
           rink: columns[8].trim(),
