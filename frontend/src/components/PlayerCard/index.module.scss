@@ -37,7 +37,7 @@
     }
   }
   .card-name-bar {
-    background-color: #1a1d24;
+    background-color: #1a1d24b4;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -84,27 +84,26 @@
     }
 
     .card-team-logo {
-      width: 40px;
+      width: 34px;
       @media only screen and (max-width: $phone) {
-        width: calc(40px * 0.5);
+        width: calc(34px * 0.5);
       }
     }
     .logo-container {
       align-items: center;
-      background-color: #000; /* Black background for the logo area */
-      border: 2px solid #fff; /* White border around the logo */
+      background-color: #00000057; /* Black background for the logo area */
+      border: 2px solid #ffffff63; /* White border around the logo */
       border-radius: 50%; /* Makes the container circular */
-      bottom: 10px;
+      bottom: 6px;
       display: flex;
-      height: 50px;
+      height: 40px;
       justify-content: center;
-      left: 10px;
       position: absolute;
-      width: 50px; /* Size of the circular container */
+      width: 40px; /* Size of the circular container */
 
       @media only screen and (max-width: $phone) {
-        height: calc(50px * 0.5);
-        width: calc(50px * 0.5);
+        height: calc(40px * 0.5);
+        width: calc(40px * 0.5);
       }
     }
   }
@@ -136,7 +135,6 @@
       color: white;
     }
   }
-
 
     @media only screen and (max-width: $phone) {
       height: calc(350px * 0.5);
