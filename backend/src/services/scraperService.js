@@ -7,7 +7,7 @@ export default class WebScraperService {
 
   async initializeWebScraper() {
     this.browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     this.page = await this.browser.newPage();
@@ -16,7 +16,6 @@ export default class WebScraperService {
 
   async getSchedule() {
     const data = await this.page.evaluate(() => {
-      debugger;
       const rows = Array.from(document.querySelectorAll(".schedule tr"));
       const gameIds = rows.slice(1).map((row) => {
         // Select all <a> tags within the row
