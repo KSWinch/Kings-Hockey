@@ -137,6 +137,27 @@
     }
   }
 
+
+    @media only screen and (max-width: $phone) {
+      height: calc(350px * 0.5);
+      width: calc(231px * 0.5);
+    
+  
+    .card-back {
+      padding: 5px; // Reduce padding for smaller cards
+      font-size: 12px; // Scale down text size in mobile
+      line-height: 1.2; // Adjust line height for better spacing
+      
+      span, .name-title {
+        font-size: 12px; // Ensure smaller text for details
+      }
+  
+      hr {
+        margin: 5px 0; // Reduce spacing for horizontal line
+      }
+    }
+    }
+  
   &.flipped {
     .card-front {
       transform: rotateY(180deg);
