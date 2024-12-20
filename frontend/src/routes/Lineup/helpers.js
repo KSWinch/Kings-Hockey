@@ -1,5 +1,3 @@
-import AngusPhoto from '../../assets/images/angus_card_photo.JPEG';
-
 export const line_combination = {
   line_1: [
     {
