@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ec2ip } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
+import { ec2ip } from '../../utils/constants';
 import crhlLogo from './images/crhl-logo.png';
 import crownLogo from './images/crown.png';
 import './index.scss';
