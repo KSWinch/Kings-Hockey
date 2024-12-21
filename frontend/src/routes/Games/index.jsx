@@ -74,57 +74,61 @@ const Games = () => {
           {/* Scoring Summary */}
           <div className="scoring-summary">
             <h3>Scoring Summary</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Team</th>
-                  <th>Time</th>
-                  <th>Scorer</th>
-                  <th>Assists</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {gameData.map((goal) => (
-                  <tr key={goal.id}>
-                    <td>{goal.team}</td>
-                    <td>{goal.time}</td>
-                    <td>{goal.scorer}</td>
-                    <td>
-                      {goal.assister_1}, {goal.assister_2}
-                    </td>
-                    <td>{goal.total}</td>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>Time</th>
+                    <th>Scorer</th>
+                    <th>Assists</th>
+                    <th>Total</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {gameData.map((goal) => (
+                    <tr key={goal.id}>
+                      <td>{goal.team}</td>
+                      <td>{goal.time}</td>
+                      <td>{goal.scorer}</td>
+                      <td>
+                        {goal.assister_1}, {goal.assister_2}
+                      </td>
+                      <td>{goal.total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Penalty Summary */}
           <div className="penalty-summary">
             <h3>Penalty Summary</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Team</th>
-                  <th>Time</th>
-                  <th>Player</th>
-                  <th>Infraction</th>
-                  <th>Length</th>
-                </tr>
-              </thead>
-              <tbody>
-                {penaltyData.map((penalty) => (
-                  <tr key={penalty.id}>
-                    <td>{penalty.team}</td>
-                    <td>{penalty.time}</td>
-                    <td>{penalty.player}</td>
-                    <td>{penalty.infraction}</td>
-                    <td>{penalty.length}</td>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>Time</th>
+                    <th>Player</th>
+                    <th>Infraction</th>
+                    <th>Length</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {penaltyData.map((penalty) => (
+                    <tr key={penalty.id}>
+                      <td>{penalty.team}</td>
+                      <td>{penalty.time}</td>
+                      <td>{penalty.player}</td>
+                      <td>{penalty.infraction}</td>
+                      <td>{penalty.length}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 

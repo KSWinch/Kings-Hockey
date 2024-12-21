@@ -166,3 +166,61 @@ tr:hover {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .games-page {
+    .header {
+      padding: 15px;
+      .teams-score {
+        width: 100%;
+        padding: 10px;
+
+        .team {
+          h2 {
+            font-size: 18px;
+          }
+
+          .team-logo {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .score {
+          h2 {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    .content {
+      flex-direction: column;
+
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        padding: 10px;
+      }
+
+      .scoring-summary,
+      .penalty-summary,
+      .game-details {
+        padding: 10px;
+
+        h3 {
+          font-size: 20px;
+        }
+
+        .table-container {
+          overflow-x: auto;
+
+          table {
+            font-size: 14px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
