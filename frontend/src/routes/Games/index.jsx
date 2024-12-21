@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ec2ip } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
-import './index.scss';
 import crhlLogo from './images/crhl-logo.png';
 import crownLogo from './images/crown.png';
+import './index.scss';
 
 const Games = () => {
   const [gameData, setGameData] = useState([]);
