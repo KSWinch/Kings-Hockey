@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ec2ip } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
 import './index.scss';
+import crhlLogo from './images/crhl-logo.png';
+import crownLogo from './images/crown.png';
 
 const Games = () => {
   const [gameData, setGameData] = useState([]);
@@ -50,10 +52,19 @@ const Games = () => {
       {/* Header Section */}
       <div className="header">
         <div className="teams-score">
-          <h2>
-            {away_team} {away_score} - {home_team} {home_score}
-          </h2>
-          <br></br>
+          <div className="team away-team">
+            <img src={away_team === 'Kings' ? crownLogo : crhlLogo} alt={`${away_team} logo`} className="team-logo" />
+            <h2>{away_team}</h2>
+          </div>
+          <div className="score">
+            <h2>
+              {away_score} - {home_score}
+            </h2>
+          </div>
+          <div className="team home-team">
+            <h2>{home_team}</h2>
+            <img src={home_team === 'Kings' ? crownLogo : crhlLogo} alt={`${home_team} logo`} className="team-logo" />
+          </div>
         </div>
       </div>
 
@@ -63,46 +74,81 @@ const Games = () => {
           {/* Scoring Summary */}
           <div className="scoring-summary">
             <h3>Scoring Summary</h3>
-            <ul>
-              {gameData.map((goal) => (
-                <li key={goal.id}>
-                  <span>{goal.team} </span>
-                  <span>{goal.time} - </span>
-                  <span>{goal.scorer} (</span>
-                  <span>
-                    Assist: {goal.assister_1} {goal.assister_2})
-                  </span>
-                  <span> {goal.total}</span>
-                </li>
-              ))}
-            </ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Time</th>
+                  <th>Scorer</th>
+                  <th>Assists</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {gameData.map((goal) => (
+                  <tr key={goal.id}>
+                    <td>{goal.team}</td>
+                    <td>{goal.time}</td>
+                    <td>{goal.scorer}</td>
+                    <td>
+                      {goal.assister_1}, {goal.assister_2}
+                    </td>
+                    <td>{goal.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           {/* Penalty Summary */}
           <div className="penalty-summary">
             <h3>Penalty Summary</h3>
-            <ul>
-              {penaltyData.map((penalty) => (
-                <li key={penalty.id}>
-                  <span>{penalty.team} (</span>
-                  <span>{penalty.time} - </span>
-                  <span>{penalty.player} </span>
-                  <span>{penalty.infraction})</span>
-                  <span> {penalty.length}</span>
-                </li>
-              ))}
-            </ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Time</th>
+                  <th>Player</th>
+                  <th>Infraction</th>
+                  <th>Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                {penaltyData.map((penalty) => (
+                  <tr key={penalty.id}>
+                    <td>{penalty.team}</td>
+                    <td>{penalty.time}</td>
+                    <td>{penalty.player}</td>
+                    <td>{penalty.infraction}</td>
+                    <td>{penalty.length}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
-        {/*Game Details */}
+        {/* Game Details */}
         <div className="right-panel">
-          <h3>Game Details</h3>
-          <ul>
-            <li>Venue: {venue}</li>
-            <li>Attendance: 18,700</li>
-            <li>Time: {time}</li>
-          </ul>
+          <div className="game-details">
+            <h3>Game Details</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Venue</td>
+                  <td>{venue}</td>
+                </tr>
+                <tr>
+                  <td>Attendance</td>
+                  <td>18,700</td>
+                </tr>
+                <tr>
+                  <td>Time</td>
+                  <td>{time}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

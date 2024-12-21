@@ -1,0 +1,168 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+tr:nth-of-type(even) {
+  background-color: #f0efef;
+}
+
+tr:hover {
+  background-color: #d1b3e9c7;
+}
+
+.games-page {
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+
+    .teams-score {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 650px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      background-color: #f4f4f4;
+
+      .team {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        text-align: center;
+
+        &.away-team {
+          justify-content: flex-start;
+        }
+
+        &.home-team {
+          justify-content: flex-end;
+        }
+
+        h2 {
+          margin: 0 10px;
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .team-logo {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .score {
+        flex: 1;
+        text-align: center;
+
+        h2 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .left-panel,
+    .right-panel {
+      width: 48%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .scoring-summary,
+    .penalty-summary,
+    .game-details {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+      }
+
+      table {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  table {
+    color: #e0e0e0;
+  }
+
+  th {
+    background-color: #333;
+  }
+
+  tr:nth-of-type(even) {
+    background-color: #3a3a3a;
+  }
+
+  tr:hover {
+    background-color: #555;
+  }
+
+  .games-page {
+    .header {
+      .teams-score {
+        border: 2px solid #444;
+        background-color: #333;
+
+        .team h2,
+        .score h2 {
+          color: #e0e0e0;
+        }
+      }
+    }
+
+    .content {
+      .scoring-summary,
+      .penalty-summary,
+      .game-details {
+        border: 2px solid #444;
+
+        h3 {
+          color: #e0e0e0;
+          border-bottom: 2px solid #444;
+        }
+
+        table {
+          color: #e0e0e0;
+          background-color: #333;
+        }
+      }
+    }
+  }
+}
