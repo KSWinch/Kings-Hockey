@@ -22,40 +22,40 @@ model Users {
 model Games {
   away_score String
   away_team  String
-  date       String @unique
-  goals      Goal[]   
+  date       String    @unique
+  goals      Goal[]
   home_score String
   home_team  String
-  id         Int    @id @default(autoincrement()) @unique
+  id         Int       @id @unique @default(autoincrement())
   location   String
-  penalties  Penalty[] 
+  penalties  Penalty[]
   time       String
   rink       String
 }
 
 model Goal {
-  assister_1   String @default("")
-  assister_2   String @default("")
-  game         Games  @relation(fields: [game_id], references: [id])
-  game_id      Int  
-  id           String    @id 
-  period       String    
-  scorer       String 
-  team         String 
-  time         String 
-  total        String
+  assister_1 String @default("")
+  assister_2 String @default("")
+  game       Games  @relation(fields: [game_id], references: [id])
+  game_id    Int
+  id         String @id
+  period     String
+  scorer     String
+  team       String
+  time       String
+  total      String
 }
 
 model Penalty {
-  game         Games  @relation(fields: [game_id], references: [id])
-  game_id      Int
-  id           String    @id 
-  infraction   String 
-  length       String    
-  period       String    
-  player       String 
-  team         String
-  time         String 
+  game       Games  @relation(fields: [game_id], references: [id])
+  game_id    Int
+  id         String @id
+  infraction String
+  length     String
+  period     String
+  player     String
+  team       String
+  time       String
 }
 
 model Stats {
@@ -63,8 +63,8 @@ model Stats {
   game_winning_goals Int
   games_played       Int
   goals              Int
-  jersey_number      Int    @id @unique
-  name               String
+  jersey_number      Int
+  name               String @id @unique
   penalty_minutes    Int
   points             Int
   points_per_game    Int
