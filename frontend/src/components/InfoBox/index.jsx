@@ -5,7 +5,10 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
   const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
   const sortedSchedule = games
     ? [...games]
-        .filter((game) => new Date(game.date + ' 2024 23:59:59') >= new Date())
+        .filter((game) => {
+          const gameDate = new Date(game.date + ' 2024');
+          return gameDate >= new Date('2024-01-01') && gameDate <= new Date('2024-06-30');
+        })
         .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'))
     : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
