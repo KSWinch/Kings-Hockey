@@ -20,9 +20,9 @@ export const createStat = async (userData) => {
   }
 };
 
-export const updateStat = async (jersey_number, userData) => {
+export const updateStat = async (name, userData) => {
   return await prisma.stats.upsert({
-    where: { jersey_number: Number(jersey_number) },
+    where: { name: String(name) },
     update: userData,
     create: userData,
   });

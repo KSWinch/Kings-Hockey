@@ -7,7 +7,7 @@ export default class WebScraperService {
 
   async initializeWebScraper() {
     this.browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     this.page = await this.browser.newPage();
@@ -182,14 +182,20 @@ export default class WebScraperService {
 
   async getPlayerStats() {
     const playerData = await this.page.evaluate(() => {
+      debugger;
       const rows = Array.from(
         document.querySelectorAll("#stats-players-active tbody tr")
       );
       const players = rows.map((row) => {
         const columns = row.querySelectorAll("td");
+        console.log(columns);
         return {
-          jerseyNumber: parseInt(columns[0]?.innerText.trim()),
-          name: columns[1]?.innerText.trim().replace("check", "").trim(),
+          jerseyNumber: parseInt(columns[0]?.textContent.trim()),
+          name: columns[1]?.textContent
+            .trim()
+            .replace("check", "")
+            .replace(/\s*#\d+/g, "")
+            .trim(),
           position: columns[2]?.innerText.trim(),
           gamesPlayed: parseInt(columns[3]?.innerText.trim()),
           goals: parseInt(columns[4]?.innerText.trim()),
