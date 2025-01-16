@@ -10,7 +10,6 @@ const Scores = () => {
       try {
         const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
-        const todaysDate = new Date();
         const pastGames = data.sort((a, b) => a.id - b.id);
         setGamesData(pastGames);
       } catch (error) {
