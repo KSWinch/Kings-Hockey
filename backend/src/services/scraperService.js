@@ -7,7 +7,7 @@ export default class WebScraperService {
 
   async initializeWebScraper() {
     this.browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     this.page = await this.browser.newPage();
@@ -23,7 +23,9 @@ export default class WebScraperService {
 
         // Filter for links with text "Final" or "Preview"
         const filteredLinks = Array.from(anchorTags).filter((a) =>
-          ["Final", "Preview", "Final SO"].includes(a.textContent.trim())
+          ["Final", "Preview", "Final SO", "Final OT"].includes(
+            a.textContent.trim()
+          )
         );
 
         // Extract the href of the first matching link
@@ -47,6 +49,7 @@ export default class WebScraperService {
     });
 
     // Parse the data into JSON
+    debugger;
     const parsedData = data
       .filter((row) => row) // Remove any empty rows
       .map((row) => {
@@ -186,20 +189,21 @@ export default class WebScraperService {
         document.querySelectorAll("#stats-players-active tbody tr")
       );
       const players = rows.map((row) => {
+        debugger;
         const columns = row.querySelectorAll("td");
         return {
-          jerseyNumber: parseInt(columns[0]?.innerText.trim()),
-          name: columns[1]?.innerText.trim().replace("check", "").trim(),
-          position: columns[2]?.innerText.trim(),
-          gamesPlayed: parseInt(columns[3]?.innerText.trim()),
-          goals: parseInt(columns[4]?.innerText.trim()),
-          assists: parseInt(columns[5]?.innerText.trim()),
-          points: parseInt(columns[6]?.innerText.trim()),
-          pointsPerGame: parseInt(columns[7]?.innerText.trim()),
-          penaltyMinutes: parseInt(columns[8]?.innerText.trim()),
-          powerPlayGoals: parseInt(columns[9]?.innerText.trim()),
-          shortHandedGoals: parseInt(columns[10]?.innerText.trim()),
-          gameWinningGoals: parseInt(columns[11]?.innerText.trim()),
+          jerseyNumber: parseInt(columns[0]?.textContent.trim()),
+          name: columns[1]?.textContent.trim().split("#")[0].trim(),
+          position: columns[2]?.textContent.trim(),
+          gamesPlayed: parseInt(columns[3]?.textContent.trim()),
+          goals: parseInt(columns[4]?.textContent.trim()),
+          assists: parseInt(columns[5]?.textContent.trim()),
+          points: parseInt(columns[6]?.textContent.trim()),
+          pointsPerGame: parseInt(columns[7]?.textContent.trim()),
+          penaltyMinutes: parseInt(columns[8]?.textContent.trim()),
+          powerPlayGoals: parseInt(columns[9]?.textContent.trim()),
+          shortHandedGoals: parseInt(columns[10]?.textContent.trim()),
+          gameWinningGoals: parseInt(columns[11]?.textContent.trim()),
         };
       });
 
@@ -229,7 +233,7 @@ export default class WebScraperService {
       // Map each row to an object representing team standings
       const standings = rows.map((row) => {
         const columns = row.querySelectorAll("td");
-
+        debugger;
         return {
           games_played: parseInt(columns[2]?.innerText.trim()),
           goal_differential: columns[12]?.innerText.trim(),
@@ -240,10 +244,10 @@ export default class WebScraperService {
           overtime_losses: parseInt(columns[6]?.innerText.trim()),
           penalty_minutes: parseInt(columns[13]?.innerText.trim()),
           points: parseInt(columns[7]?.innerText.trim()),
-          rank: parseInt(columns[0]?.innerText.trim()),
+          rank: parseInt(columns[0]?.textContent.trim()),
           regulation_wins: parseInt(columns[8]?.innerText.trim()),
           streak: columns[15]?.innerText.trim(),
-          team: columns[1]?.innerText.trim(),
+          team: columns[1]?.querySelector("a").innerHTML.trim(),
           ties: parseInt(columns[5]?.innerText.trim()),
           wins: parseInt(columns[3]?.innerText.trim()),
         };
