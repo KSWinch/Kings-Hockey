@@ -15,4 +15,6 @@ export const countryMapping = {
   'Gavin Tai': 'HongKong',
   'Mike Divins': 'Canada',
   'Shawn Du': 'China',
+  'Kyle Winch': 'Canada',
+  'Ryan Vanbruinessen': 'Canada',
 };
