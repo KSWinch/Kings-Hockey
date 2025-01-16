@@ -6,12 +6,13 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
   const sortedSchedule = games
     ? [...games]
         .filter((game) => {
-          const gameDate = new Date(game.date + ' 2024');
-          return gameDate >= new Date('2024-01-01') && gameDate <= new Date('2024-06-30');
+          const gameDate = new Date(game.date + ' 2025');
+          return gameDate >= new Date('2025-01-01') && gameDate <= new Date('2025-06-30') && gameDate >= new Date();
         })
-        .sort((a, b) => new Date(a.date + ' 2024') - new Date(b.date + ' 2024'))
+        .sort((a, b) => new Date(a.date + ' 2025') - new Date(b.date + ' 2025'))
     : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
+  console.log(new Date());
 
   return (
     <div className="post-card">
