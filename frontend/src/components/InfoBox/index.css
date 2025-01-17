@@ -172,14 +172,18 @@
 }
 
 @media (max-width: 430px) {
+  .player-stats-mini-table th,
+  .player-stats-mini-table td,
   .upcoming-games-mini-table th,
   .upcoming-games-mini-table td,
   .standings-mini-table th,
   .standings-mini-tabletd {
-    padding: 4px;
+    padding: 5px;
     font-size: auto;
   }
 
+  .player-stats-mini-table th,
+  .player-stats-mini-table td,
   .upcoming-games-mini-table th,
   .upcoming-games-mini-table td {
     max-width: 9ch; /*if the words go over 9 characters then it turns into ...  */
