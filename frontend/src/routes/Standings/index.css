@@ -8,8 +8,6 @@
 .standings-table-responsive-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: #23184b;
-  box-shadow: 0 5px 9px rgba(122, 102, 102, 0.253);
   width: 50%;
   min-width: 1000px;
 }
@@ -21,6 +19,7 @@
   height: 700px;
   font-size: 24px;
   cursor: pointer;
+  margin: 0;
 }
 
 .standings-table th,
