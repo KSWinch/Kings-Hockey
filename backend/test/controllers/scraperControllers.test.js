@@ -1,5 +1,8 @@
 import { expect, test } from "vitest";
-import { scrapeStandings } from "../../src/controllers/scraperController.js";
+import {
+  scrapeSchedule,
+  scrapeStandings,
+} from "../../src/controllers/scraperController.js";
 import { expect, test, vi } from "vitest";
 import { scrapePlayerStats } from "../../src/controllers/scraperController.js";
 
@@ -37,7 +40,7 @@ test("scrapePlayerStats return proper player names test", async () => {
   const statusMock = vi.fn(() => ({ json: jsonMock }));
   const res = { status: statusMock };
   const next = vi.fn();
-
+  //
   await scrapePlayerStats(req, res, next);
 
   const playerStatsResults = jsonMock.mock.calls[0][0];
@@ -63,4 +66,20 @@ test("scrapePlayerStats return proper player names test", async () => {
   ];
 
   expect(expectedPlayerNames).toEqual(extractedPlayerNames);
+});
+
+test("Scrape Schedule ID to not return nulls", async () => {
+  const req = {};
+  const jsonMock = vi.fn();
+  const statusMock = vi.fn(() => ({ json: jsonMock }));
+  const res = { status: statusMock };
+  const next = vi.fn();
+
+  await scrapeSchedule(req, res, next);
+
+  const scheduleResults = jsonMock.mock.calls[0][0];
+
+  const extractedSchedule = scheduleResults.map((game) => game.id);
+
+  expect(extractedSchedule.some((item) => item === null)).toBe(false);
 });

@@ -7,7 +7,8 @@
 
 - npm i
 - npx prisma generate
+- npm install -D vitest
 
 # Run Node
 
-- node ./src/server.js 
+- node ./src/server.js
