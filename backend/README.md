@@ -7,7 +7,6 @@
 
 - npm i
 - npx prisma generate
-- npm install -D vitest
 
 # Run Node
 
