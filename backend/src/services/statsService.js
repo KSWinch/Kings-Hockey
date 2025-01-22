@@ -22,7 +22,7 @@ export const createStat = async (userData) => {
 
 export const updateStat = async (name, userData) => {
   return await prisma.stats.upsert({
-    where: { jersey_number: Number(jersey_number), name: userData.name },
+    where: { name: userData.name },
     update: userData,
     create: userData,
   });
