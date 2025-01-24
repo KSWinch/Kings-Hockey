@@ -388,12 +388,7 @@
 
   /* Next game table  */
   .next-game-section {
-    padding: 50px;
     background-color: #111111;
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: flex-start; /* Align content to the top */
-    align-items: flex-start; /* Align items to the left */
   }
 
   .next-game-section p {
@@ -401,15 +396,9 @@
   }
 
   .next-game-table {
-    width: 100%;
-    margin: 0 auto;
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .next-game-table td {
-    padding: 10px;
-    text-align: center;
   }
 
   .next-game-table tr:nth-child(even) {
@@ -418,36 +407,11 @@
 
   .section-divider {
     border-top: 2px solid #979797;
-    margin: 1px auto;
-    width: 95%;
-    margin-top: 50px;
-  }
-
-  .table-button-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    width: 40%;
-    margin: 0 auto;
   }
 
   .add-to-calendar-button {
-    position: absolute;
-    bottom: 2px;
-    right: 10px;
-    display: inline-block;
-    padding: 10px 10px;
     background-color: #f0eeee;
     color: rgb(0, 0, 0);
-    text-decoration: none;
-    border-radius: 360px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 0.4px;
-    width: 25%;
   }
 
   .add-to-calendar-button:hover {
@@ -460,24 +424,11 @@
 
   .table-container {
     background-color: #111111; /* White background for the box */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensures border-radius applies properly */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    width: 40%;
   }
 
   .image-container {
-    padding: 20px;
-    text-align: center;
     border-top-left-radius: 10px; /* Rounded top-left corner */
     border-top-right-radius: 10px; /* Rounded top-right corner */
     background: linear-gradient(to right, #380079, #fdde2d);
-  }
-
-  .image-container img {
-    max-width: 15%; /* Scale image to 80% of the container's width */
-    height: auto;
-    border-radius: 5px; /* Optional: Image rounding */
   }
 }
