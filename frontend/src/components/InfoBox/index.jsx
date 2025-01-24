@@ -1,16 +1,8 @@
 import React from 'react';
 import './../InfoBox/index.css';
 
-const InfoBox = ({ title, description, imageUrl, players, games, standings }) => {
+const InfoBox = ({ title, description, imageUrl, players, standings }) => {
   const sortedPlayers = players ? [...players].sort((a, b) => b.points - a.points) : [];
-  const sortedSchedule = games
-    ? [...games]
-        .filter((game) => {
-          const gameDate = new Date(game.date + ' 2025');
-          return gameDate >= new Date('2025-01-01') && gameDate <= new Date('2025-06-30') && gameDate >= new Date();
-        })
-        .sort((a, b) => new Date(a.date + ' 2025') - new Date(b.date + ' 2025'))
-    : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
 
   return (
@@ -44,29 +36,6 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
                 <td>{player.goals}</td>
                 <td>{player.assists}</td>
                 <td>{player.points}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : games ? (
-        <table className="upcoming-games-mini-table">
-          <thead>
-            <tr>
-              <th>Home</th>
-              <th>Away</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedSchedule.slice(0, 1).map((game, index) => (
-              <tr key={index}>
-                <td>{game.home_team}</td>
-                <td>{game.away_team}</td>
-                <td>{game.date}</td>
-                <td>{game.time}</td>
-                <td>{`${game.location} - ${game.rink}`}</td>
               </tr>
             ))}
           </tbody>
