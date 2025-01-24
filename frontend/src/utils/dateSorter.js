@@ -15,7 +15,7 @@ export const convertToMilitaryTime = (time) => {
   }
 
   // Extract hours, minutes, and period
-  let [_, hours, minutes, period] = match;
+  let [hours, minutes, period] = match;
   hours = parseInt(hours, 10);
 
   // Convert to military time
