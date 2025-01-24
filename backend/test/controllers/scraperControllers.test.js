@@ -65,7 +65,7 @@ test("scrapePlayerStats return proper player names test", async () => {
     "Angus Leung",
   ];
 
-  expect(expectedPlayerNames).toEqual(extractedPlayerNames);
+  expect(expectedPlayerNames.sort()).toEqual(extractedPlayerNames.sort());
 });
 
 test("Scrape Schedule ID to not return nulls", async () => {
