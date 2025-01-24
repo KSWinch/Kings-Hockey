@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './index.css';
 import InfoBox from './../../components/InfoBox';
 import { ec2ip } from '../../utils/constants';
-import { sortGames } from '../../utils/sortgames';
-import { formatDateForCalendar } from '../../utils/sortgames';
+import { sortGames, convertToMilitaryTime } from '../../utils/dateSorter';
 import gameImage from './../../components/InfoBox/images/crown.png';
+import 'add-to-calendar-button';
 
 const Home = () => {
   const [playerStats, setPlayerStats] = useState([]);
   const [gamesData, setGamesData] = useState([]);
   const [standingsData, setStandingsData] = useState([]); // For standings !!
   const nextGame = gamesData.length > 0 ? sortGames(gamesData).slice(0, 1) : [];
+  const [dateData, setDateData] = useState([]);
 
   useEffect(() => {
     const fetchPlayerStats = async () => {
@@ -30,7 +31,11 @@ const Home = () => {
       try {
         const response = await fetch(`${ec2ip}/games`);
         const data = await response.json();
-        setGamesData(data); // Set gamesData with fetched data
+        setGamesData(data);
+        const game = data.length > 0 ? sortGames(data).slice(0, 1) : [];
+        const nextGameFormatted = new Date(game[0].date + ' 2025');
+        const formattedDate = nextGameFormatted.toISOString().split('T')[0];
+        setDateData(formattedDate);
       } catch (error) {
         console.error('Error fetching games data:', error);
       }
@@ -68,20 +73,23 @@ const Home = () => {
             <p>Upcoming games for Kings</p>
           </div>
           {nextGame.length > 0 && (
-            <a
-              href={`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                nextGame[0].home_team + ' vs ' + nextGame[0].away_team
-              )}&dates=${encodeURIComponent(
-                formatDateForCalendar(nextGame[0].date) // Properly formatted date string
-              )}&details=Game%20Location:%20${encodeURIComponent(
-                nextGame[0].location + ' - ' + nextGame[0].rink + ' (Time: ' + '10:15 PM' + ')'
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="add-to-calendar-button"
-            >
-              Add to Calendar
-            </a>
+            <div className="add-to-calendar-button">
+              <add-to-calendar-button
+                buttonStyle="round"
+                buttonsList
+                hideTextLabelButton
+                hideCheckmark
+                lightMode="system"
+                name={gamesData[0].home_team + ' vs ' + gamesData[0].away_team}
+                options="'Apple','Google'"
+                location={gamesData[0].location}
+                startDate={dateData}
+                endDate={dateData}
+                startTime={convertToMilitaryTime(nextGame[0].time)}
+                endTime={convertToMilitaryTime(nextGame[0].time)}
+                timeZone="America/Los_Angeles"
+              ></add-to-calendar-button>
+            </div>
           )}
         </div>
         <div className="table-container">

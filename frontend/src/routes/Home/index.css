@@ -75,21 +75,7 @@
   bottom: 2px; /* Space from the bottom */
   right: 10px;
   display: inline-block;
-  padding: 10px 10px;
-  background-color: #141414;
-  color: white;
-  text-decoration: none;
-  border-radius: 360px;
-  text-align: center;
-  margin-bottom: 10px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.4px;
-  width: 25%;
-}
-
-.add-to-calendar-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  padding: 5px 10px;
 }
 
 .calendar-button-container {
@@ -212,7 +198,7 @@
     flex-direction: column; /* Stack the table and content vertically */
     justify-content: flex-end; /* Align all content towards the bottom */
     position: relative; /* So we can position the button at the bottom right */
-    width: 95%; /* Adjust as necessary */
+    width: 95%;
     margin: 0 auto; /* Center the container */
     font-size: small;
   }
@@ -220,19 +206,7 @@
   .add-to-calendar-button {
     position: absolute; /* Absolute positioning to place the button at the bottom right */
     bottom: 2px; /* Space from the bottom */
-    right: 10px;
-    display: inline-block;
-    padding: 5px 5px;
-    background-color: #141414;
-    color: white;
-    text-decoration: none;
-    border-radius: 360px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 8px;
-    letter-spacing: 0.4px;
-    width: 25%;
+    right: 5px;
   }
   .next-game-section {
     display: flex;
@@ -279,7 +253,7 @@
   .image-container img {
     max-width: 15%; /* Scale image to 80% of the container's width */
     height: auto;
-    border-radius: 5px; /* Optional: Image rounding */
+    border-radius: 5px;
   }
 }
 
@@ -289,7 +263,6 @@
     text-align: center;
     display: inline-block;
     padding: 20px;
-
     font-size: medium;
   }
 
@@ -330,23 +303,6 @@
     font-size: small;
   }
 
-  .add-to-calendar-button {
-    position: absolute; /* Absolute positioning to place the button at the bottom right */
-    bottom: 2px; /* Space from the bottom */
-    right: 10px;
-    display: inline-block;
-    padding: 5px 5px;
-    background-color: #141414;
-    color: white;
-    text-decoration: none;
-    border-radius: 360px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 8px;
-    letter-spacing: 0.4px;
-    width: 25%;
-  }
   .next-game-section {
     display: flex;
     flex-direction: column; /* Stack content vertically */
@@ -395,23 +351,12 @@
     color: #ebe8e891;
   }
 
-  .next-game-table {
-  }
-
-  .next-game-table td {
-  }
-
   .next-game-table tr:nth-child(even) {
     background-color: #afaeae;
   }
 
   .section-divider {
     border-top: 2px solid #979797;
-  }
-
-  .add-to-calendar-button {
-    background-color: #f0eeee;
-    color: rgb(0, 0, 0);
   }
 
   .add-to-calendar-button:hover {

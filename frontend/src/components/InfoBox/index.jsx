@@ -12,7 +12,6 @@ const InfoBox = ({ title, description, imageUrl, players, games, standings }) =>
         .sort((a, b) => new Date(a.date + ' 2025') - new Date(b.date + ' 2025'))
     : [];
   const sortedStandings = standings ? [...standings].sort((a, b) => a.rank - b.rank) : [];
-  console.log(new Date());
 
   return (
     <div className="post-card">
