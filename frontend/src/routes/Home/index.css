@@ -19,10 +19,106 @@
   gap: 50px;
   justify-content: center;
   align-items: flex-start;
-  padding: 60px 20px;
+  padding: 80px 20px;
   position: relative; /* To position the ::before element correctly */
   overflow: hidden;
 }
+
+/* Next game table  */
+.next-game-section {
+  padding: 50px;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: flex-start; /* Align content to the top */
+  align-items: flex-start; /* Align items to the left */
+}
+
+.next-game-section p {
+  color: #00000091;
+}
+
+.next-game-table {
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.next-game-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.next-game-table tr:nth-child(even) {
+  background-color: #afaeae; /* Optional: Alternating row color */
+}
+
+.section-divider {
+  border-top: 2px solid #979797; /* A light grey line */
+  margin: 1px auto; /* Adds spacing above and below the line */
+  width: 95%;
+  margin-top: 50px;
+}
+
+.table-button-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack the table and content vertically */
+  justify-content: flex-end; /* Align all content towards the bottom */
+  position: relative; /* So we can position the button at the bottom right */
+  width: 40%; /* Adjust as necessary */
+  margin: 0 auto; /* Center the container */
+}
+
+.add-to-calendar-button {
+  position: absolute; /* Absolute positioning to place the button at the bottom right */
+  bottom: 2px; /* Space from the bottom */
+  right: 10px;
+  display: inline-block;
+  padding: 10px 10px;
+  background-color: #141414;
+  color: white;
+  text-decoration: none;
+  border-radius: 360px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  width: 25%;
+}
+
+.add-to-calendar-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.calendar-button-container {
+  text-align: center;
+}
+
+.table-container {
+  background-color: #ffffff; /* White background for the box */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures border-radius applies properly */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  width: 40%;
+}
+
+.image-container {
+  padding: 20px;
+  text-align: center;
+  border-top-left-radius: 10px; /* Rounded top-left corner */
+  border-top-right-radius: 10px; /* Rounded top-right corner */
+  background: linear-gradient(to right, #380079, #fdde2d);
+}
+
+.image-container img {
+  max-width: 15%; /* Scale image to 80% of the container's width */
+  height: auto;
+  border-radius: 5px; /* Optional: Image rounding */
+}
+/* Next game end */
 
 .header-section {
   position: relative;
@@ -110,6 +206,166 @@
   .header-section p {
     font-size: 12px;
   }
+
+  .table-button-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack the table and content vertically */
+    justify-content: flex-end; /* Align all content towards the bottom */
+    position: relative; /* So we can position the button at the bottom right */
+    width: 95%; /* Adjust as necessary */
+    margin: 0 auto; /* Center the container */
+    font-size: small;
+  }
+
+  .add-to-calendar-button {
+    position: absolute; /* Absolute positioning to place the button at the bottom right */
+    bottom: 2px; /* Space from the bottom */
+    right: 10px;
+    display: inline-block;
+    padding: 5px 5px;
+    background-color: #141414;
+    color: white;
+    text-decoration: none;
+    border-radius: 360px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 8px;
+    letter-spacing: 0.4px;
+    width: 25%;
+  }
+  .next-game-section {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align items to the left */
+  }
+}
+
+@media (max-width: 384) {
+  /* Next game table  */
+  .next-game-section {
+    text-align: center;
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+
+    font-size: medium;
+  }
+
+  .next-game-table {
+    font-size: medium;
+  }
+
+  .table-container {
+    background-color: #ffffff; /* White background for the box */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures border-radius applies properly */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: auto;
+  }
+
+  .image-container {
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 10px; /* Rounded top-left corner */
+    border-top-right-radius: 10px; /* Rounded top-right corner */
+    background: linear-gradient(to right, #380079, #d3c71e);
+  }
+
+  .image-container img {
+    max-width: 15%; /* Scale image to 80% of the container's width */
+    height: auto;
+    border-radius: 5px; /* Optional: Image rounding */
+  }
+}
+
+@media (max-width: 430px) {
+  /* Next game table  */
+  .next-game-section {
+    text-align: center;
+    display: inline-block;
+    padding: 20px;
+
+    font-size: medium;
+  }
+
+  .next-game-table {
+    font-size: medium;
+  }
+
+  .table-container {
+    background-color: #ffffff; /* White background for the box */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures border-radius applies properly */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: auto;
+  }
+
+  .image-container {
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 10px; /* Rounded top-left corner */
+    border-top-right-radius: 10px; /* Rounded top-right corner */
+    background: linear-gradient(to right, #380079, #d3c71e);
+  }
+
+  .image-container img {
+    max-width: 15%; /* Scale image to 80% of the container's width */
+    height: auto;
+    border-radius: 5px; /* Optional: Image rounding */
+  }
+
+  .table-button-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack the table and content vertically */
+    justify-content: flex-end; /* Align all content towards the bottom */
+    position: relative; /* So we can position the button at the bottom right */
+    width: 100%; /* Adjust as necessary */
+    margin: 0 auto; /* Center the container */
+    font-size: small;
+  }
+
+  .add-to-calendar-button {
+    position: absolute; /* Absolute positioning to place the button at the bottom right */
+    bottom: 2px; /* Space from the bottom */
+    right: 10px;
+    display: inline-block;
+    padding: 5px 5px;
+    background-color: #141414;
+    color: white;
+    text-decoration: none;
+    border-radius: 360px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 8px;
+    letter-spacing: 0.4px;
+    width: 25%;
+  }
+  .next-game-section {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .table-button-wrapper h3,
+  .table-button-wrapper p {
+    margin: 0; /* Remove any default margins */
+    padding-bottom: 5px;
+  }
+
+  .text-container {
+    display: flex; /* Use flexbox for aligning items */
+    flex-direction: column; /* Stack the text elements vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: flex-start; /* Align items to the left */
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -123,6 +379,105 @@
     gap: 50px;
     justify-content: center;
     align-items: flex-start;
-    padding: 60px 20px;
+    padding: 40px 20px;
+  }
+
+  .h2 {
+    padding-bottom: 20px;
+  }
+
+  /* Next game table  */
+  .next-game-section {
+    padding: 50px;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .next-game-section p {
+    color: #ebe8e891;
+  }
+
+  .next-game-table {
+    width: 100%;
+    margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .next-game-table td {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .next-game-table tr:nth-child(even) {
+    background-color: #afaeae;
+  }
+
+  .section-divider {
+    border-top: 2px solid #979797;
+    margin: 1px auto;
+    width: 95%;
+    margin-top: 50px;
+  }
+
+  .table-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  .add-to-calendar-button {
+    position: absolute;
+    bottom: 2px;
+    right: 10px;
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #f0eeee;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 360px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    width: 25%;
+  }
+
+  .add-to-calendar-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  .calendar-button-container {
+    text-align: center;
+  }
+
+  .table-container {
+    background-color: #111111; /* White background for the box */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures border-radius applies properly */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: 40%;
+  }
+
+  .image-container {
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 10px; /* Rounded top-left corner */
+    border-top-right-radius: 10px; /* Rounded top-right corner */
+    background: linear-gradient(to right, #380079, #fdde2d);
+  }
+
+  .image-container img {
+    max-width: 15%; /* Scale image to 80% of the container's width */
+    height: auto;
+    border-radius: 5px; /* Optional: Image rounding */
   }
 }
