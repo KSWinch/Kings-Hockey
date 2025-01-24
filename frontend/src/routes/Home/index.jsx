@@ -96,6 +96,8 @@ const Home = () => {
           {/* Image Section */}
           <div className="image-container">
             <img src={gameImage} alt="KingsLogo" />
+            
+
           </div>
 
           {/* Table Section */}
