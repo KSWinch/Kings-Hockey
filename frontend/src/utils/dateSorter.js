@@ -1,8 +1,10 @@
 export const sortGames = (games) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Time set to midnight
   return games
     .filter((game) => {
       const gameDate = new Date(game.date + ' 2025');
-      return gameDate >= new Date('2025-01-01') && gameDate <= new Date('2025-06-30') && gameDate >= new Date();
+      return gameDate >= today && gameDate >= new Date('2025-01-01') && gameDate <= new Date('2025-06-30');
     })
     .sort((a, b) => new Date(a.date + ' 2025') - new Date(b.date + ' 2025'));
 };
